@@ -1,3 +1,10 @@
+# Entorno y claves:
+.venv/
+.env
+__pycache__/
+.ipynb_checkpoints/
+
+# Pesos del modelo: pesan más de 100 MB
 modelo/*.safetensors
 modelo/*.bin
 modelo/checkpoint-*/
