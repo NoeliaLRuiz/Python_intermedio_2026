@@ -1,0 +1,9 @@
+{
+  "total_noticias": 384,
+  "f1_test": 0.7984,
+  "accuracy_test": 0.8103,
+  "f1_zero_shot": 0.5954,
+  "f1_llm_test": 0.9487,
+  "acuerdo_llm_humano": 20,
+  "auditados": 20
+}
