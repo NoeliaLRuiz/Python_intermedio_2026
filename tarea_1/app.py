@@ -4,7 +4,6 @@ from pathlib import Path
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-from transformers import pipeline
 
 CARPETA = Path(__file__).parent
 RUTA_NOTICIAS = CARPETA / "datos" / "noticias.csv"
@@ -30,6 +29,10 @@ def cargar_metricas():
 
 @st.cache_resource
 def cargar_clasificador():
+    # Se importa aquí y desde transformers.pipelines: la página carga sin esperar a torch
+    # y se evita el atajo «from transformers import pipeline», que falló en Streamlit Cloud
+    from transformers.pipelines import pipeline
+
     # Usa el modelo local si existe; si no, el publicado en Hugging Face
     if (RUTA_MODELO / "model.safetensors").exists():
         origen = str(RUTA_MODELO)
