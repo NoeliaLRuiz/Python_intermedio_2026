@@ -1,5 +1,9 @@
 # Tarea 1 · Del titular al clasificador
 
+**Dashboard en vivo:** https://clasificador-noticias-pe.streamlit.app
+(si está dormido, pulsa «Yes, get this app back up!» y espera un minuto) ·
+**Modelo:** https://huggingface.co/NoeliaF/clasificador-noticias-pe
+
 ## 1. Pregunta del proyecto
 ¿Pueden convertir titulares peruanos en un clasificador de noticias? Recolecté 384 titulares
 de El Comercio, los etiqueté con un LLM (supervisión débil), audité 20 a mano y afiné
@@ -72,7 +76,10 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-El modelo afinado (`modelo/model.safetensors`, 541 MB) no está en GitHub. Para crearlo:
+El modelo afinado (`modelo/model.safetensors`, 541 MB) no está en GitHub: está publicado en
+Hugging Face (`NoeliaF/clasificador-noticias-pe`). Si no existe en `modelo/`, `app.py` lo
+descarga de allí la primera vez que se pulsa «Clasificar» (de 1 a 3 minutos).
+Para volver a entrenarlo en local:
 1. Crea un archivo `.env` en `tarea_1/` con la línea `GEMINI_API_KEY=tu_clave`.
 2. Ejecuta `02_clasificacion.ipynb` completo. Las etiquetas guardadas en
    `datos/etiquetas_llm.csv` no se vuelven a pedir (solo hay una llamada de prueba a Gemini) y
@@ -87,11 +94,7 @@ Luego abre el dashboard:
 streamlit run app.py
 ```
 
-Se abre en http://localhost:8501. Sin el modelo, el dashboard funciona igual, pero el probador
-avisa que falta ejecutar el notebook 2.
-
+Se abre en http://localhost:8501.
 
 El archivo `.streamlit/config.toml` apaga el vigilante de archivos de Streamlit: con
 transformers, ese vigilante llena la terminal de avisos sobre `torchvision`, que no se usa.
-
-
