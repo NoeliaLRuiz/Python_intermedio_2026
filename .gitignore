@@ -1,0 +1,3 @@
+modelo/*.safetensors
+modelo/*.bin
+modelo/checkpoint-*/
