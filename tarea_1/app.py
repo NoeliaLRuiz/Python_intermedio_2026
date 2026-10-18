@@ -11,7 +11,8 @@ RUTA_NOTICIAS = CARPETA / "datos" / "noticias.csv"
 RUTA_METRICAS = CARPETA / "modelo" / "metricas.json"
 RUTA_MODELO = CARPETA / "modelo"
 
-MODELO_HUGGING_FACE = ""
+# Modelo publicado en Hugging Face: lo usa la app en la nube, donde no está el modelo local
+MODELO_HUGGING_FACE = "NoeliaF/clasificador-noticias-pe"
 
 st.set_page_config(page_title="Clasificador de noticias", page_icon=":newspaper:", layout="wide")
 
