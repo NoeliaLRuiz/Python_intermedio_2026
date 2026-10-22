@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+# Descargas que el notebook vuelve a bajar solo
+data/raw/inpe/
+data/raw/*.geojson
+data/raw/bomberos_osm.json
+data/processed/*.npz

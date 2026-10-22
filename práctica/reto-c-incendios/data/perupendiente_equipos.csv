@@ -1,0 +1,54 @@
+comandancia,departamento,item,cantidad,costo_unitario,costo_total_publicado
+IX Comandancia Departamental de Bomberos de Cusco,CUSCO,Mochilas de hidratación,80,80.00,6400.00
+IX Comandancia Departamental de Bomberos de Cusco,CUSCO,Binoculares con zoom,20,269.00,5380.00
+IX Comandancia Departamental de Bomberos de Cusco,CUSCO,Brújulas,25,85.00,2125.00
+IX Comandancia Departamental de Bomberos de Cusco,CUSCO,GPS,10,635.00,6350.00
+IX Comandancia Departamental de Bomberos de Cusco,CUSCO,Mfire 2 con remolque,4,13579.00,54280.00
+IX Comandancia Departamental de Bomberos de Cusco,CUSCO,Remolque,1,7080.00,7080.00
+IX Comandancia Departamental de Bomberos de Cusco,CUSCO,Anemómetros,10,350.00,3500.00
+IX Comandancia Departamental de Bomberos de Cusco,CUSCO,Drone Matrice 4T,1,23635.50,23635.50
+XIX Comandancia Departamental Apurímac (Abancay),APURIMAC,Mochilas de hidratación,60,80.00,4800.00
+XIX Comandancia Departamental Apurímac (Abancay),APURIMAC,Linternas de cabeza,10,279.00,2790.00
+XIX Comandancia Departamental Apurímac (Abancay),APURIMAC,Linternas de mano,10,249.00,2490.00
+XIX Comandancia Departamental Apurímac (Abancay),APURIMAC,Anemómetros,2,350.00,700.00
+XIX Comandancia Departamental Apurímac (Abancay),APURIMAC,Mfire 2 con remolque,2,13570.00,27140.00
+XIX Comandancia Departamental Apurímac (Abancay),APURIMAC,GPS,2,1121.00,2242.00
+XIX Comandancia Departamental Apurímac (Abancay),APURIMAC,Binoculares,2,300.90,601.80
+XIX Comandancia Departamental Apurímac (Abancay),APURIMAC,SKID1,1,33040.00,33040.00
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,Mochilas de hidratación,80,80.00,6400.00
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,Anemómetros,2,350.00,700.00
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,GPS,2,1121.00,2242.00
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,Binoculares,3,300.90,902.70
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,Cascos forestales rojo VFT 1,6,941.50,5649.00
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,Cascos forestales tipo Jockey,2,520.00,1040.00
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,Cascos forestales ala completa,3,620.00,1860.00
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,Guantes de protección,36,350.00,12600.00
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,Pares de botas,10,170.00,1700.00
+XXVI Comandancia Departamental Ayacucho,AYACUCHO,Cascos forestales rojo VFT 1,8,900.00,7200.00
+X Comandancia Departamental Junín Centro,JUNIN,Mochilas de hidratación,40,80.00,3200.00
+X Comandancia Departamental Junín Centro,JUNIN,Anemómetros,2,350.00,700.00
+X Comandancia Departamental Junín Centro,JUNIN,GPS,2,1121.00,2242.00
+X Comandancia Departamental Junín Centro,JUNIN,Mfire 2 con remolque,4,13570.00,54280.00
+X Comandancia Departamental Junín Centro,JUNIN,Binoculares,3,300.90,902.70
+XIV Comandancia Departamental Huánuco,HUANUCO,Mochilas de hidratación,30,80.00,2400.00
+XIV Comandancia Departamental Huánuco,HUANUCO,Anemómetros,2,350.00,700.00
+XIV Comandancia Departamental Huánuco,HUANUCO,GPS,2,1121.00,2242.00
+XIV Comandancia Departamental Huánuco,HUANUCO,Mfire 2 con remolque,2,13570.00,27140.00
+XIV Comandancia Departamental Huánuco,HUANUCO,Binoculares,3,300.90,902.70
+XIV Comandancia Departamental Huánuco - Pasco,PASCO,Mochilas de hidratación,40,80.00,3200.00
+XIV Comandancia Departamental Huánuco - Pasco,PASCO,Anemómetros,2,350.00,700.00
+XIV Comandancia Departamental Huánuco - Pasco,PASCO,GPS,2,1121.00,2242.00
+XIV Comandancia Departamental Huánuco - Pasco,PASCO,Mfire 2 con remolque,4,13570.00,27140.00
+XIV Comandancia Departamental Huánuco - Pasco,PASCO,Binoculares,3,300.90,902.70
+XIII Comandancia Departamental de Áncash,ANCASH,Mochilas de hidratación,50,80.00,4000.00
+XIII Comandancia Departamental de Áncash,ANCASH,Anemómetros,2,350.00,700.00
+XIII Comandancia Departamental de Áncash,ANCASH,GPS,2,13570.00,27140.00
+XIII Comandancia Departamental de Áncash,ANCASH,Mfire 2 con remolque,2,1121.00,2242.00
+XIII Comandancia Departamental de Áncash,ANCASH,Binoculares,3,300.90,902.70
+XX Comandancia Departamental Puno,PUNO,Mochilas de hidratación,35,80.00,2800.00
+XX Comandancia Departamental Puno,PUNO,Anemómetros,2,350.00,700.00
+XX Comandancia Departamental Puno,PUNO,Mfire 2 con remolque,2,13570.00,27140.00
+XX Comandancia Departamental Puno,PUNO,Sopladora profesional,2,6500.00,13000.00
+XX Comandancia Departamental Puno,PUNO,GPS,2,1121.00,2242.00
+XX Comandancia Departamental Puno,PUNO,Mochilas extintoras forestales,12,1700.00,20400.00
+XX Comandancia Departamental Puno,PUNO,Binoculares,3,300.90,902.70

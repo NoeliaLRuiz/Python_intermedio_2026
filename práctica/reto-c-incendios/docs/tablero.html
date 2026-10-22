@@ -1,0 +1,944 @@
+<title>¿Qué se quemó?</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: parte de situación en una columna; cifras clave arriba, mapa nacional, zoom a Río Tambo, ayuda y método al final */
+:root {
+  --papel: #f1f3ef;
+  --panel: #fbfcfa;
+  --tinta: #18211d;
+  --tenue: #56635c;
+  --linea: #d3d9d2;
+  --acento: #0e5c56;
+  --fuego: #c2410c;
+  --aviso: #9a3412;
+  --t1: #1d4ed8;
+  --t2: #a16207;
+  --t3: #c2410c;
+  --t4: #7f1d1d;
+  --sev1: #f5d77a;
+  --sev2: #f08a3c;
+  --sev3: #c8331e;
+  --sev4: #5e0f0a;
+  --donacion: #d4a106;
+  --mapa-fondo: #e5e9e3;
+  --mapa-borde: #b6beb5;
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --texto: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --datos: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papel: #121714; --panel: #192019; --tinta: #e4eae5; --tenue: #9daaa2; --linea: #2b3530;
+    --acento: #5fbfb4; --fuego: #fb8a4c; --aviso: #fdba74;
+    --t1: #7aa2ff; --t2: #e0b54a; --t3: #fb8a4c; --t4: #f87171;
+    --donacion: #f2c94c; --mapa-fondo: #1f2823; --mapa-borde: #3d4a43;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --papel: #121714; --panel: #192019; --tinta: #e4eae5; --tenue: #9daaa2; --linea: #2b3530;
+  --acento: #5fbfb4; --fuego: #fb8a4c; --aviso: #fdba74;
+  --t1: #7aa2ff; --t2: #e0b54a; --t3: #fb8a4c; --t4: #f87171;
+  --donacion: #f2c94c; --mapa-fondo: #1f2823; --mapa-borde: #3d4a43;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--papel); color: var(--tinta); font: 16px/1.55 var(--texto);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+}
+.hoja { max-width: 1120px; margin: 0 auto; display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.05; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.5rem); }
+h3 { font-size: 1.35rem; font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+a { color: var(--acento); }
+a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.etiqueta { font: 600 0.78rem/1.2 var(--texto); letter-spacing: 0.08em; text-transform: uppercase; color: var(--tenue); }
+.num { font-family: var(--datos); font-variant-numeric: tabular-nums; }
+.tenue { color: var(--tenue); }
+.seccion { display: grid; gap: 20px; }
+.seccion > header { display: grid; gap: 8px; }
+
+/* Cabecera */
+.cabecera { display: grid; gap: 14px; padding-top: 40px; border-bottom: 3px solid var(--tinta); padding-bottom: 22px; }
+.parte { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--datos); font-size: 0.82rem; color: var(--tenue); }
+.lede { font-size: 1.15rem; max-width: 62ch; }
+
+/* Cifras */
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1px; background: var(--linea); border: 1px solid var(--linea); }
+.cifra { background: var(--panel); padding: 18px 18px 16px; display: grid; gap: 6px; align-content: start; }
+.cifra b { font: 600 2.4rem/1 var(--display); }
+.cifra span { font-size: 0.92rem; color: var(--tenue); }
+.cifra small { font-size: 0.76rem; color: var(--tenue); line-height: 1.35; }
+.apilada { display: flex; height: 12px; gap: 2px; margin-top: 6px; }
+.apilada span { display: block; min-width: 3px; }
+.mini-barras { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 3px 8px; align-items: center; margin-top: 6px; font-size: 0.76rem; }
+.mini-barras span { font-size: 0.76rem; color: var(--tenue); }
+.mini-barras i { display: block; height: 8px; background: var(--fuego); }
+.pulso { margin: 4px 0 0; display: grid; gap: 4px; }
+.pulso svg { width: 100%; height: auto; display: block; }
+.pulso text.eje { fill: var(--tenue); font: 11px var(--datos); }
+.pulso text.nota { fill: var(--tinta); font: 600 12px var(--texto); }
+.pulso figcaption { font-size: 0.82rem; color: var(--tenue); }
+
+/* Mapa */
+.mapa-bloque { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.mapa { background: var(--mapa-fondo); border: 1px solid var(--linea); position: relative; }
+.mapa svg { display: block; width: 100%; height: auto; }
+.mapa .dep { fill: var(--panel); stroke: var(--mapa-borde); stroke-width: 0.6; }
+.mapa .estacion { fill: var(--tinta); }
+.mapa .inc { stroke: var(--panel); stroke-width: 0.6; fill-opacity: 0.78; cursor: pointer; }
+.mapa .inc:hover, .mapa .inc.activo { stroke: var(--tinta); stroke-width: 1.6; fill-opacity: 1; }
+.tooltip { position: absolute; pointer-events: none; background: var(--panel); color: var(--tinta); border: 1px solid var(--linea);
+  padding: 10px 12px; font-size: 0.86rem; line-height: 1.4; max-width: 280px; box-shadow: 0 6px 18px rgb(0 0 0 / 0.14); }
+.leyenda { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.86rem; }
+.leyenda i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.leyenda i.tri { border-radius: 0; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid var(--tinta); background: none; }
+.c-t1 { background: var(--t1); } .c-t2 { background: var(--t2); } .c-t3 { background: var(--t3); } .c-t4 { background: var(--t4); }
+.lado { display: grid; gap: 22px; }
+.mapa { overflow: hidden; }
+.mapa svg { cursor: grab; }
+.mapa svg:active { cursor: grabbing; }
+.mapa .dep, .mapa .inc, .mapa .huella { vector-effect: non-scaling-stroke; }
+.mapa .huella { stroke-width: 1; fill-opacity: 0.6; cursor: pointer; }
+.mapa .huella.activo { stroke: var(--tinta); stroke-width: 2.2; fill-opacity: 0.9; }
+.mapa .anillo { fill: none; stroke: var(--tinta); stroke-width: 1.4; vector-effect: non-scaling-stroke; pointer-events: none; }
+.mapa .rotulo { font-family: var(--texto); font-weight: 600; fill: var(--tenue); text-anchor: middle; pointer-events: none;
+  paint-order: stroke; stroke: var(--panel); letter-spacing: 0.04em; }
+.mapa .atenuado { opacity: 0.1; pointer-events: none; }
+.zoom-botones { position: absolute; top: 10px; right: 10px; display: flex; gap: 4px; z-index: 2; }
+.zoom-botones button { font: 600 0.9rem var(--texto); min-width: 34px; height: 34px; padding: 0 10px; border: 1px solid var(--linea);
+  background: var(--panel); color: var(--tinta); cursor: pointer; }
+.zoom-botones button:hover { border-color: var(--tinta); }
+.pista { position: absolute; left: 10px; bottom: 8px; margin: 0; font-size: 0.78rem; color: var(--tenue); pointer-events: none; }
+.leyenda i.aro { background: none; border: 1.5px solid var(--tinta); }
+.resumen-clase { margin: 0; font-size: 0.95rem; max-width: none; }
+.resumen-clase:empty { display: none; }
+.estado-filtro { font-size: 0.88rem; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.estado-filtro button { font: 600 0.8rem var(--texto); padding: 3px 8px; border: 1px solid var(--tinta); background: var(--panel); color: var(--tinta); cursor: pointer; }
+button.tramo, button.fila-barra { background: none; border: 0; font: inherit; color: inherit; text-align: left; padding: 3px 4px; margin: 0 -4px; cursor: pointer; width: calc(100% + 8px); }
+button.tramo:hover, button.fila-barra:hover { background: var(--mapa-fondo); }
+button.tramo[aria-pressed="true"], button.fila-barra[aria-pressed="true"] { background: var(--mapa-fondo); outline: 2px solid var(--tinta); }
+.tramo .barra, .fila-barra .barra { display: block; }
+.tramos { display: grid; gap: 10px; }
+.tramo { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 3.2rem; gap: 10px; align-items: center; font-size: 0.92rem; }
+.barra { height: 14px; background: var(--linea); position: relative; }
+.barra > span { position: absolute; inset: 0 auto 0 0; }
+
+/* Barras de cobertura */
+.barras { display: grid; gap: 8px; }
+.fila-barra { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) auto; gap: 10px; align-items: center; font-size: 0.92rem; }
+.fila-barra .barra { height: 18px; background: transparent; }
+.fila-barra .valor { font-family: var(--datos); font-size: 0.82rem; color: var(--tenue); white-space: nowrap; }
+
+/* Tabla */
+.controles { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+select { font: inherit; padding: 6px 10px; border: 1px solid var(--linea); background: var(--panel); color: var(--tinta); }
+.tabla-caja { overflow-x: auto; border: 1px solid var(--linea); background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--linea); vertical-align: top; }
+th { font: 600 0.74rem/1.2 var(--texto); letter-spacing: 0.06em; text-transform: uppercase; color: var(--tenue); white-space: nowrap; }
+td.d, th.d { text-align: right; font-family: var(--datos); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tbody tr:hover { background: var(--papel); cursor: pointer; }
+.chip { display: inline-block; padding: 1px 8px; font-size: 0.78rem; font-weight: 600; color: #fff; white-space: nowrap; }
+.chip.t1 { background: var(--t1); } .chip.t2 { background: var(--t2); } .chip.t3 { background: var(--t3); } .chip.t4 { background: var(--t4); }
+:root[data-theme="dark"] .chip { color: #111; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chip { color: #111; } }
+.celda-barra { display: flex; align-items: center; gap: 8px; min-width: 120px; }
+.celda-barra i { display: block; height: 10px; min-width: 2px; flex: none; }
+.celda-barra span { font-size: 0.84rem; white-space: nowrap; }
+td small { display: block; font-size: 0.76rem; }
+td.pos { color: var(--tenue); font-size: 0.8rem; width: 2rem; }
+td.fechas { white-space: nowrap; font-size: 0.86rem; }
+.punto { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+.vivo { font: 600 0.68rem/1 var(--texto); letter-spacing: 0.06em; text-transform: uppercase; color: var(--fuego); border: 1px solid currentColor; padding: 1px 4px; vertical-align: 2px; }
+.ver-mas { justify-self: start; font: 600 0.88rem var(--texto); padding: 7px 14px; border: 1px solid var(--tinta); background: var(--panel); color: var(--tinta); cursor: pointer; }
+.lugar b { font-weight: 600; }
+.lugar small { display: block; color: var(--tenue); }
+
+/* Río Tambo */
+.zoom { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.zoom figure { margin: 0; display: grid; gap: 10px; }
+.visor-marco { position: relative; width: 100%; max-width: 100%; aspect-ratio: var(--ar, 0.9); border: 1px solid var(--linea);
+  background: #d9d9d9; overflow: hidden; --corte: 50%; user-select: none; }
+.visor-marco img, .visor-marco svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#v-antes { clip-path: inset(0 calc(100% - var(--corte)) 0 0); }
+.v-capa { pointer-events: none; clip-path: inset(0 0 0 var(--corte)); }  /* capas solo sobre la imagen de después */
+.v-linea { position: absolute; top: 0; bottom: 0; left: var(--corte); width: 2px; margin-left: -1px; background: #fff;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.35); pointer-events: none; }
+.v-linea span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; color: #111;
+  font: 600 11px var(--texto); padding: 6px 7px; border-radius: 999px; box-shadow: 0 2px 8px rgb(0 0 0 / 0.35); white-space: nowrap; }
+.v-etq { position: absolute; top: 10px; background: rgb(17 17 17 / 0.72); color: #fff; font: 600 0.8rem var(--texto); padding: 4px 8px; pointer-events: none; }
+.v-izq { left: 10px; } .v-der { right: 10px; }
+#v-rango { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none; }
+#v-rango:focus-visible + * , .visor-marco:has(#v-rango:focus-visible) { outline: 2px solid var(--acento); outline-offset: 2px; }
+figcaption { font-size: 0.84rem; color: var(--tenue); }
+.comparacion { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--linea); border: 1px solid var(--linea); }
+.comparacion div { background: var(--panel); padding: 14px; display: grid; gap: 4px; }
+.comparacion b { font: 600 2rem/1 var(--display); }
+.lista-simple { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 0.92rem; }
+.lista-simple li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dotted var(--linea); padding-bottom: 4px; }
+.lista-simple li span:last-child { font-family: var(--datos); white-space: nowrap; }
+.sev { display: flex; height: 22px; border: 1px solid var(--linea); }
+.sev span { display: block; height: 100%; }
+
+/* Cronología */
+.crono-graf svg { width: 100%; height: auto; display: block; }
+.crono-graf text { fill: var(--tenue); font: 11px var(--datos); }
+.crono { display: grid; gap: 0; border-left: 2px solid var(--linea); margin-left: 6px; }
+.dia { display: grid; grid-template-columns: 5.2rem minmax(0, 1fr); gap: 14px; padding: 10px 0 10px 16px; position: relative; }
+.dia::before { content: ""; position: absolute; left: -7px; top: 15px; width: 12px; height: 12px; border-radius: 50%; background: var(--panel); border: 2px solid var(--fuego); }
+.dia time { font: 600 1.05rem/1.3 var(--display); }
+.dia ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.dia li { font-size: 0.93rem; display: grid; gap: 2px; }
+.nivel { font: 600 0.7rem/1.2 var(--texto); letter-spacing: 0.06em; text-transform: uppercase; padding: 1px 6px; border: 1px solid currentColor; margin-right: 6px; }
+.nivel.Nacional { color: var(--t1); } .nivel.Regional { color: var(--t2); } .nivel.Local { color: var(--acento); }
+.dia .quien { font-weight: 600; }
+.detalle-crono { display: grid; gap: 12px; }
+.detalle-crono summary { cursor: pointer; font: 600 0.95rem var(--texto); padding: 8px 0; }
+.detalle-crono[open] { gap: 14px; }
+.filtros { display: flex; flex-wrap: wrap; gap: 6px; }
+.filtros button { font: 600 0.82rem var(--texto); padding: 5px 10px; border: 1px solid var(--linea); background: var(--panel); color: var(--tinta); cursor: pointer; }
+.filtros button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+
+/* Perú Pendiente */
+.ayuda { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 28px; align-items: start; }
+.aviso { border-left: 4px solid var(--aviso); background: var(--panel); padding: 12px 16px; font-size: 0.93rem; display: grid; gap: 6px; }
+.aviso b { color: var(--aviso); }
+.dep-fila { display: grid; grid-template-columns: 7.2rem minmax(0, 1fr); gap: 10px; align-items: center; font-size: 0.86rem;
+  background: none; border: 0; color: inherit; font-family: inherit; text-align: left; padding: 2px 0; }
+button.dep-fila { cursor: pointer; }
+button.dep-fila:hover span:first-child, button.dep-fila[aria-pressed="true"] span:first-child { font-weight: 700; text-decoration: underline; }
+.dep-barras { display: grid; gap: 3px; }
+.dep-barras .barra { height: 9px; background: transparent; }
+.dep-barras small { font-family: var(--datos); color: var(--tenue); font-size: 0.74rem; }
+.flujo { display: flex; height: 44px; border: 1px solid var(--linea); background: var(--panel); }
+.flujo span { display: flex; align-items: center; padding: 0 10px; font: 600 0.85rem/1.1 var(--texto); white-space: nowrap; overflow: hidden; color: #1b1b1b; }
+.pp-mapa svg { cursor: default; }
+.pp-mapa .dep { fill: var(--panel); stroke: var(--mapa-borde); stroke-width: 0.6; }
+.pp-mapa .dep.con-ayuda { cursor: pointer; stroke: var(--tinta); stroke-width: 0.8; }
+.pp-mapa .dep.elegido { stroke: var(--tinta); stroke-width: 2.4; }
+.pp-mapa .fuego { fill: var(--fuego); fill-opacity: 0.45; pointer-events: none; }
+.pp-mapa .monto { font: 600 11px var(--datos); fill: var(--tinta); pointer-events: none; paint-order: stroke; stroke: var(--panel); stroke-width: 3px; }
+.regiones { display: flex; flex-wrap: wrap; gap: 6px; }
+.regiones button { font: 600 0.82rem var(--texto); padding: 5px 10px; border: 1px solid var(--linea); background: var(--panel); color: var(--tinta); cursor: pointer; }
+.regiones button[aria-pressed="true"] { background: var(--donacion); color: #1b1b1b; border-color: var(--donacion); }
+.ficha { display: grid; gap: 10px; border: 1px solid var(--linea); background: var(--panel); padding: 16px; }
+.ficha h3 { font-size: 1.25rem; }
+.ficha .total { font: 600 2rem/1 var(--display); }
+.item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; font-size: 0.88rem; }
+.item .barra { grid-column: 1 / -1; height: 7px; background: var(--linea); }
+.item .barra span { background: var(--donacion); }
+.item small { color: var(--tenue); font-family: var(--datos); }
+.item.raro small { color: var(--aviso); font-weight: 600; }
+.equipos { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1px; background: var(--linea); border: 1px solid var(--linea); }
+.equipos div { background: var(--panel); padding: 12px; display: grid; gap: 2px; align-content: start; }
+.equipos b { font: 600 1.7rem/1 var(--display); }
+.equipos span { font-size: 0.82rem; color: var(--tenue); }
+@media (prefers-reduced-motion: no-preference) {
+  .item .barra span, .flujo span { transition: width 0.4s ease; }
+}
+
+/* Método */
+.metodo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; font-size: 0.93rem; }
+.metodo ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.pie { font-size: 0.84rem; color: var(--tenue); border-top: 1px solid var(--linea); padding-top: 16px; }
+
+@media (max-width: 820px) {
+  .mapa-bloque, .zoom, .ayuda { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .fila-barra { grid-template-columns: 6.5rem minmax(0, 1fr); }
+  .fila-barra .valor { grid-column: 2; }
+  .dia { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .comparacion { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mapa .inc { transition: fill-opacity 0.15s, stroke-width 0.15s; }
+}
+</style>
+
+<div class="hoja">
+  <header class="cabecera">
+    <span class="etiqueta">Reto C · Ciencia de Datos con Python · parte de situación satelital</span>
+    <h1>¿Qué se quemó?</h1>
+    <p class="lede">Los incendios del Perú en el último mes: qué cobertura había donde ardió, cuántas edificaciones estaban cerca, a qué distancia quedaba la compañía de bomberos más cercana y qué hicieron el Estado y la sociedad civil en Río Tambo, el incendio más grande de la última semana.</p>
+    <div class="parte" id="parte"></div>
+    <figure class="pulso">
+      <div id="pulso"></div>
+      <figcaption>Focos de calor VIIRS por día en todo el Perú. Cada barra es un día; el color se intensifica con el número de focos.</figcaption>
+    </figure>
+  </header>
+
+  <section class="cifras" id="cifras" aria-label="Cifras clave"></section>
+
+  <section class="seccion" aria-labelledby="t-mapa">
+    <header>
+      <span class="etiqueta">Todo el Perú</span>
+      <h2 id="t-mapa">Dónde ardió y qué tan lejos estaban los bomberos</h2>
+      <p class="tenue">Cada círculo es un incendio con huella de 100 ha o más; su tamaño es la huella. Acerque el mapa para ver la forma real de la zona con fuego, o toque un incendio para ir directo a él. Las barras de la derecha filtran el mapa.</p>
+    </header>
+    <div class="controles">
+      <label class="etiqueta" for="clase">Ver hectáreas de</label>
+      <select id="clase"></select>
+      <span class="etiqueta">Colorear por</span>
+      <div class="filtros" id="modo" role="group" aria-label="Colorear el mapa por">
+        <button type="button" data-modo="tramo" aria-pressed="true">Distancia a bomberos</button>
+        <button type="button" data-modo="cobertura" aria-pressed="false">Cobertura principal</button>
+        <button type="button" data-modo="clase" aria-pressed="false" hidden></button>
+      </div>
+      <span class="estado-filtro" id="filtro-estado" aria-live="polite"></span>
+    </div>
+    <p class="resumen-clase" id="resumen-clase" aria-live="polite"></p>
+    <div class="mapa-bloque">
+      <div class="mapa" id="mapa">
+        <div class="zoom-botones">
+          <button type="button" id="z-mas" aria-label="Acercar">+</button>
+          <button type="button" id="z-menos" aria-label="Alejar">−</button>
+          <button type="button" id="z-todo">Todo el Perú</button>
+        </div>
+        <div class="tooltip" id="tip" hidden></div>
+        <p class="pista">Rueda o dos dedos para acercar · arrastre para moverse</p>
+      </div>
+      <div class="lado">
+        <div class="leyenda" id="leyenda"></div>
+        <div class="tramos" id="tramos"></div>
+        <div class="barras" id="cobertura-nac"></div>
+        <p class="tenue" style="font-size:.86rem">La composición se mide sobre la <em>huella</em> (los píxeles de 375 m con fuego), con la cobertura de ESA WorldCover 2021. El área quemada exacta solo se midió en Río Tambo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-tabla">
+    <header>
+      <span class="etiqueta">Ranking</span>
+      <h2 id="t-tabla">Los incendios más grandes, con sus vecinos</h2>
+    </header>
+    <div class="controles">
+      <label for="orden">Ordenar por</label>
+      <select id="orden">
+        <option value="huella_ha">Huella (ha)</option>
+        <option value="edif_1km">Edificaciones a 1 km</option>
+        <option value="dist_bomberos_km">Distancia a bomberos</option>
+      </select>
+      <span class="tenue" style="font-size:.86rem">Edificaciones: Google Open Buildings, confianza ≥ 0,75, para los 20 incendios más grandes.</span>
+    </div>
+    <div class="tabla-caja">
+      <table>
+        <thead><tr><th>#</th><th>Lugar</th><th>Huella</th><th>Fechas</th><th>Cobertura principal</th><th>Edificaciones a 1 km</th><th>Distancia a bomberos</th></tr></thead>
+        <tbody id="ranking"></tbody>
+      </table>
+    </div>
+    <button type="button" class="ver-mas" id="ver-mas">Ver los 25 incendios</button>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-rt">
+    <header>
+      <span class="etiqueta">Zoom · Río Tambo, Satipo, Junín</span>
+      <h2 id="t-rt">Río Tambo: qué se quemó en tierra asháninka</h2>
+      <p class="tenue">Fue el incendio más grande de la última semana; en el mes completo, el más extenso fue el de Curahuasi, que se midió en clase. Empezó el 4 de octubre en la comunidad nativa de Tsyapo (COEN-INDECI; los satélites lo ven ese día a las 13:38) y se extendió hacia Cutivireni, Tincareni y Alto Cobeja. Área quemada con dNBR de Sentinel-2: compuesto «antes» del 15 de septiembre al 3 de octubre y «después» del 13 al 21 de octubre, tomando en cada píxel la imagen sin nubes más reciente.</p>
+    </header>
+    <div class="zoom">
+      <figure class="visor">
+        <div class="visor-marco" id="visor-marco">
+          <img id="v-despues" src="img/rt_despues.jpg" alt="Imagen Sentinel-2 en falso color después del incendio">
+          <img id="v-antes" src="img/rt_antes.jpg" alt="Imagen Sentinel-2 en falso color antes del incendio">
+          <img id="v-contorno" class="v-capa" src="img/rt_contorno.png" alt="">
+          <img id="v-severidad" class="v-capa" src="img/rt_severidad.png" alt="" hidden>
+          <svg id="v-puntos" class="v-capa" aria-hidden="true"></svg>
+          <div class="v-linea" aria-hidden="true"><span>◀ ▶</span></div>
+          <span class="v-etq v-izq" id="v-etq-antes">Antes</span>
+          <span class="v-etq v-der" id="v-etq-despues">Después</span>
+          <input type="range" id="v-rango" min="0" max="100" value="50" aria-label="Deslizar para comparar la imagen de antes y la de después">
+        </div>
+        <div class="filtros" id="v-capas" role="group" aria-label="Capas del visor">
+          <button type="button" data-capa="contorno" aria-pressed="true">Área quemada</button>
+          <button type="button" data-capa="severidad" aria-pressed="false">Severidad</button>
+          <button type="button" data-capa="edificios" aria-pressed="true">Edificaciones</button>
+          <button type="button" data-capa="focos" aria-pressed="false">Focos VIIRS</button>
+        </div>
+        <div class="leyenda" id="v-leyenda"></div>
+        <figcaption>Sentinel-2 en falso color (SWIR2, NIR, rojo): la vegetación sana se ve verde y lo quemado, marrón rojizo. Deslice la línea para comparar. Gris: sin imagen despejada.</figcaption>
+      </figure>
+      <div class="lado">
+        <div class="comparacion" id="rt-comparacion"></div>
+        <div class="grid" style="display:grid;gap:8px">
+          <h3>Qué se quemó</h3>
+          <div class="barras" id="rt-cobertura"></div>
+        </div>
+        <div style="display:grid;gap:8px">
+          <h3>Severidad</h3>
+          <div class="sev" id="rt-sev"></div>
+          <div class="leyenda" id="rt-sev-ley"></div>
+        </div>
+        <div style="display:grid;gap:8px">
+          <h3>Edificaciones cerca del área quemada</h3>
+          <ul class="lista-simple" id="rt-edif"></ul>
+        </div>
+        <div style="display:grid;gap:8px">
+          <h3>Compañías de bomberos más cercanas</h3>
+          <ul class="lista-simple" id="rt-bomb"></ul>
+          <p class="tenue" style="font-size:.84rem">En línea recta. Según el COEN llegaron bomberos de Oxapampa, Huancayo, Pucallpa y Lima, con apoyo aéreo desde Mazamari.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-crono">
+    <header>
+      <span class="etiqueta">Respuesta del Estado · último mes</span>
+      <h2 id="t-crono">Qué hizo cada nivel de gobierno mientras ardía</h2>
+      <p class="tenue">Cronología del reporte complementario n.º 14680 del COEN-INDECI (21/10/2026, 17:05 h) y daños oficiales al 20 de octubre. Arriba, los focos VIIRS por día en el complejo de Río Tambo.</p>
+    </header>
+    <div class="crono-graf" id="crono-graf"></div>
+    <details class="detalle-crono">
+      <summary>Ver las acciones una por una</summary>
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por nivel de gobierno"></div>
+      <div class="crono" id="crono"></div>
+    </details>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-pp">
+    <header>
+      <span class="etiqueta">La reacción ciudadana del mes · Perú Pendiente</span>
+      <h2 id="t-pp">Mientras ardía, la gente donó <span class="num" id="pp-titulo"></span> para equipar a los bomberos</h2>
+      <p class="tenue">La ONG Perú Pendiente juntó donaciones en octubre y compró equipos para ocho comandancias departamentales del Cuerpo General de Bomberos. Datos de su rendición de cuentas en Instagram (@perupendiente), transcritos a mano. Toque una región para ver qué se compró.</p>
+    </header>
+    <div class="flujo" id="pp-flujo" role="img" aria-label="Destino del dinero recaudado"></div>
+    <div class="leyenda" id="pp-flujo-ley"></div>
+    <div class="ayuda">
+      <div class="mapa pp-mapa" id="pp-mapa"><div class="tooltip" id="pp-tip" hidden></div></div>
+      <div class="lado">
+        <div class="regiones" id="pp-regiones" role="group" aria-label="Elegir comandancia"></div>
+        <div class="ficha" id="pp-ficha" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="ayuda">
+      <div style="display:grid;gap:12px">
+        <h3>Qué se compró en total</h3>
+        <div class="equipos" id="pp-equipos"></div>
+        <p class="tenue" style="font-size:.84rem">Unidades sumadas de las ocho comandancias. Los cascos forestales de tres tipos van juntos.</p>
+      </div>
+      <div style="display:grid;gap:12px">
+        <h3>¿Llegó la ayuda a donde ardió?</h3>
+        <div class="leyenda"><span><i style="background:var(--fuego);border-radius:0"></i>Huella de incendios ≥ 100 ha</span><span><i style="background:var(--donacion);border-radius:0"></i>Equipos de Perú Pendiente</span></div>
+        <div class="barras" id="pp-dep"></div>
+        <p class="tenue" style="font-size:.84rem">Departamentos con más huella en el último mes. La ONG trabaja con las comandancias de bomberos, y en la Amazonía (Ucayali, Loreto) gran parte del fuego son quemas agrícolas lejos de cualquier compañía.</p>
+      </div>
+    </div>
+    <div class="aviso" id="pp-aviso"></div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-metodo">
+    <header>
+      <span class="etiqueta">Cómo se hizo</span>
+      <h2 id="t-metodo">Datos, decisiones y límites</h2>
+    </header>
+    <div class="metodo">
+      <div style="display:grid;gap:8px">
+        <h3>Datos</h3>
+        <ul>
+          <li>Focos VIIRS (S-NPP, NOAA-20, NOAA-21) de <a href="https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/diario/America_Sul/" target="_blank" rel="noopener">INPE Queimadas</a>, 21 sep – 21 oct 2026.</li>
+          <li>Sentinel-2 L2A de <a href="https://earth-search.aws.element84.com/v1" target="_blank" rel="noopener">Earth Search (AWS)</a>; Planetary Computer respondía con error 502.</li>
+          <li><a href="https://esa-worldcover.org" target="_blank" rel="noopener">ESA WorldCover 2021</a>, 10 m.</li>
+          <li><a href="https://sites.research.google/gr/open-buildings/" target="_blank" rel="noopener">Google Open Buildings v3</a>, leído desde la copia de VIDA en Source Cooperative.</li>
+          <li>Compañías de bomberos de OpenStreetMap (<span class="num">amenity=fire_station</span>).</li>
+          <li><a href="https://portal.indeci.gob.pe/emergencias/reporte-preliminar-n-o-0985-5-10-2026-coen-indeci-1310-horas-incendio-forestal-en-el-distrito-de-rio-tambo-junin/" target="_blank" rel="noopener">COEN-INDECI, reporte n.º 14680</a> y la publicación de <a href="https://www.instagram.com/perupendiente/" target="_blank" rel="noopener">@perupendiente</a>.</li>
+        </ul>
+      </div>
+      <div style="display:grid;gap:8px">
+        <h3>Decisiones</h3>
+        <ul>
+          <li>Un incendio = focos a ≤ 1 km y ≤ 48 h entre sí. Se quitaron los focos a menos de 3 km de Sabancaya y Ubinas.</li>
+          <li>Huella = unión de píxeles de 375 m; sirve para comparar, no es área quemada.</li>
+          <li>Quemado = dNBR ≥ 0,27 (Key y Benson) y a ≤ 1 km de un foco VIIRS.</li>
+          <li>Máscara de nubes con la capa SCL; la clase «zona oscura» se conserva porque ahí caen las cicatrices de fuego.</li>
+        </ul>
+      </div>
+      <div style="display:grid;gap:8px">
+        <h3>Límites</h3>
+        <ul>
+          <li>Un foco de calor no es un incendio: incluye quemas agrícolas. Las nubes esconden fuego, sobre todo en la selva.</li>
+          <li>La distancia a bomberos es en línea recta y OSM no tiene todas las compañías ni las brigadas forestales o comunales.</li>
+          <li>Open Buildings usa imágenes de 2022-2023 y una edificación no siempre es una vivienda.</li>
+          <li>WorldCover es de 2021: un cultivo nuevo puede figurar como bosque.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pie" id="pie"></p>
+  </section>
+</div>
+
+<script src="datos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+(() => {
+  const D = window.DATOS;
+  if (!D) { document.querySelector(".hoja").insertAdjacentHTML("afterbegin", "<p>No se encontró datos.js junto a esta página.</p>"); return; }
+  const fmt = (v, d = 0) => v == null || Number.isNaN(v) ? "—" : Number(v).toLocaleString("es-PE", { minimumFractionDigits: d, maximumFractionDigits: d });
+  const titulo = s => (s || "").toLowerCase().replace(/(^|\s|-)\S/g, m => m.toUpperCase());
+  // Una fecha sola ("2026-10-04") se lee como medianoche UTC, que en Lima es el día anterior
+  const fecha = s => new Date(s.length === 10 ? s + "T12:00:00" : s).toLocaleDateString("es-PE", { day: "numeric", month: "short" });
+  const apilada = partes => `<div class="apilada">${partes.filter(p => p[1] > 0).map(([k, v, c]) =>
+    `<span title="${k}: ${fmt(v)}" style="flex:${v} 1 0;background:${c}"></span>`).join("")}</div>`;
+  const TRAMOS = ["≤ 10 km", "10 a 30 km", "30 a 60 km", "más de 60 km"];
+  const claseTramo = t => "t" + (TRAMOS.indexOf(t) + 1);
+  const colorVar = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const COLORES_WC = { "Bosque": "#2f6b2f", "Matorral": "#b39b2e", "Pastizal": "#e3c76b", "Cultivo": "#d9467a", "Zona construida": "#6b6b6b",
+    "Suelo desnudo": "#b7a99a", "Nieve y hielo": "#c9d8e6", "Agua": "#3b7fc4", "Humedal": "#4fa3a0", "Manglar": "#1b8a5a", "Musgos y líquenes": "#a8bf7a" };
+  const inc = D.incendios;
+  const rt = D.rio_tambo;
+
+  // Cabecera y cifras
+  document.getElementById("parte").innerHTML =
+    `<span>Periodo ${fecha(D.periodo[0])} – ${fecha(D.periodo[1])} 2026</span><span>Último foco: ${D.corte} h (Lima)</span><span>${fmt(D.resumen.focos)} focos VIIRS</span>`;
+  const lejos = inc.filter(f => f.dist_bomberos_km > 30).length;
+  const conEdif = inc.filter(f => f.edif_1km != null);
+  const edif1 = conEdif.reduce((s, f) => s + f.edif_1km, 0);
+  const totalCob = D.cobertura_nacional.reduce((s, c) => s + c.ha, 0);
+  const cob0 = D.cobertura_nacional[0];
+  const tamanos = [["100 a 300 ha", inc.filter(d => d.huella_ha < 300).length, "var(--sev1)"],
+                   ["300 a 1 000 ha", inc.filter(d => d.huella_ha >= 300 && d.huella_ha < 1000).length, "var(--sev2)"],
+                   ["más de 1 000 ha", inc.filter(d => d.huella_ha >= 1000).length, "var(--sev4)"]];
+  const topEdif = [...conEdif].sort((a, b) => b.edif_1km - a.edif_1km).slice(0, 4);
+  const maxEdif = topEdif[0] ? topEdif[0].edif_1km : 1;
+  const cifras = [
+    [fmt(D.resumen.grandes), `incendios con huella ≥ 100 ha, de ${fmt(D.resumen.incendios)} agrupados`,
+      apilada(tamanos) + `<small>${tamanos.map(t => `${t[1]} de ${t[0]}`).join(" · ")}</small>`],
+    [`${fmt(100 * cob0.ha / totalCob)} %`, `de esa huella era ${cob0.clase.toLowerCase()} en 2021`,
+      apilada(D.cobertura_nacional.map(c => [c.clase, c.ha, COLORES_WC[c.clase] || "#888"])) +
+      `<small>${D.cobertura_nacional.slice(0, 3).map(c => `${c.clase.toLowerCase()} ${fmt(100 * c.ha / totalCob)} %`).join(" · ")}</small>`],
+    [`${fmt(100 * lejos / inc.length)} %`, `de los incendios grandes estaba a más de 30 km de una compañía de bomberos`,
+      apilada(D.tramos_bomberos.map(t => [t.tramo_bomberos, t.incendios, `var(--${claseTramo(t.tramo_bomberos)})`])) +
+      `<small>${D.tramos_bomberos.map(t => `${t.tramo_bomberos}: ${t.incendios}`).join(" · ")}</small>`],
+    [fmt(edif1), `edificaciones a 1 km del fuego en los ${conEdif.length} incendios más grandes`,
+      `<div class="mini-barras">${topEdif.map(d => `<span>${titulo(d.distrito)}</span><i style="width:${100 * d.edif_1km / maxEdif}%"></i><span class="num">${fmt(d.edif_1km)}</span>`).join("")}</div>`],
+  ];
+  document.getElementById("cifras").innerHTML = cifras.map(([b, s, extra]) => `<div class="cifra"><b class="num">${b}</b><span>${s}</span>${extra}</div>`).join("");
+
+  // Pulso de la temporada: focos por día en todo el país
+  (() => {
+    const PW = 1100, PH = 200, pm = { l: 48, r: 6, t: 44, b: 24 };
+    const dias = D.por_dia.map(d => ({ dia: new Date(d.dia + "T12:00:00"), focos: d.focos }));
+    const x = d3.scaleBand().domain(dias.map(d => +d.dia)).range([pm.l, PW - pm.r]).padding(0.18);
+    const y = d3.scaleLinear().domain([0, d3.max(dias, d => d.focos)]).nice().range([PH - pm.b, pm.t]);
+    const tono = d3.scaleSequential(t => d3.interpolateYlOrRd(0.25 + 0.75 * t)).domain([0, d3.max(dias, d => d.focos)]);
+    const s = d3.select("#pulso").append("svg").attr("viewBox", `0 0 ${PW} ${PH}`).attr("role", "img")
+      .attr("aria-label", "Focos de calor por día en el Perú durante el último mes");
+    s.append("g").selectAll("line").data(y.ticks(4)).join("line").attr("x1", pm.l).attr("x2", PW - pm.r)
+      .attr("y1", y).attr("y2", y).attr("stroke", "var(--linea)");
+    s.append("g").selectAll("text").data(y.ticks(4)).join("text").attr("class", "eje").attr("x", pm.l - 6).attr("y", d => y(d) + 4)
+      .attr("text-anchor", "end").text(d => fmt(d));
+    s.append("g").selectAll("rect").data(dias).join("rect").attr("x", d => x(+d.dia)).attr("width", x.bandwidth())
+      .attr("y", d => y(d.focos)).attr("height", d => y(0) - y(d.focos)).attr("fill", d => tono(d.focos))
+      .append("title").text(d => `${fecha(d.dia.toISOString())}: ${fmt(d.focos)} focos`);
+    s.append("g").selectAll("text").data(dias.filter((d, i) => i % 5 === 0)).join("text").attr("class", "eje")
+      .attr("x", d => x(+d.dia) + x.bandwidth() / 2).attr("y", PH - 6).attr("text-anchor", "middle").text(d => fecha(d.dia.toISOString()));
+    const pico = dias.reduce((a, b) => (b.focos > a.focos ? b : a));
+    const notas = [[pico, `Pico: ${fmt(pico.focos)} focos`], [dias.find(d => d.dia.toISOString().startsWith("2026-10-04")), "4 oct · empieza Río Tambo"]];
+    notas.filter(n => n[0]).forEach(([d, t], i) => {
+      const cx = x(+d.dia) + x.bandwidth() / 2;
+      const ty = i === 0 ? 12 : 28;  // dos alturas para que no se encimen si caen en días vecinos
+      const ancla = d === pico ? "start" : "end";
+      s.append("line").attr("x1", cx).attr("x2", cx).attr("y1", y(d.focos) - 4).attr("y2", ty + 4).attr("stroke", "var(--tinta)").attr("stroke-dasharray", "2 3");
+      s.append("text").attr("class", "nota").attr("x", cx + (ancla === "start" ? 4 : -4)).attr("y", ty).attr("text-anchor", ancla).text(t);
+    });
+  })();
+
+  // Barras laterales: también filtran el mapa
+  const maxTramo = Math.max(...D.tramos_bomberos.map(t => t.incendios));
+  document.getElementById("tramos").innerHTML = `<span class="etiqueta">Incendios por distancia a bomberos · toque para filtrar</span>` +
+    D.tramos_bomberos.map(t => `<button type="button" class="tramo" data-campo="tramo_bomberos" data-valor="${t.tramo_bomberos}" aria-pressed="false"><span>${t.tramo_bomberos}</span><span class="barra"><span class="c-${claseTramo(t.tramo_bomberos)}" style="width:${100 * t.incendios / maxTramo}%"></span></span><span class="num">${t.incendios}</span></button>`).join("");
+  const barras = (cont, filas, total) => {
+    const max = Math.max(...filas.map(f => f.ha));
+    document.getElementById(cont).innerHTML = filas.map(f => `<div class="fila-barra"><span>${f.clase}</span><div class="barra"><span style="width:${100 * f.ha / max}%;background:${COLORES_WC[f.clase] || "#888"}"></span></div><span class="valor">${fmt(f.ha)} ha · ${fmt(100 * f.ha / total)} %</span></div>`).join("");
+  };
+  const cobNac = D.cobertura_nacional.filter(c => c.ha / totalCob > 0.005);
+  const maxCob = Math.max(...cobNac.map(c => c.ha));
+  document.getElementById("cobertura-nac").innerHTML = `<span class="etiqueta">Cobertura donde hubo fuego · toque para verla en el mapa</span>` +
+    cobNac.map(f => `<button type="button" class="fila-barra" data-clase="${f.clase}" aria-pressed="false"><span>${f.clase}</span><span class="barra"><span style="width:${100 * f.ha / maxCob}%;background:${COLORES_WC[f.clase] || "#888"}"></span></span><span class="valor">${fmt(f.ha)} ha · ${fmt(100 * f.ha / totalCob)} %</span></button>`).join("");
+
+  // Mapa nacional con zoom
+  const tip = document.getElementById("tip");
+  const mapaCaja = document.getElementById("mapa");
+  const leyenda = document.getElementById("leyenda");
+  const W = 560, H = 700;
+  const proy = d3.geoMercator().fitExtent([[10, 10], [W - 10, H - 10]], D.departamentos);
+  const ruta = d3.geoPath(proy);
+  const svg = d3.select("#mapa").insert("svg", ":first-child").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img")
+    .attr("aria-label", "Mapa del Perú con los incendios de 100 ha o más y las compañías de bomberos; se puede acercar");
+  const capa = svg.append("g");
+  capa.append("g").selectAll("path").data(D.departamentos.features).join("path").attr("class", "dep").attr("d", ruta);
+  const porId = new Map(inc.map(d => [d.incendio, d]));
+  const formaDe = new Map(D.huellas.features.map(f => [f.properties.incendio, f]));
+  const gFormas = capa.append("g").attr("display", "none");
+  const formas = gFormas.selectAll("path").data(D.huellas.features).join("path").attr("class", "huella").attr("d", ruta);
+  const estaciones = capa.append("g").selectAll("path").data(D.bomberos).join("path").attr("class", "estacion")
+    .attr("d", d3.symbol(d3.symbolTriangle, 16)).attr("transform", d => `translate(${proy([d.lon, d.lat])})`);
+  estaciones.append("title").text(d => d.nombre);
+  const r = d3.scaleSqrt().domain([0, d3.max(inc, d => d.huella_ha)]).range([0, 16]);
+  const COB = D.cobertura_por_incendio;
+  let clase = "";      // "" = toda la huella; si no, hectáreas de esa cobertura dentro de la huella
+  let kActual = 1;
+  const haDe = d => clase ? ((COB[d.incendio] || {})[clase] || 0) : d.huella_ha;
+  const radio = d => { const ha = haDe(d); return ha > 0 ? Math.max(clase ? 1.6 : 2.2, r(ha)) : 0; };
+  const porTamano = [...inc].sort((a, b) => b.huella_ha - a.huella_ha);
+  const xy = d => proy([d.lon, d.lat]);
+  const puntos = capa.append("g").selectAll("circle").data(porTamano).join("circle")
+    .attr("class", "inc").attr("cx", d => xy(d)[0]).attr("cy", d => xy(d)[1]).attr("r", radio).attr("tabindex", 0)
+    .attr("aria-label", d => `${titulo(d.distrito)}, ${fmt(d.huella_ha)} hectáreas`);
+  const anillos = capa.append("g").selectAll("circle").data(porTamano.filter(d => d.activo_24h)).join("circle")
+    .attr("class", "anillo").attr("cx", d => xy(d)[0]).attr("cy", d => xy(d)[1]).attr("r", d => radio(d) + 3);
+  const gRotulos = capa.append("g").attr("display", "none");
+  const rotulos = gRotulos.selectAll("text").data(D.departamentos.features).join("text").attr("class", "rotulo")
+    .attr("transform", f => `translate(${ruta.centroid(f)})`).text(f => titulo(f.properties.NOMBDEP));
+
+  let modo = "tramo";
+  let filtro = null;
+  const color = d => modo === "clase" && clase ? COLORES_WC[clase]
+    : modo === "cobertura" ? (COLORES_WC[d.cobertura_principal] || "#888") : `var(--${claseTramo(d.tramo_bomberos)})`;
+  const pasa = d => (!filtro || d[filtro.campo] === filtro.valor) && (!clase || haDe(d) > 0);
+  const estado = document.getElementById("filtro-estado");
+  const resumenClase = document.getElementById("resumen-clase");
+  function pintar() {
+    puntos.attr("r", d => radio(d) / kActual).style("fill", color).classed("atenuado", d => !pasa(d));
+    anillos.attr("r", d => radio(d) ? (radio(d) + 3) / kActual : 0).classed("atenuado", d => !pasa(d));
+    document.querySelectorAll("[data-clase]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.clase === clase)));
+    if (clase) {
+      const con = inc.filter(d => haDe(d) > 0);
+      const deptos = d3.rollups(con, v => d3.sum(v, haDe), d => d.departamento).sort((a, b) => b[1] - a[1]).slice(0, 5);
+      resumenClase.innerHTML = `<b>${clase}:</b> <span class="num">${fmt(d3.sum(con, haDe))}</span> ha dentro de la zona con fuego de ${con.length} incendios; el tamaño de cada círculo son sus hectáreas de ${clase.toLowerCase()}. Donde más hubo: ${
+        deptos.map(([dep, ha]) => `${titulo(dep)} <span class="num">${fmt(ha)}</span> ha`).join(" · ")}.`;
+    } else {
+      resumenClase.textContent = "";
+    }
+    formas.each(function (f) {
+      const d = porId.get(f.properties.incendio);
+      d3.select(this).style("fill", color(d)).style("stroke", color(d)).classed("atenuado", !pasa(d));
+    });
+    const clases = modo === "clase" && clase ? [[`${clase} · tamaño = hectáreas`, COLORES_WC[clase]]]
+      : modo === "tramo" ? TRAMOS.map(t => [t, `var(--${claseTramo(t)})`])
+      : [...new Set(inc.map(d => d.cobertura_principal))].map(c => [c, COLORES_WC[c] || "#888"]);
+    leyenda.innerHTML = clases.map(([t, c]) => `<span><i style="background:${c}"></i>${t}</span>`).join("") +
+      `<span><i class="tri"></i>Compañía de bomberos</span><span><i class="aro"></i>Activo en las últimas 24 h</span>`;
+    const n = inc.filter(pasa).length;
+    estado.innerHTML = filtro ? `Mostrando ${n} de ${inc.length} incendios: ${filtro.valor.toLowerCase()} <button type="button" id="quitar">Quitar filtro</button>` : "";
+    document.querySelectorAll("[data-campo]").forEach(b => b.setAttribute("aria-pressed",
+      String(!!filtro && b.dataset.campo === filtro.campo && b.dataset.valor === filtro.valor)));
+  }
+  function cambiarModo(m) {
+    modo = m;
+    document.querySelectorAll("#modo button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.modo === m)));
+    pintar();
+  }
+  function alternarFiltro(campo, valor) {
+    filtro = filtro && filtro.campo === campo && filtro.valor === valor ? null : { campo, valor };
+    if (filtro) cambiarModo(campo === "tramo_bomberos" ? "tramo" : "cobertura"); else pintar();
+  }
+  const selClase = document.getElementById("clase");
+  selClase.innerHTML = `<option value="">Toda la zona con fuego</option>` + cobNac.map(c => `<option value="${c.clase}">${c.clase}</option>`).join("");
+  const botonClase = document.querySelector('#modo [data-modo="clase"]');
+  function verClase(c) {
+    clase = clase === c && c ? "" : c;   // tocar de nuevo la misma barra vuelve a toda la huella
+    selClase.value = clase;
+    botonClase.hidden = !clase;
+    if (clase) { botonClase.textContent = `Solo ${clase.toLowerCase()}`; cambiarModo("clase"); }
+    else if (modo === "clase") cambiarModo("tramo");
+    else pintar();
+  }
+  selClase.addEventListener("change", () => { clase = ""; verClase(selClase.value); });
+  document.getElementById("modo").addEventListener("click", ev => { const b = ev.target.closest("button"); if (b) cambiarModo(b.dataset.modo); });
+  document.querySelector(".mapa-bloque .lado").addEventListener("click", ev => {
+    const f = ev.target.closest("[data-campo]"); if (f) alternarFiltro(f.dataset.campo, f.dataset.valor);
+    const c = ev.target.closest("[data-clase]"); if (c) verClase(c.dataset.clase);
+  });
+  estado.addEventListener("click", ev => { if (ev.target.id === "quitar") { filtro = null; pintar(); } });
+
+  const zoom = d3.zoom().scaleExtent([1, 80]).translateExtent([[-40, -40], [W + 40, H + 40]]).on("zoom", ev => {
+    const k = ev.transform.k;
+    kActual = k;
+    capa.attr("transform", ev.transform);
+    puntos.attr("r", d => radio(d) / k);
+    anillos.attr("r", d => radio(d) ? (radio(d) + 3) / k : 0);
+    estaciones.attr("transform", d => `translate(${xy(d)}) scale(${1 / Math.sqrt(k)})`);
+    const detalle = k >= 6;
+    gFormas.attr("display", detalle ? null : "none");
+    puntos.attr("display", detalle ? "none" : null);
+    gRotulos.attr("display", k >= 2 ? null : "none");
+    rotulos.attr("font-size", 12 / k).style("stroke-width", 3 / k);
+    tip.hidden = true;
+  });
+  svg.call(zoom);
+  document.getElementById("z-mas").addEventListener("click", () => svg.transition().duration(300).call(zoom.scaleBy, 2));
+  document.getElementById("z-menos").addEventListener("click", () => svg.transition().duration(300).call(zoom.scaleBy, 0.5));
+  document.getElementById("z-todo").addEventListener("click", () => svg.transition().duration(600).call(zoom.transform, d3.zoomIdentity));
+
+  const textoTip = d => `<b>${titulo(d.distrito)}</b>, ${titulo(d.provincia)} (${titulo(d.departamento)})<br>
+    Huella <span class="num">${fmt(d.huella_ha)}</span> ha · ${d.focos} focos · ${fecha(d.inicio)} – ${fecha(d.fin)}${d.activo_24h ? " · <b>activo</b>" : ""}<br>
+    ${d.cobertura_principal} ${fmt(d.pct_principal)} %<br>Bomberos: ${d.bomberos} a <span class="num">${fmt(d.dist_bomberos_km)}</span> km<br>
+    Edificaciones a 1 km: <span class="num">${fmt(d.edif_1km)}</span>`;
+  function mostrar(d) {
+    const caja = mapaCaja.getBoundingClientRect();
+    const [px, py] = d3.zoomTransform(svg.node()).apply(xy(d));
+    const x = px * caja.width / W, y = py * caja.height / H;
+    tip.innerHTML = textoTip(d); tip.hidden = false;
+    tip.style.left = Math.min(Math.max(8, x + 14), caja.width - tip.offsetWidth - 8) + "px";
+    tip.style.top = Math.max(8, Math.min(y - 20, caja.height - tip.offsetHeight - 8)) + "px";
+    puntos.classed("activo", p => p === d);
+    formas.classed("activo", f => f.properties.incendio === d.incendio);
+  }
+  const ocultar = () => { tip.hidden = true; puntos.classed("activo", false); formas.classed("activo", false); };
+  function acercar(d) {
+    const f = formaDe.get(d.incendio);
+    const [[x0, y0], [x1, y1]] = f ? ruta.bounds(f) : [xy(d), xy(d)];
+    const k = Math.max(6, Math.min(40, 0.45 / Math.max((x1 - x0) / W, (y1 - y0) / H, 1e-6)));
+    svg.transition().duration(750)
+      .call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(k).translate(-(x0 + x1) / 2, -(y0 + y1) / 2))
+      .on("end", () => mostrar(d));
+  }
+  puntos.on("mouseenter focus", (ev, d) => mostrar(d)).on("mouseleave blur", ocultar).on("click", (ev, d) => acercar(d))
+    .on("keydown", (ev, d) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); acercar(d); } });
+  formas.on("mouseenter", (ev, f) => mostrar(porId.get(f.properties.incendio))).on("mouseleave", ocultar)
+    .on("click", (ev, f) => mostrar(porId.get(f.properties.incendio)));
+  pintar();
+
+  // Ranking
+  const tbody = document.getElementById("ranking");
+  let filasVisibles = 12;
+  const maxHuella = d3.max(inc, d => d.huella_ha);
+  const maxEdif1 = d3.max(inc, d => d.edif_1km || 0) || 1;
+  const maxDist = d3.max(inc, d => d.dist_bomberos_km);
+  const pintarTabla = campo => {
+    const asc = campo === "dist_bomberos_km" ? -1 : 1;
+    const filas = [...inc].filter(f => f[campo] != null).sort((a, b) => asc * (b[campo] - a[campo])).slice(0, filasVisibles);
+    tbody.innerHTML = filas.map((f, i) => `<tr data-id="${f.incendio}">
+      <td class="pos num">${i + 1}</td>
+      <td class="lugar"><b>${titulo(f.distrito)}</b>${f.activo_24h ? ' <span class="vivo">activo</span>' : ""}<small>${titulo(f.provincia)}, ${titulo(f.departamento)}</small></td>
+      <td><div class="celda-barra"><i style="width:${70 * f.huella_ha / maxHuella}%;background:var(--fuego)"></i><span class="num">${fmt(f.huella_ha)} ha</span></div></td>
+      <td class="fechas">${fecha(f.inicio)} – ${fecha(f.fin)}</td>
+      <td><span class="punto" style="background:${COLORES_WC[f.cobertura_principal] || "#888"}"></span>${f.cobertura_principal} <span class="tenue num">${fmt(f.pct_principal)} %</span></td>
+      <td>${f.edif_1km == null ? '<span class="tenue">sin cruzar</span>' : `<div class="celda-barra"><i style="width:${70 * f.edif_1km / maxEdif1}%;background:var(--t1)"></i><span class="num">${fmt(f.edif_1km)}</span></div><small class="tenue">${fmt(f.edif_3km)} a 3 km</small>`}</td>
+      <td><div class="celda-barra"><i style="width:${70 * f.dist_bomberos_km / maxDist}%;background:var(--${claseTramo(f.tramo_bomberos)})"></i><span class="num">${fmt(f.dist_bomberos_km)} km</span></div><small class="tenue">${f.bomberos}</small></td></tr>`).join("");
+  };
+  const orden = document.getElementById("orden");
+  orden.addEventListener("change", () => pintarTabla(orden.value));
+  pintarTabla(orden.value);
+  const verMas = document.getElementById("ver-mas");
+  verMas.addEventListener("click", () => {
+    filasVisibles = filasVisibles === 12 ? 25 : 12;
+    verMas.textContent = filasVisibles === 12 ? "Ver los 25 incendios" : "Ver solo los 12 primeros";
+    pintarTabla(orden.value);
+  });
+  tbody.addEventListener("click", ev => {
+    const tr = ev.target.closest("tr"); if (!tr) return;
+    const d = inc.find(f => String(f.incendio) === tr.dataset.id);
+    mapaCaja.scrollIntoView({ behavior: "smooth", block: "center" });
+    setTimeout(() => acercar(d), 400);
+  });
+
+  // Río Tambo
+  const of = rt.oficial;
+  const oficialHa = (of["Cultivos afectados (ha)"] || 0) + (of["Cobertura natural destruida (ha)"] || 0);
+  document.getElementById("rt-comparacion").innerHTML = `
+    <div><span class="etiqueta">Satélite (dNBR)</span><b class="num">${fmt(rt.area_quemada_ha)} ha</b><span class="tenue" style="font-size:.84rem">quemadas · ${fmt(rt.sin_ver_ha)} ha sin imagen despejada</span></div>
+    <div><span class="etiqueta">COEN al 20 oct</span><b class="num">${fmt(oficialHa)} ha</b><span class="tenue" style="font-size:.84rem">${fmt(of["Cobertura natural destruida (ha)"])} de cobertura natural y ${fmt(of["Cultivos afectados (ha)"])} de cultivos</span></div>
+    <div><span class="etiqueta">Viviendas (COEN)</span><b class="num">${of["Viviendas destruidas"]} + ${of["Viviendas afectadas"]}</b><span class="tenue" style="font-size:.84rem">destruidas + afectadas</span></div>
+    <div><span class="etiqueta">Personas (COEN)</span><b class="num">${of["Personas damnificadas"]} + ${of["Personas afectadas"]}</b><span class="tenue" style="font-size:.84rem">damnificadas + afectadas; ${of["Personas lesionadas"]} lesionadas</span></div>`;
+  const totalRt = rt.que_se_quemo.reduce((s, c) => s + c.ha, 0);
+  barras("rt-cobertura", rt.que_se_quemo.filter(c => c.ha >= 1), totalRt);
+  const SEV_COL = { "Baja": "var(--sev1)", "Moderada baja": "var(--sev2)", "Moderada alta": "var(--sev3)", "Alta": "var(--sev4)" };
+  const sevs = rt.severidad.filter(s => s.clase !== "No quemado");
+  const totalSev = sevs.reduce((s, c) => s + c.ha, 0);
+  document.getElementById("rt-sev").innerHTML = sevs.map(s => `<span title="${s.clase}: ${fmt(s.ha)} ha" style="width:${100 * s.ha / totalSev}%;background:${SEV_COL[s.clase]}"></span>`).join("");
+  document.getElementById("rt-sev-ley").innerHTML = sevs.map(s => `<span><i style="background:${SEV_COL[s.clase]};border-radius:0"></i>${s.clase} <span class="num tenue">${fmt(s.ha)} ha</span></span>`).join("");
+  document.getElementById("rt-edif").innerHTML = Object.entries(rt.edificaciones).map(([k, v]) => `<li><span>${k}</span><span>${fmt(v)}</span></li>`).join("");
+  document.getElementById("rt-bomb").innerHTML = rt.bomberos_cercanos.map(b => `<li><span>${b.nombre}</span><span>${fmt(b.km)} km</span></li>`).join("");
+
+  // Visor antes / después
+  const V = rt.visor;
+  const marco = document.getElementById("visor-marco");
+  if (V) {
+    marco.style.setProperty("--ar", `${V.ancho} / ${V.alto}`);
+    document.getElementById("v-etq-antes").textContent = `Antes · ${fecha(V.fecha_antes)}`;
+    document.getElementById("v-etq-despues").textContent = `Después · ${fecha(V.fecha_despues)}`;
+    const rango = document.getElementById("v-rango");
+    rango.addEventListener("input", () => marco.style.setProperty("--corte", rango.value + "%"));
+    const vs = d3.select("#v-puntos").attr("viewBox", `0 0 ${V.ancho} ${V.alto}`).attr("preserveAspectRatio", "none");
+    const tonoFoco = d3.scaleSequential(d3.interpolateYlOrRd).domain([new Date("2026-10-03"), new Date(D.periodo[1])]);
+    const gFocos = vs.append("g").attr("display", "none");
+    gFocos.selectAll("circle").data(V.focos).join("circle").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("r", 6)
+      .attr("fill", d => tonoFoco(new Date(d[2]))).attr("stroke", "#111").attr("stroke-width", 1.2);
+    const gEdif = vs.append("g");
+    gEdif.selectAll("circle").data([...V.edificios].sort((a, b) => b[2] - a[2])).join("circle")
+      .attr("cx", d => d[0]).attr("cy", d => d[1]).attr("r", d => d[2] === 0 ? 9 : 5)
+      .attr("fill", d => d[2] === 0 ? "#ffffff" : d[2] <= 1000 ? "#3ba3ff" : "#9cc9ff")
+      .attr("stroke", d => d[2] === 0 ? "#ff2d1e" : "#0b2a4a").attr("stroke-width", d => d[2] === 0 ? 3 : 1.2);
+    const capas = { contorno: true, severidad: false, edificios: true, focos: false };
+    const leyendaVisor = () => {
+      const partes = [];
+      if (capas.contorno) partes.push(`<span><i style="background:#ff2d1e;border-radius:0"></i>Área quemada (dNBR ≥ 0,27)</span>`);
+      if (capas.severidad) partes.push(...[["Baja", "--sev1"], ["Moderada baja", "--sev2"], ["Moderada alta", "--sev3"], ["Alta", "--sev4"]]
+        .map(([n, c]) => `<span><i style="background:var(${c});border-radius:0"></i>${n}</span>`));
+      if (capas.edificios) partes.push(`<span><i style="background:#fff;border:2px solid #ff2d1e"></i>Edificación dentro del área quemada</span>`,
+        `<span><i style="background:#3ba3ff"></i>a ≤ 1 km</span>`, `<span><i style="background:#9cc9ff"></i>más lejos</span>`);
+      if (capas.focos) partes.push(`<span><i style="background:${tonoFoco(new Date("2026-10-04"))}"></i>Focos de los primeros días</span>`,
+        `<span><i style="background:${tonoFoco(new Date(D.periodo[1]))}"></i>Focos recientes</span>`);
+      document.getElementById("v-leyenda").innerHTML = partes.join("");
+    };
+    document.getElementById("v-capas").addEventListener("click", ev => {
+      const b = ev.target.closest("button"); if (!b) return;
+      const c = b.dataset.capa;
+      capas[c] = !capas[c];
+      b.setAttribute("aria-pressed", String(capas[c]));
+      document.getElementById("v-contorno").hidden = !capas.contorno;
+      document.getElementById("v-severidad").hidden = !capas.severidad;
+      gEdif.attr("display", capas.edificios ? null : "none");
+      gFocos.attr("display", capas.focos ? null : "none");
+      leyendaVisor();
+    });
+    leyendaVisor();
+  }
+
+  // Gráfico de focos por día con marcas de acciones
+  const GW = 900, GH = 150, m = { l: 34, r: 8, t: 10, b: 24 };
+  const dias = rt.focos_por_dia.map(d => ({ dia: new Date(d.dia + "T12:00:00"), focos: d.focos }));
+  const x = d3.scaleTime().domain([new Date("2026-10-01T00:00:00"), new Date(D.periodo[1] + "T23:59:59")]).range([m.l, GW - m.r]);
+  const y = d3.scaleLinear().domain([0, d3.max(dias, d => d.focos)]).nice().range([GH - m.b, m.t]);
+  const g = d3.select("#crono-graf").append("svg").attr("viewBox", `0 0 ${GW} ${GH + 26}`).attr("role", "img")
+    .attr("aria-label", "Focos por día en Río Tambo y días con acciones del Estado");
+  const bw = (x(new Date("2026-10-02")) - x(new Date("2026-10-01"))) * 0.75;
+  g.append("g").selectAll("line").data(y.ticks(4)).join("line").attr("x1", m.l).attr("x2", GW - m.r).attr("y1", y).attr("y2", y)
+    .attr("stroke", "var(--linea)");
+  g.append("g").selectAll("text").data(y.ticks(4)).join("text").attr("x", m.l - 6).attr("y", d => y(d) + 4).attr("text-anchor", "end").text(d => d);
+  g.append("g").selectAll("rect").data(dias.filter(d => d.dia >= x.domain()[0])).join("rect")
+    .attr("x", d => x(d.dia) - bw / 2).attr("width", bw).attr("y", d => y(d.focos)).attr("height", d => y(0) - y(d.focos)).attr("fill", "var(--fuego)");
+  g.append("g").attr("transform", `translate(0,${GH - m.b})`).call(d3.axisBottom(x).ticks(d3.timeDay.every(3)).tickFormat(d3.timeFormat("%d/%m")).tickSizeOuter(0))
+    .call(s => { s.select(".domain").attr("stroke", "var(--mapa-borde)"); s.selectAll("line").attr("stroke", "var(--mapa-borde)"); });
+  const porDia = d3.rollup(rt.acciones, v => v.length, a => a.fecha);
+  g.append("g").selectAll("circle").data([...porDia]).join("circle")
+    .attr("cx", ([f]) => x(new Date(f + "T12:00:00"))).attr("cy", GH + 12).attr("r", ([, n]) => 3 + n * 1.3).attr("fill", "var(--acento)");
+  g.append("text").attr("x", 0).attr("y", GH + 16).text("acciones");
+
+  const NIVELES = ["Todos", "Nacional", "Regional", "Local"];
+  let nivel = "Todos";
+  const filtros = document.getElementById("filtros");
+  filtros.innerHTML = NIVELES.map(n => `<button type="button" data-n="${n}" aria-pressed="${n === nivel}">${n === "Todos" ? "Todos los niveles" : n}</button>`).join("");
+  const pintarCrono = () => {
+    const sel = rt.acciones.filter(a => nivel === "Todos" || a.nivel === nivel);
+    const grupos = d3.groups(sel, a => a.fecha).sort((a, b) => b[0].localeCompare(a[0]));
+    document.getElementById("crono").innerHTML = grupos.map(([f, as]) => `<div class="dia"><time datetime="${f}">${fecha(f + "T12:00:00")}</time><ul>${
+      as.map(a => `<li><span><span class="nivel ${a.nivel}">${a.nivel}</span><span class="quien">${a.entidad}</span> <span class="tenue">· ${a.tipo}</span></span><span>${a.accion}</span></li>`).join("")}</ul></div>`).join("");
+  };
+  filtros.addEventListener("click", ev => {
+    const b = ev.target.closest("button"); if (!b) return;
+    nivel = b.dataset.n;
+    filtros.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.n === nivel)));
+    pintarCrono();
+  });
+  pintarCrono();
+
+  // Perú Pendiente: la reacción ciudadana
+  const pp = D.perupendiente;
+  const res = pp.resumen;
+  document.getElementById("pp-titulo").textContent = `S/ ${fmt(res["Monto recaudado"])}`;
+  const partes = [["Equipos para bomberos (CGBVP)", res["Monto ejecutado CGBVP"], "var(--donacion)"],
+                  ["Ayuda humanitaria", res["Monto ejecutado ayuda humanitaria"], "var(--sev2)"],
+                  ["Saldo por usar", res["Saldo"], "var(--linea)"]];
+  document.getElementById("pp-flujo").innerHTML = partes.map(([k, v, c]) =>
+    `<span title="${k}: S/ ${fmt(v, 2)}" style="width:${100 * v / res["Monto recaudado"]}%;background:${c}">${v / res["Monto recaudado"] > 0.15 ? `${k} · ${fmt(100 * v / res["Monto recaudado"])} %` : ""}</span>`).join("");
+  document.getElementById("pp-flujo-ley").innerHTML = partes.map(([k, v, c]) =>
+    `<span><i style="background:${c};border-radius:0"></i>${k}: <span class="num">S/ ${fmt(v)}</span></span>`).join("");
+
+  const comandancias = pp.comandancias.map(c => ({ ...c, items: pp.items.filter(i => i.comandancia === c.comandancia) }));
+  const porDep = d3.group(comandancias, c => c.departamento);
+  const ayudaDep = new Map([...porDep].map(([k, cs]) => [k, d3.sum(cs, c => c.total_publicado)]));
+  const fuegoDep = new Map(pp.por_departamento.map(d => [d.departamento, d]));
+  let elegida = comandancias.find(c => c.departamento === "JUNIN") || comandancias[0];
+
+  const PW = 420, PH = 520;
+  const pproy = d3.geoMercator().fitExtent([[8, 8], [PW - 8, PH - 8]], D.departamentos);
+  const pruta = d3.geoPath(pproy);
+  const psvg = d3.select("#pp-mapa").insert("svg", ":first-child").attr("viewBox", `0 0 ${PW} ${PH}`).attr("role", "img")
+    .attr("aria-label", "Mapa de las regiones que recibieron equipos de Perú Pendiente, con los incendios del mes");
+  const escalaAyuda = d3.scaleLinear().domain([0, d3.max([...ayudaDep.values()])]).range([0.18, 0.95]);
+  const pdeps = psvg.append("g").selectAll("path").data(D.departamentos.features).join("path")
+    .attr("d", pruta).attr("class", f => "dep" + (ayudaDep.has(f.properties.NOMBDEP) ? " con-ayuda" : ""))
+    .style("fill", f => ayudaDep.has(f.properties.NOMBDEP) ? "var(--donacion)" : null)
+    .style("fill-opacity", f => ayudaDep.has(f.properties.NOMBDEP) ? escalaAyuda(ayudaDep.get(f.properties.NOMBDEP)) : null);
+  const pr = d3.scaleSqrt().domain([0, d3.max(inc, d => d.huella_ha)]).range([0, 9]);
+  psvg.append("g").selectAll("circle").data(inc).join("circle").attr("class", "fuego")
+    .attr("cx", d => pproy([d.lon, d.lat])[0]).attr("cy", d => pproy([d.lon, d.lat])[1]).attr("r", d => Math.max(1.2, pr(d.huella_ha)));
+  const ptip = document.getElementById("pp-tip");
+  pdeps.filter(f => ayudaDep.has(f.properties.NOMBDEP))
+    .on("click", (ev, f) => elegir(porDep.get(f.properties.NOMBDEP)[0]))
+    .on("mousemove", (ev, f) => {
+      const caja = document.getElementById("pp-mapa").getBoundingClientRect();
+      const fu = fuegoDep.get(f.properties.NOMBDEP);
+      ptip.innerHTML = `<b>${titulo(f.properties.NOMBDEP)}</b><br>Equipos: S/ ${fmt(ayudaDep.get(f.properties.NOMBDEP))}${fu ? `<br>Huella del mes: ${fmt(fu.huella_ha)} ha` : ""}<br><span class="tenue">Toque para ver el detalle</span>`;
+      ptip.hidden = false;
+      ptip.style.left = Math.min(ev.clientX - caja.left + 12, caja.width - ptip.offsetWidth - 6) + "px";
+      ptip.style.top = Math.max(6, ev.clientY - caja.top - 10) + "px";
+    })
+    .on("mouseleave", () => { ptip.hidden = true; });
+
+  const regiones = document.getElementById("pp-regiones");
+  regiones.innerHTML = comandancias.map((c, i) => `<button type="button" data-i="${i}">${titulo(c.departamento)}</button>`).join("");
+  regiones.addEventListener("click", ev => { const b = ev.target.closest("button"); if (b) elegir(comandancias[+b.dataset.i]); });
+
+  const ficha = document.getElementById("pp-ficha");
+  function elegir(c) {
+    elegida = c;
+    regiones.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(comandancias[+b.dataset.i] === c)));
+    pdeps.classed("elegido", f => f.properties.NOMBDEP === c.departamento);
+    document.querySelectorAll("#pp-dep .dep-fila").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.dep === c.departamento)));
+    const maxItem = d3.max(c.items, i => i.costo_total_publicado);
+    const fu = fuegoDep.get(c.departamento);
+    const descuadre = Math.abs(c.diferencia) > 1
+      ? `<p style="color:var(--aviso);font-size:.86rem;font-weight:600">Los ítems suman S/ ${fmt(c.suma_de_items, 2)}, no S/ ${fmt(c.total_publicado, 2)}.</p>` : "";
+    ficha.innerHTML = `<span class="etiqueta">${c.comandancia}</span>
+      <div><span class="total num">S/ ${fmt(c.total_publicado, 2)}</span> <span class="tenue">publicados</span></div>
+      ${fu ? `<p class="tenue" style="font-size:.88rem">En ${titulo(c.departamento)} hubo ${fmt(fu.focos)} focos y ${fmt(fu.incendios_100ha)} incendios de 100 ha o más en el mes.</p>` : ""}
+      ${descuadre}
+      ${c.items.sort((a, b) => b.costo_total_publicado - a.costo_total_publicado).map(i => {
+        const raro = Math.abs(i.cantidad * i.costo_unitario - i.costo_total_publicado) > 1 || (i.item === "GPS" && i.costo_unitario > 5000) || (i.item.startsWith("Mfire") && i.costo_unitario < 5000);
+        return `<div class="item${raro ? " raro" : ""}"><span>${i.cantidad} × ${i.item}</span><span class="num">S/ ${fmt(i.costo_total_publicado)}</span>
+          <div class="barra"><span style="width:${100 * i.costo_total_publicado / maxItem}%"></span></div>
+          <small>S/ ${fmt(i.costo_unitario, 2)} c/u${raro ? " · revisar: el precio o la cantidad no cuadran" : ""}</small></div>`;
+      }).join("")}`;
+  }
+
+  const grupoItem = n => n.startsWith("Cascos") ? "Cascos forestales" : n.startsWith("Binoculares") ? "Binoculares" : n;
+  const unidades = d3.rollups(pp.items, v => d3.sum(v, i => i.cantidad), i => grupoItem(i.item)).sort((a, b) => b[1] - a[1]);
+  document.getElementById("pp-equipos").innerHTML = unidades.map(([k, n]) => `<div><b class="num">${fmt(n)}</b><span>${k}</span></div>`).join("");
+
+  const deps = pp.por_departamento;
+  const maxHa = Math.max(...deps.map(d => d.huella_ha)), maxS = Math.max(...deps.map(d => d.perupendiente_soles));
+  document.getElementById("pp-dep").innerHTML = deps.map(d => {
+    const tiene = porDep.has(d.departamento);
+    return `<${tiene ? `button type="button" data-dep="${d.departamento}"` : "div"} class="dep-fila"><span>${titulo(d.departamento)}</span><div class="dep-barras">
+      <div class="barra"><span style="width:${100 * d.huella_ha / maxHa}%;background:var(--fuego)"></span></div>
+      <div class="barra"><span style="width:${100 * d.perupendiente_soles / maxS}%;background:var(--donacion)"></span></div>
+      <small>${fmt(d.huella_ha)} ha · ${d.perupendiente_soles ? `S/ ${fmt(d.perupendiente_soles)}` : "sin equipos de la ONG"}</small></div></${tiene ? "button" : "div"}>`;
+  }).join("");
+  document.getElementById("pp-dep").addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-dep]"); if (!b) return;
+    elegir(porDep.get(b.dataset.dep)[0]);
+    document.getElementById("pp-mapa").scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+  elegir(elegida);
+
+  const sumaTot = d3.sum(comandancias, c => c.total_publicado);
+  const malas = comandancias.filter(c => Math.abs(c.diferencia) > 1);
+  document.getElementById("pp-aviso").innerHTML = `<b>Antes de citar montos por región</b>
+    <span>Las cuentas generales cuadran (recaudado = ejecutado + saldo), pero el detalle no del todo: los ocho totales por comandancia suman S/ ${fmt(sumaTot, 2)}, frente a S/ ${fmt(res["Monto ejecutado CGBVP"], 2)} de «monto ejecutado CGBVP»; en ${malas.map(c => titulo(c.departamento)).join(" y ")} la suma de ítems no da el total publicado, y en Áncash el GPS y el equipo Mfire 2 tienen los precios intercambiados. Parecen errores de digitación; conviene pedir el detalle a la ONG.</span>`;
+
+  document.getElementById("pie").textContent = `Herramienta independiente hecha para un curso, con datos públicos. No reemplaza los reportes del COEN, INDECI, SERFOR ni SERNANP. Datos al ${D.corte} h de Lima.`;
+})();
+</script>
