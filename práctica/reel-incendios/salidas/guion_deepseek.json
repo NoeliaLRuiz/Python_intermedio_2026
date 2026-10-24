@@ -1,0 +1,40 @@
+{
+  "titulo": "¿Qué se quemó? Incendios grandes del último mes",
+  "escenas": [
+    {
+      "frase": "¿Qué se quemó en los incendios grandes? Revisé la huella y comparé coberturas: el cincuenta y seis por ciento era pastizal.",
+      "cifra": "56 %",
+      "etiqueta": "pastizal en la huella"
+    },
+    {
+      "frase": "En Río Tambo medí tres mil doscientas sesenta y seis hectáreas quemadas; fue la excepción de bosque amazónico.",
+      "cifra": "3 266 ha",
+      "etiqueta": "quemadas en Río Tambo"
+    },
+    {
+      "frase": "Medí la distancia a bomberos: la distancia mediana era de cuarenta y cinco kilómetros en los incendios grandes.",
+      "cifra": "45 km",
+      "etiqueta": "distancia mediana a bomberos"
+    },
+    {
+      "frase": "Conté edificaciones cerca de los incendios más grandes: siete mil setecientos veintidós en total, según Google Open Buildings.",
+      "cifra": "7 722",
+      "etiqueta": "edificaciones cerca del fuego"
+    },
+    {
+      "frase": "Revisé la reacción ciudadana: Perú Pendiente recaudó quinientos un mil quinientos setenta soles para la respuesta.",
+      "cifra": "S/ 501 570",
+      "etiqueta": "recaudó Perú Pendiente"
+    },
+    {
+      "frase": "Usé datos de INPE Queimadas, Sentinel-2, WorldCover, Open Buildings, OpenStreetMap, COEN-INDECI y Perú Pendiente, con consulta de octubre de dos mil veintiséis.",
+      "cifra": "21 oct 2026",
+      "etiqueta": "fecha de consulta"
+    }
+  ],
+  "posts": {
+    "instagram": "En el último mes revisé qué se quemó en los incendios grandes del Perú. En la huella, el 56 % era pastizal; en Río Tambo, de 3 266 ha quemadas, el 99 % era bosque amazónico. La distancia mediana a una compañía de bomberos era de 45 km. Los incendios más grandes tenían 7 722 edificaciones a menos de 1 km. Perú Pendiente recaudó S/ 501 570. Datos: INPE Queimadas, Sentinel-2, WorldCover, Open Buildings, OpenStreetMap, COEN-INDECI y Perú Pendiente. #IncendiosPerú #DatosAbiertos #CienciaDeDatos #RíoTambo #Perú",
+    "x": "Incendios grandes del último mes: 56 % de la huella era pastizal; Río Tambo, 3 266 ha y 99 % bosque. Distancia mediana a bomberos: 45 km. Perú Pendiente recaudó S/ 501 570. Fuentes: INPE, Sentinel-2, WorldCover, Open Buildings, OSM, COEN-INDECI y Perú Pendiente.",
+    "linkedin": "Comparto los resultados de mi reto C del curso Ciencia de Datos con Python (Universidad del Pacífico). Revisé los incendios grandes del último mes (21 sep–21 oct 2026) y encontré que, en la huella, el 56 % era pastizal y el 33 % bosque; los cultivos no llegan al 1 %. Río Tambo fue la excepción: 3 266 ha quemadas, 99 % bosque amazónico. La distancia mediana a una compañía de bomberos era de 45 km; 503 de 730 incendios grandes estaban a más de 30 km. Los 20 incendios más grandes tenían 7 722 edificaciones a menos de 1 km. Perú Pendiente recaudó S/ 501 570,18; el 88 % fue en equipos para ocho comandancias. La huella no es el área quemada; la distancia es en línea recta; edificación no es vivienda; WorldCover es de 2021. Fuentes: INPE Queimadas, Sentinel-2, WorldCover, Google Open Buildings, OpenStreetMap, COEN-INDECI y Perú Pendiente."
+  }
+}

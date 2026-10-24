@@ -1,0 +1,28 @@
+
+********
+Warning: flash-attn is not installed. Will only run the manual PyTorch version. Please install flash-attn for faster inference.
+********
+ 
+"sox" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.
+SoX could not be found!
+
+    If you do not have SoX, proceed here:
+     - - - http://sox.sourceforge.net/ - - -
+
+    If you do (or think that you should) have SoX, double-check your
+    path variables.
+    
+Tu grabación dice: «Hola, mi nombre es Noelia León Ruiz, soy administradora pública y actualmente me encuentro trabajando en el área de planificación del presupuesto. Soy especialista del presupuesto.»
+Escena 1: ya estaba narrada (WER 0%)
+Escena 2: ya estaba narrada (WER 0%)
+Escena 3: ya estaba narrada (WER 10%)
+Escena 4: ya estaba narrada (WER 9%)
+Escena 5: ya estaba narrada (WER 17%)
+Escena 6: ya estaba narrada (WER 9%)
+Audio: 61.8 s, -14.0 LUFS
+  ¡Ojo! El reel dura 62 s; la tarea pide de 30 a 60.
+  video:    0 s de 62
+[aist#1:0/pcm_s16le @ 00000274d731ce80] Guessed Channel Layout: mono
+  video:    5 s de 62
+  video:   10 s de 62

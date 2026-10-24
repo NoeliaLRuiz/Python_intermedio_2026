@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+# Pruebas con voz sintética y audios intermedios
+prueba/
+salidas/escenas/
+salidas/reel.wav
+# Tu grabación no se sube: con ella cualquiera podría clonar tu voz
+mi_voz.*
+salidas/escenas/referencia.wav

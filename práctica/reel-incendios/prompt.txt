@@ -1,0 +1,99 @@
+﻿Eres guionista de reels de divulgación. Convierte el TEXTO de abajo en el guion de un reel vertical
+de 45 a 55 segundos, narrado en español del Perú, en primera persona, por quien hizo el trabajo.
+
+Reglas:
+1. Usa solo hechos que estén en el TEXTO. No agregues datos, causas, comparaciones ni adjetivos que el texto
+   no diga. Si el texto da una cifra con una advertencia (por ejemplo, que es una estimación), conserva la advertencia.
+2. Seis escenas. Cada escena tiene una sola idea y una sola cifra.
+3. "frase" es lo que se dice en voz alta: de 14 a 24 palabras, con los números escritos en palabras.
+4. "cifra" es lo que se ve en pantalla: cópiala exactamente como aparece en el TEXTO (con su unidad: ha, %, km, S/).
+5. "etiqueta" explica la cifra en 3 a 7 palabras.
+6. La primera escena engancha con una pregunta o un dato; la última dice de dónde vienen los datos.
+7. Escribe además tres posts para acompañar el reel: uno para Instagram (hasta 600 caracteres, con 3 a 5 hashtags),
+   uno para X (hasta 270 caracteres) y uno para LinkedIn (hasta 900 caracteres). Ninguno exagera lo que dice el TEXTO.
+
+Responde solo con JSON válido, sin texto antes ni después, con esta forma:
+{
+  "titulo": "…",
+  "escenas": [
+    {"frase": "…", "cifra": "…", "etiqueta": "…"}
+  ],
+  "posts": {"instagram": "…", "x": "…", "linkedin": "…"}
+}
+
+TEXTO:
+<<<
+# ¿Qué se quemó? Incendios del Perú, bomberos y viviendas cercanas
+
+Reto C del curso Ciencia de Datos con Python (Universidad del Pacífico, 21 de octubre de 2026).
+
+**Tablero:** `docs/index.html` · **Cuaderno:** `notebooks/reto_c_que_se_quemo.ipynb`
+
+## La pregunta
+
+En el último mes (21 de septiembre al 21 de octubre de 2026), ¿qué cobertura se quemó en los incendios del Perú (bosque, pastizal o cultivo), cuántas edificaciones había cerca y a qué distancia estaba la compañía de bomberos más cercana? En Río Tambo (Satipo, Junín), el incendio más grande de la última semana, ¿cuánto se quemó y qué hicieron el Estado y la sociedad civil? (En el mes completo, el incendio individual más extenso fue el de Curahuasi, que se midió en clase.)
+
+## Tres hallazgos
+
+1. **Ardió sobre todo pastizal, no bosque.** En la huella de los 730 incendios de 100 ha o más del último mes, el **56 %** era pastizal (90 376 ha) y el 33 % bosque (53 857 ha), según WorldCover 2021. Los cultivos no llegan al 1 %. Río Tambo es la excepción: de sus **3 266 ha quemadas**, el **99 %** era bosque amazónico.
+2. **Los bomberos quedan lejos del fuego.** **503 de 730** incendios grandes (69 %) estaban a más de 30 km en línea recta de una compañía de bomberos; la distancia mediana es de **45 km**. En Río Tambo, la compañía más cercana está a unos **100 km**. Según el COEN, los bomberos llegaron desde Oxapampa, Huancayo, Pucallpa y Lima en avión y helicóptero, y el 13 de octubre ya no quedaban en la zona por agotamiento.
+3. **Hay casas al lado del fuego.** Los **20** incendios más grandes tenían edificaciones a menos de 1 km: **7 722** en total. El caso extremo es Sicuani (Cusco), con 3 114 edificaciones a menos de 1 km. En Río Tambo había **10 edificaciones dentro** del área quemada y 287 a menos de 1 km; el COEN cuenta 8 viviendas destruidas y 23 afectadas.
+
+La reacción ciudadana del mes: la ONG Perú Pendiente recaudó **S/ 501 570**, y el 88 % se fue en equipos para ocho comandancias de bomberos. Ucayali, el departamento con más huella del mes, no recibió equipos.
+
+## Los datos y sus fechas
+
+| Dato | Fuente | Fechas | Para qué |
+|---|---|---|---|
+| Focos de calor VIIRS (S-NPP, NOAA-20, NOAA-21) | INPE Queimadas, archivos diarios | 21 sep – 21 oct 2026 | Dónde hubo fuego |
+| Imágenes Sentinel-2 L2A (B08, B12, SCL) | Earth Search, Element 84 (AWS) | 15 sep – 21 oct 2026 | dNBR y área quemada |
+| Cobertura del suelo | ESA WorldCover v200, 10 m | 2021 | ¿Qué se quemó? |
+| Edificaciones | Google Open Buildings v3, copia FlatGeobuf de VIDA en Source Cooperative | imágenes de 2022-2023 | Edificaciones cerca del fuego |
+| Compañías de bomberos | OpenStreetMap (`amenity=fire_station`), vía Overpass | consulta del 21 oct 2026 | Distancia a bomberos |
+| Límites distritales | juaneladio/peru-geojson (INEI) | — | Ubicar cada incendio |
+| Daños y acciones del Estado | COEN-INDECI, reporte complementario n.º 14680 (copia en `data/raw/`) | 21 oct 2026, 17:05 h | Respuesta en Río Tambo |
+| Donaciones de la sociedad civil | Publicación de @perupendiente en Instagram, transcrita a mano | octubre de 2026 | Equipos para bomberos |
+
+Ninguna fuente pide clave ni pago. Planetary Computer, la fuente que sugería la clase para Sentinel-2 y WorldCover, respondía con error 502 el 21 de octubre; por eso usé las copias en AWS.
+
+## El método
+
+1. **Focos → incendios.** Uno los focos a ≤ 1 km y ≤ 48 h entre sí, en cadena. Quito los focos a menos de 3 km de los volcanes Sabancaya y Ubinas. La *huella* de cada incendio es la unión de sus píxeles de 375 m: sirve para comparar incendios entre sí, pero no es el área quemada.
+2. **Bomberos.** Distancia en línea recta desde el borde de la huella hasta la compañía más cercana de OpenStreetMap.
+3. **Edificaciones.** Polígonos de Google Open Buildings con confianza ≥ 0,75 a 1 y 3 km de la huella, para los 20 incendios más grandes (con 5 km, cada incendio cerca de una ciudad obligaba a bajar decenas de miles de techos). El FlatGeobuf tiene índice espacial, así que se baja solo el pedazo alrededor de cada incendio.
+4. **Cobertura (Reto C).** Composición WorldCover de la huella de cada incendio ≥ 100 ha. En Río Tambo, cruce del área quemada medida con Sentinel-2.
+5. **Río Tambo con Sentinel-2.** NBR = (B08 − B12) / (B08 + B12). Compuesto *antes* (15 sep – 3 oct) y *después* (13 – 21 oct): en cada píxel, la observación sin nubes más reciente según la capa SCL. Quemado = dNBR ≥ 0,27 (severidad moderada o más, Key y Benson) y a ≤ 1 km de un foco VIIRS. La tabla de fechas y % de nubes de cada imagen está en el cuaderno.
+6. **Respuesta.** Pasé la cronología del COEN a `data/acciones_estado_rio_tambo.csv` y las tablas de Perú Pendiente a `data/perupendiente_*.csv`. El cuaderno revisa que las cuentas de la ONG cuadren y las cruza con el fuego por departamento.
+
+## Resultados de Río Tambo
+
+| | Satélite (este trabajo) | COEN-INDECI al 20 oct |
+|---|---|---|
+| Área quemada | 3 266 ha (dNBR ≥ 0,27), 99 % bosque | 1 200 ha de cobertura natural + 120 ha de cultivos (en evaluación) |
+| Zona sin imagen despejada | 1 729 ha a ≤ 1 km de focos | — |
+| Edificaciones / viviendas | 10 dentro del área quemada, 287 a ≤ 1 km | 8 destruidas, 23 afectadas |
+| Inicio | primeros focos VIIRS el 4 oct a las 13:38 | 4 oct, 14:25 h |
+
+El área satelital triplica la cifra oficial. Hay dos razones posibles: el COEN todavía estaba evaluando, y el dNBR cuenta también el sotobosque quemado bajo dosel ralo. WorldCover 2021 no distingue las chacras de cacao y yuca que el MIDIS reporta perdidas en Cobeja: a 10 m se ven como «bosque».
+
+**Respuesta del Estado** (27 acciones que resumí del reporte del COEN, del 4 al 21 de octubre): aviones y helicópteros de la FAP y el Ejército operaron en 9 de los 18 días del incendio (helibalde, Bambi Bucket, traslado de bomberos desde Lima, Pucallpa, Huancayo y Oxapampa), ayuda humanitaria del Gobierno Regional de Junín (14 y 20 oct), de PROVRAEM (20 oct) y del INDECI (1 000 canastas de víveres y 800 unidades de agua el 21 oct), y el registro de damnificados del MIDIS. Las comunidades pusieron 250 brigadistas comunales.
+
+**La reacción ciudadana: Perú Pendiente.** Recaudó S/ 501 570,18: S/ 440 341,50 en equipos para ocho comandancias de bomberos (mochilas de hidratación, GPS, anemómetros, equipos Mfire 2 con remolque, cascos, un dron), S/ 31 434 en ayuda humanitaria y S/ 29 794,68 de saldo. Las cuentas generales cuadran, pero el detalle no del todo: los ocho totales por comandancia suman S/ 475 742,50; en Cusco y Ayacucho la suma de ítems no da el total publicado, y en Áncash el GPS y el equipo Mfire 2 tienen los precios intercambiados.
+
+## Limitaciones
+
+- **Un foco de calor no es un incendio.** VIIRS también ve quemas agrícolas, y las nubes esconden el fuego, sobre todo en la selva. Tampoco detecta bien los incendios pequeños ni los que arden bajo el dosel.
+- **Las nubes esconden parte de Río Tambo.** Ninguna fecha estaba despejada en toda la zona, así que usé compuestos y reporto las hectáreas que ninguna imagen vio.
+- **El área quemada depende de las decisiones.** El resultado cambia con el umbral de dNBR, las fechas y la zona elegida (la clase lo mostró con Curahuasi: de 696 a 2 782 ha según el método).
+- **La distancia a bomberos es en línea recta.** El trayecto real por carretera, río o helicóptero es mayor. OSM no tiene todas las compañías del CGBVP ni las brigadas forestales o comunales.
+- **Edificación no es vivienda.** Open Buildings detecta techos en imágenes de 2022-2023: incluye almacenes y corrales techados, y faltan las casas construidas después.
+- **WorldCover es de 2021.** Una chacra abierta después puede figurar como bosque.
+- **Datos transcritos.** La cronología del COEN y las tablas de Perú Pendiente se pasaron a mano; las tablas de la ONG tienen errores de suma, que el cuaderno detalla.
+
+## Cómo correrlo
+
+El cuaderno guarda copias de las descargas en `data/raw/` y de los cruces lentos en `data/processed/`, así que la segunda corrida tarda poco. El cuaderno se edita en `notebooks/reto_c_que_se_quemo.py` (formato de celdas `# %%`) y se convierte con `notebooks/py_a_ipynb.py`. Para publicar el tablero, activa GitHub Pages desde la carpeta `docs/`.
+
+Herramienta independiente hecha para un curso. No reemplaza los reportes del COEN, INDECI, SERFOR ni SERNANP.
+>>>
+

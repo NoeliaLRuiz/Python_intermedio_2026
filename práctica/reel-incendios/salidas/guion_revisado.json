@@ -1,0 +1,40 @@
+{
+  "titulo": "¿Qué se quemó? Incendios del Perú, octubre de 2026",
+  "escenas": [
+    {
+      "frase": "¿Qué se quemó en el Perú el último mes? En la zona con fuego de los incendios grandes, el cincuenta y seis por ciento era pastizal.",
+      "cifra": "56 %",
+      "etiqueta": "de la zona con fuego era pastizal"
+    },
+    {
+      "frase": "Los bomberos quedaron lejos: en mediana, la compañía más cercana estaba a cuarenta y cinco kilómetros en línea recta.",
+      "cifra": "45 km",
+      "etiqueta": "distancia mediana a una compañía de bomberos"
+    },
+    {
+      "frase": "Y había casas cerca: los veinte incendios más grandes tenían siete mil setecientas veintidós edificaciones a menos de un kilómetro.",
+      "cifra": "7 722",
+      "etiqueta": "edificaciones a menos de 1 km"
+    },
+    {
+      "frase": "En Río Tambo, el satélite mide tres mil doscientas sesenta y seis hectáreas quemadas, casi todo bosque amazónico; las nubes taparon otra parte.",
+      "cifra": "3 266 ha",
+      "etiqueta": "quemadas en Río Tambo, 99 % bosque"
+    },
+    {
+      "frase": "La ONG Perú Pendiente recaudó quinientos un mil quinientos setenta soles, y el ochenta y ocho por ciento fue en equipos para bomberos.",
+      "cifra": "S/ 501 570",
+      "etiqueta": "donados a Perú Pendiente"
+    },
+    {
+      "frase": "Lo medí con datos abiertos y gratuitos: focos de calor satelitales, imágenes Sentinel dos, el mapa WorldCover y los reportes del COEN.",
+      "cifra": "21 sep – 21 oct 2026",
+      "etiqueta": "datos abiertos, sin clave ni pago"
+    }
+  ],
+  "posts": {
+    "instagram": "¿Qué se quemó en el Perú el último mes? En la zona con fuego de los 730 incendios de 100 ha o más, el 56 % era pastizal. En mediana, la compañía de bomberos más cercana estaba a 45 km en línea recta. Los 20 incendios más grandes tenían 7 722 edificaciones a menos de 1 km. En Río Tambo, el satélite mide 3 266 ha quemadas, 99 % bosque. La ONG Perú Pendiente recaudó S/ 501 570 y usó el 88 % en equipos para bomberos.\n\nVoz generada con IA.\n\n#IncendiosPerú #CienciaDeDatos #DatosAbiertos #RíoTambo",
+    "x": "El último mes, en la zona con fuego de los incendios grandes del Perú, el 56 % era pastizal. Bomberos a 45 km en mediana, en línea recta. Río Tambo: 3 266 ha quemadas, 99 % bosque. Voz generada con IA.",
+    "linkedin": "Comparto mi Reto C del curso Ciencia de Datos con Python (Universidad del Pacífico): qué se quemó en los incendios del Perú entre el 21 de septiembre y el 21 de octubre de 2026.\n\n• En la zona con fuego de los 730 incendios de 100 ha o más, el 56 % era pastizal y el 33 % bosque (WorldCover 2021).\n• 503 de esos 730 incendios estaban a más de 30 km en línea recta de una compañía de bomberos; la mediana es de 45 km.\n• Los 20 incendios más grandes tenían 7 722 edificaciones a menos de 1 km.\n• En Río Tambo, Sentinel-2 mide 3 266 ha quemadas, 99 % bosque; la cifra del COEN aún estaba en evaluación.\n• La ONG Perú Pendiente recaudó S/ 501 570; el 88 % fue en equipos para ocho comandancias de bomberos.\n\nLímites: la zona con fuego no es el área quemada y las nubes tapan parte del incendio.\n\nVoz generada con IA."
+  }
+}

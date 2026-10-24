@@ -6,7 +6,7 @@ Reto C del curso Ciencia de Datos con Python (Universidad del Pacífico, 21 de o
 
 ## La pregunta
 
-En el último mes (21 de septiembre al 21 de octubre de 2026), ¿qué cobertura se quemó en los incendios del Perú (bosque, pastizal o cultivo), cuántas edificaciones había cerca y a qué distancia estaba la compañía de bomberos más cercana? En el incendio más grande, Río Tambo (Satipo, Junín), ¿cuánto se quemó y qué hicieron el Estado y la sociedad civil?
+En el último mes (21 de septiembre al 21 de octubre de 2026), ¿qué cobertura se quemó en los incendios del Perú (bosque, pastizal o cultivo), cuántas edificaciones había cerca y a qué distancia estaba la compañía de bomberos más cercana? En Río Tambo (Satipo, Junín), el incendio más grande de la última semana, ¿cuánto se quemó y qué hicieron el Estado y la sociedad civil? (En el mes completo, el incendio individual más extenso fue el de Curahuasi, que se midió en clase.)
 
 ## Tres hallazgos
 

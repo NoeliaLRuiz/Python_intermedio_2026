@@ -1,0 +1,40 @@
+{
+"titulo": "¿Qué se quemó en Perú?",
+"escenas": [
+{
+"frase": "En el último mes, el cincuenta y seis por ciento de lo que se quemó en Perú fue pastizal, no bosque.",
+"cifra": "56 %",
+"etiqueta": "Cobertura quemada: pastizal"
+},
+{
+"frase": "La distancia mediana a la compañía de bomberos más cercana fue de cuarenta y cinco kilómetros en línea recta.",
+"cifra": "45 km",
+"etiqueta": "Distancia mediana a bomberos"
+},
+{
+"frase": "Los veinte incendios más grandes tenían siete mil setecientas veintidós edificaciones a menos de un kilómetro del fuego.",
+"cifra": "7 722",
+"etiqueta": "Edificaciones a menos de 1 km"
+},
+{
+"frase": "En Río Tambo se quemaron tres mil doscientas sesenta y seis hectáreas, noventa y nueve por ciento de bosque amazónico.",
+"cifra": "3 266 ha",
+"etiqueta": "Río Tambo: área quemada"
+},
+{
+"frase": "La sociedad civil recaudó quinientos un mil quinientos setenta soles para equipar a ocho comandancias de bomberos.",
+"cifra": "S/ 501 570",
+"etiqueta": "Recaudación de Perú Pendiente"
+},
+{
+"frase": "Estos datos vienen de imágenes satelitales Sentinel-2, focos de calor VIIRS y cobertura WorldCover del año dos mil veintiuno.",
+"cifra": "WorldCover 2021",
+"etiqueta": "Fuentes de datos satelitales"
+}
+],
+"posts": {
+"instagram": "🔥 ¿Qué se quemó en Perú en el último mes?\n\nEl 56% fue pastizal, no bosque. Los bomberos quedaron lejos: la distancia mediana fue de 45 km. Y 7,722 edificaciones estaban a menos de 1 km de los 20 incendios más grandes.\n\nEn Río Tambo ardieron 3,266 ha de bosque amazónico. La sociedad civil respondió recaudando S/ 501,570 para equipar a ocho comandancias.\n\nDatos: WorldCover 2021, Sentinel-2, VIIRS, Google Open Buildings, OSM.\n\n#IncendiosPerú #CienciaDeDatos #Perú #Bomberos #Amazonía",
+"x": "🔥 En el último mes, el 56% de lo quemado en Perú fue pastizal. Los bomberos quedaron a 45 km de distancia mediana. 7,722 edificaciones estaban a <1 km de los 20 incendios más grandes. Río Tambo: 3,266 ha de bosque. Sociedad civil recaudó S/ 501,570.",
+"linkedin": "Análisis de incendios en Perú (21 sep - 21 oct 2026)\n\nHallazgos clave:\n• 56% de lo quemado fue pastizal (90,376 ha), 33% bosque (53,857 ha)\n• 69% de los incendios grandes estaban a más de 30 km de bomberos\n• 7,722 edificaciones a menos de 1 km de los 20 incendios más grandes\n• Río Tambo: 3,266 ha quemadas, 99% bosque amazónico\n• Sociedad civil recaudó S/ 501,570 para equipar a ocho comandancias\n\nMetodología:\n- Focos de calor VIIRS (INPE)\n- Imágenes Sentinel-2 (dNBR)\n- Cobertura WorldCover 2021\n- Google Open Buildings\n- OpenStreetMap (bomberos)\n- Reportes COEN-INDECI\n\nLimitaciones: nubes ocultan parte del área, distancia en línea recta, WorldCover es de 2021, edificaciones detectadas en 2022-2023.\n\nTablero interactivo y cuaderno disponibles. Herramienta independiente para curso de Ciencia de Datos con Python."
+}
+}
