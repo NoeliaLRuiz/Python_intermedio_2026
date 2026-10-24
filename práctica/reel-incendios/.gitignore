@@ -7,3 +7,5 @@ salidas/reel.wav
 # Tu grabación no se sube: con ella cualquiera podría clonar tu voz
 mi_voz.*
 salidas/escenas/referencia.wav
+salidas/*.wav
+salidas/registro*.txt
