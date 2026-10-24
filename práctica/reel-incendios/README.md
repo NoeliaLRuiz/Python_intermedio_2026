@@ -2,7 +2,7 @@
 
 Tarea de la sesión 15 (Del texto a tu voz) del curso Ciencia de Datos con Python. El README del [Reto C](../reto-c-incendios/README.md) se convierte en un reel vertical de unos 50 segundos, narrado con mi voz clonada y solo con modelos abiertos.
 
-**Entrega:** `salidas/reel.mp4` y `salidas/posts.md`, con lo que corregí del guion en [`revision.md`](revision.md).
+**Entrega:** `salidas/reel.mp4` y `salidas/posts.md`, con lo que corregí del guion abajo y en [`revision.md`](revision.md).
 
 ## El flujo
 
@@ -19,6 +19,14 @@ Los fondos son mapas y la imagen Sentinel-2 de Río Tambo hechos con los datos d
 ## ¿Cuál inventó menos?
 
 DeepSeek. Las dos respuestas tenían todas las cifras bien, pero Qwen dijo que el 56 % era «de lo que se quemó en el Perú» (era de la zona con fuego de los incendios grandes) y que «la sociedad civil» recaudó «para equipar» a ocho comandancias (fue una ONG, y el 88 % fue en equipos). Detalle completo en [`revision.md`](revision.md).
+
+## Qué corregí del guion
+
+1. **«El 56 % de lo que se quemó en el Perú» → «el 56 % de la zona con fuego de los incendios grandes».** El dato es de la huella de los incendios de 100 ha o más, no de todo el país ni del área quemada.
+2. **«La sociedad civil recaudó… para equipar» → «La ONG Perú Pendiente recaudó… y el 88 % fue en equipos».** Fue una sola organización, y no todo el dinero fue a equipos.
+3. **Río Tambo: agregué «el satélite mide» y «las nubes taparon otra parte».** Es una estimación satelital y ningún modelo conservó esa advertencia.
+4. **Bomberos: dejé «en línea recta»**, porque el trayecto real es más largo.
+5. **Edificaciones: «siete mil setecientas veintidós… a menos de un kilómetro»**, con la concordancia y la distancia que da sentido a la cifra.
 
 ## Cómo repetirlo (Windows)
 
