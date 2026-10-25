@@ -1,0 +1,4 @@
+# Solo lo que necesita app.py (Streamlit Community Cloud). Los modelos corren en los notebooks.
+streamlit==1.62.0
+pandas==2.3.3
+plotly==7.0.0

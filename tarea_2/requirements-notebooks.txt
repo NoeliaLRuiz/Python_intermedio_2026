@@ -1,0 +1,28 @@
+# Entorno de los notebooks 01 y 02 (OCR, ASR, NER, LLM). Mismas versiones que los grupos docai y audio del curso.
+# uv venv --python 3.12
+# uv pip install -r requirements-notebooks.txt --constraint constraints.txt
+paddleocr==3.7.0
+paddlepaddle==3.3.1
+easyocr==1.7.2
+faster-whisper==1.2.1
+pyannote-audio==4.0.7
+torch==2.13.0
+transformers==5.16.1
+accelerate==1.14.0
+jiwer==4.0.0
+rapidfuzz==3.14.6
+scikit-learn==1.9.0
+soundfile==0.14.0
+librosa==1.0.0
+scipy==1.18.1
+pandas==2.3.3
+numpy==2.3.5
+plotly==7.0.0
+kaleido==1.5.0
+openpyxl==3.1.5
+nbformat==5.11.1
+ipykernel==7.3.0
+google-genai==2.29.0
+python-dotenv==1.2.3
+requests==2.34.2
+streamlit==1.62.0

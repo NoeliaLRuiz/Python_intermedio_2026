@@ -1,0 +1,5 @@
+# PaddleX fija opencv-contrib-python 4.10.0.84: las variantes de OpenCV deben ir en la misma versión.
+# PyAV 19 rompe faster_whisper.decode_audio (1.2.1).
+opencv-python==4.10.0.84
+opencv-python-headless==4.10.0.84
+av<19

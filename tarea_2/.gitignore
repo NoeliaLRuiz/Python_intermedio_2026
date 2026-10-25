@@ -1,4 +1,13 @@
+# Entorno y claves
+.venv/
+.env
+__pycache__/
+.ipynb_checkpoints/
+
+# Corpus original, salidas pesadas, referencias con nombres reales y lista de seudónimos
 datos/raw/
+
+# Pesos de modelos (más de 100 MB)
 modelos/*.safetensors
 modelos/*.bin
 modelos/checkpoint-*/
