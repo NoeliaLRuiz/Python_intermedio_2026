@@ -3,7 +3,7 @@
 **Pregunta:** ¿Pueden convertir documentos escaneados y entrevistas en audio en un archivo de texto estructurado y
 buscable?
 
-**Dashboard público:** https://ENLACE.streamlit.app  ← reemplazar por el enlace del despliegue
+**Dashboard público:** https://voces-y-documentos-pe.streamlit.app/
 
 ## Qué hay en esta carpeta
 
