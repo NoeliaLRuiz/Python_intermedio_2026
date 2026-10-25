@@ -1,0 +1,227 @@
+{
+ "ocr": {
+  "PaddleOCR PP-OCRv6 (base)": "PaddleOCR(engine='transformers', device='cpu', use_doc_orientation_classify=False, use_doc_unwarping=False, use_textline_orientation=False)",
+  "EasyOCR 1.7": "easyocr.Reader(['es'], gpu=False).readtext(detail=0, paragraph=False)",
+  "Gemini 3.5 Flash (visión)": {
+   "modelo": "gemini-3.5-flash",
+   "temperatura": 0,
+   "instruccion": "Transcribe todo el texto visible en esta imagen, tal como está escrito: no corrijas ni modernices la ortografía. Sigue el orden de lectura (de arriba abajo y de izquierda a derecha; si hay columnas, una columna completa después de la otra). Devuelve solo el texto, sin comentarios ni formato Markdown. Si una palabra no se puede leer, omítela."
+  }
+ },
+ "asr": {
+  "faster-whisper small (base)": {
+   "modelo": "small",
+   "compute_type": "int8",
+   "language": "es",
+   "beam_size": 5,
+   "vad_filter": true,
+   "condition_on_previous_text": false,
+   "vad_parameters": {
+    "min_silence_duration_ms": 300
+   }
+  },
+  "Whisper large-v3-turbo": {
+   "modelo": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+   "compute_type": "int8",
+   "language": "es",
+   "beam_size": 5,
+   "vad_filter": true,
+   "condition_on_previous_text": false,
+   "vad_parameters": {
+    "min_silence_duration_ms": 300
+   }
+  },
+  "Parakeet TDT 0.6B v3": {
+   "modelo": "nvidia/parakeet-tdt-0.6b-v3",
+   "vad": "voz.tramos_de_voz, máx. 12 s por tramo"
+  }
+ },
+ "llm": {
+  "modelo": "gemini-3.5-flash-lite",
+  "temperatura": 0,
+  "lotes": 8,
+  "esquema": {
+   "$defs": {
+    "Extraccion": {
+     "properties": {
+      "id": {
+       "description": "el id del texto, copiado tal cual",
+       "title": "Id",
+       "type": "string"
+      },
+      "modalidad": {
+       "description": "'documento' o 'audio'",
+       "title": "Modalidad",
+       "type": "string"
+      },
+      "tema": {
+       "description": "tema principal en pocas palabras",
+       "title": "Tema",
+       "type": "string"
+      },
+      "resumen": {
+       "description": "una o dos oraciones, solo con lo que dice el texto",
+       "title": "Resumen",
+       "type": "string"
+      },
+      "tipo_documento": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "description": "carta, resolución, placa, recibo, billete...; null en audios",
+       "title": "Tipo Documento"
+      },
+      "emisor": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "description": "quién firma o emite, si aparece; null en audios",
+       "title": "Emisor"
+      },
+      "destinatario": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "description": "a quién va dirigido, si aparece",
+       "title": "Destinatario"
+      },
+      "fecha": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "description": "fecha tal como aparece en el texto",
+       "title": "Fecha"
+      },
+      "lugar": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "description": "lugar mencionado como origen o escenario",
+       "title": "Lugar"
+      },
+      "monto": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "description": "monto de dinero con su moneda, si aparece",
+       "title": "Monto"
+      },
+      "numero_hablantes": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "description": "solo audios y solo si se puede sustentar",
+       "title": "Numero Hablantes"
+      },
+      "citas_clave": {
+       "anyOf": [
+        {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "default": null,
+       "description": "solo audios: hasta 3 frases copiadas literalmente del texto",
+       "title": "Citas Clave"
+      }
+     },
+     "required": [
+      "id",
+      "modalidad",
+      "tema",
+      "resumen"
+     ],
+     "title": "Extraccion",
+     "type": "object"
+    }
+   },
+   "properties": {
+    "registros": {
+     "items": {
+      "$ref": "#/$defs/Extraccion"
+     },
+     "title": "Registros",
+     "type": "array"
+    }
+   },
+   "required": [
+    "registros"
+   ],
+   "title": "Lote",
+   "type": "object"
+  }
+ },
+ "muestra_evaluacion": {
+  "documentos": [
+   "carta_presidencia_1956",
+   "almanaque_cascabel_1873",
+   "constitucion_1860",
+   "placa_quinones",
+   "placa_grau_miraflores",
+   "placa_nazarenas",
+   "carta_vallejo_1917",
+   "carta_pierola_1897",
+   "carta_gamarra_1822",
+   "tarjeta_circulacion_1921"
+  ],
+  "clips": [
+   "fiesta_chuyas",
+   "fiesta_pomabamba",
+   "fiesta_shuyas",
+   "san_martin_2",
+   "san_martin_3",
+   "san_martin_4",
+   "salas_3",
+   "salas_5",
+   "unmsm_2",
+   "unmsm_3"
+  ]
+ }
+}

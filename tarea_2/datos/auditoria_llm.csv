@@ -1,0 +1,21 @@
+id,modalidad,correcto,campos_con_error,comentario
+doc_013,documento,1,,
+doc_010,documento,0,"fecha, emisor",no identifico el Ano y emisor
+doc_017,documento,1,,
+doc_024,documento,1,,
+doc_029,documento,0,"emisor, destinatario",confunde destinatario con emisor
+doc_025,documento,1,,
+doc_012,documento,1,,
+doc_023,documento,0,lugar,en el texto no dice lima
+doc_004,documento,1,,
+doc_016,documento,1,,
+clip_004,audio,1,,
+clip_019,audio,1,,
+clip_018,audio,1,,
+clip_015,audio,1,,
+clip_009,audio,0,citas_clave,"cita alterada, invierte cine Junín y cine Perú"
+clip_022,audio,1,,
+clip_005,audio,1,,
+clip_011,audio,1,,
+clip_016,audio,1,,
+clip_008,audio,1,,
