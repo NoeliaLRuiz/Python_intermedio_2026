@@ -1,0 +1,737 @@
+id,archivo,tipo,fuente,texto_ocr,modelo_ocr,texto_referencia,titulo,n_caracteres,n_lineas,conf_mediana,url_imagen,imagen_publicable
+doc_001,datos/raw/documentos/originales/doc_001.jpg,impreso,Wikimedia Commons (CC BY 4.0) · Helder Zavaleta Verde,"ACTA DE OFICIALIZACIÓN DE LOS SÍMBOLOS PARA EL DISTRITO DE
+MACME.
+CONSIDERANDO:
+Que, de conformidad a lo establecido en el Art. 194° de la Constitución
+Politica del Perú, concordante con el articulo Il del Título Preliminar de la Ley
+Orgánica de Municipalidades Ley N° 27972, las Municipalidades son entidades
+básicas de la organización territorial del Estado, y gozan de autonomía
+política, económica y administrativa en los asuntos de su competencia.
+Que, la creación de los símbolos para el distrito de, Mache tienen como
+finalidad u objeto rescatar y valorar los aspectos culturales a través de su
+legado histórico, socio económico y político; los mismos que serán iconos de
+identificación y de unión de todo el pueblo Machino de nacimiento y de
+corazóm.
+En este contexto, debemos precisar que por iniciativa del Teniente Alcalde
+(primer regidor) Prof. [PERSONA_21] ZAVALETA VERDE se promueve y
+aprueba el proyecto denominado ""Creación de los Símbolos para el distrito de
+Mache"", el mismo que ha sido elaborado por la Gerencia de Desarrollo Social,
+aprobado por Acuerdo de Consejo N° o61- 2015 MDM, de fecha 05 de octubre
+2015 y firmado por el alcalde [PERSONA_36] ZAVALETA con
+Resolución de Alcaldia N°331- 2o15 al MDM.
+POR CUANTO:
+Siendo aprobada las bases para el Concurso Público ""Creación de los
+Símbolos para el distrito de Mache"", con Resolución de Alcaldía N° 32o-2o15.
+PRIMERA ETAPA con fecha 05 octubre 2o15, se acuerda desarrollar el concur-
+so denominado; Concurso Público ""Lema para el Distrito de Mache"" acto que se
+realizó en la fecha 18 de diciembre del año 2o15, en donde resulto como
+ganador, el LEMA: ""MACHE, AMISTAD, BELLEZA Y CULTURA"" del autor Dr.
+[PERSONA_20] CABRERA.
+SEGUNDA ETAPA con fecha 14 octubre 2015, se acuerda desarrollar el
+concurso denominado; Concurso Público ""Creación de Escudo y Bandera para
+el Distrito de Mache"" acto que se realizó en la fecha 27 de febrero del año 2016,
+en donde resulto como ganador: ESCUDO DEL DISTRITO DE MACHE la
+propuesta presentada por la señorita [PERSONA_11] DISTRITO DE MACHE la propuesta presentada por la señorita
+YRIA ARGELIA BLAS REBAZA.
+Estando a lo expuesto, contando con el visto bueno de asesoría legal y en
+conformidad con la Constitución Politica del Perú y las facultades dadas por el
+Art. 20 inciso 6 de la Ley Orgánica de Municipalidades N° 27972;",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,Acta de oficialización de los símbolos de Mache (La Libertad),2333,38,0.993,https://upload.wikimedia.org/wikipedia/commons/0/04/Acta_de_Creaci%C3%B3n_de_los_S%C3%ADmbolos_para_el_Distrito_de_Mache_-_Per%C3%B9.jpg,False
+doc_002,datos/raw/documentos/originales/doc_002.jpg,impreso,Wikimedia Commons (CC BY-SA 4.0) · Jrodriguez1901,"Ministerio de la Guerra
+y Marina
+Lima. Septiembre 14 de 1823.
+Señor Ministro de Estado en el Departamento de la Guerra
+de la República de Chile.
+Señor Ministro:
+Tengo la honra de avisar a V. E. haber hecho presente a S. E.
+el Presidente de esta República don José Bernardo de Tagle, su
+muy apreciable comunicación de 17 de Junio último, en que
+participa que el Gobierno Supremo de Chile había acor-
+dado destinar una Expedición de cinco mil hombres al
+Perú con el objeto de concluír la guerra, y que al efecto
+era necesario se retirase prontamente a aquella República la
+división de ella que se halla en nuestro territorio. S. E. el Presi-
+dente hebría desde luego dado las órdenes con oportunidad,
+si no hubiese sido tan retardaça la cnircga de la referida comu-
+nicación. babiendo llegado (n circunstancias de cstar cperando
+en Intermedios la División de Chil en términ's que soparada
+de los demás Cuerpes con que hace la Campaña, haría nulas o
+paralizaría en extremo las operaciones por la Costa, ocupando
+una fuerza considerable de Tropas encmigas distraidas de ope-
+rar sobr- las del Ejército al mando del General Santa Cruz es-
+tablecide cen ventajas en las P'revincias interiores.
+Al mismo ti-mp) que S. E. me manda satisfacer sobre esta
+materia al Gebierno de Chile, me ha prevenido ponga en la con-
+sideración de V. S. para que transmita a S. E. cl Director Su-
+premo de esa República la necesilad que bay de que se acelere
+hasta (l extremo la venida de la Expedición a los puntos que
+designará según sus instrucciones, el Ministro Plenipotenciario
+de esta República cerca de la de Chile, Coronel don Juan de Sa-
+lazar. La guerra con los Españoles es terminada cnteramente
+luego que se realice la expresada Expedición; las operaciones mi-
+litares tienen ya un centro de unidaci, y la base de cpinión de
+que carecían, mientras no babía llegado a este Territorio S. E.
+el Libertador Simón Belivar, v sólo se nccesitan elementos para
+poder terminar la campaña. En esta virtud quiere S. E. rei-
+tere a V. S. que impetre del Excmo. Señor Supremo Direc-
+tor de aquella República la pronta salida de la Expedición,
+como un medio para llenar el solemne compromiso de
+ella, en cooperar eficazmente a afianzar su Independencia
+y lograr su libertad, consumando así los grandes servicios
+que tiene prestados al Perú y comprometiendo eternamen-
+te su gratitud.
+Con esta ocasión me es satisfactorio ofrecer a V. S. los senti-
+mientos de consideración y respeto con que me suscribo su más
+atento seguro servidor.
+Señor Ministro.—EL CONDE DE SAN DONAS.",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Oficio del Ministerio de la Guerra y Marina, 1823 (edición impresa)",2545,47,0.988,https://upload.wikimedia.org/wikipedia/commons/4/4c/Ministerio_de_la_Guerra_y_Marina-.jpg,True
+doc_003,datos/raw/documentos/originales/doc_003.jpg,impreso,Wikimedia Commons (CC BY-SA 4.0) · Jrodriguez1901,"Trujillo, 25 de Julio de 1823.
+Excmo. Señer General don Ramón Freire.
+Mi distinguido amigo y señor:
+Los impresos que tengo el honor de dirigirle, significarán a
+V. las ocurrencias que han mediado en circunstancias de acer-
+carse el enemigo. Pero un paso enérgico bacia la libertad ba po-
+dido a un mismo tiempo afirmar la suerte del Perú para siempre
+y evitarnos los borrores espantosos de la anarquía.
+Así es, que restablecidas las combinaciones a su primer cuadro,
+han tomado en pocos días tal actividad en sus movimientos,
+que sin equivocarme puedo asegurar a V. que la campaña es
+concluída antes de seis meses. Bien es, que si la expedición de
+Chile ha marchado a fines del presente, como se asegura,
+ella tendrá la mayor parte en su conclusión, y V. el placer
+de ver libre a esta República por medio de su cooperación
+ycsfuerzos.
+La capital está evacuada, pero no es mi animo pasar a ella
+hasta reunir por esta parte el efectivo de reserva que he formado
+compuesto de más de seis mil hombres, que han de penetrar
+la sierra, ocupar las provincias que dejen los enemigos, apoyar
+la deserción de su ejército y hostilizarlos en todo lo posible. Este
+objeto tan importante tendrá su efecto en pocos días.
+Ofrezco a V. mi mayor aprecio y sincera amistad como que soy
+su mejor amigo y obsecuente servidor. —JosE DE LA RivA AgÜERo.
+S. D.—Acompaño a V. copia de una nota oficial que ha di-
+rigido el [PERSONA_27] en Quito. Por ella tendrá V. un
+conocimiento del estado del sur de Colombin, y cuanto interesa
+a la independencia de la América Meridional la llegada
+ Puertos Intermedios de la expedición de Chile. Si esta
+se demora, los españoles van a adquirir ventajas por medio de
+la distracción que nos hacen por Quito. V. conoce pues cuanto
+importa esa expedición a la que será eternamente reco-
+nocido el Perú y su más apasionado amigo.—Riva Agüero.",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta de José de la Riva-Agüero a Ramón Freire, 1823 (edición impresa)",1848,33,0.994,https://upload.wikimedia.org/wikipedia/commons/e/ee/1%C2%BA_Presidente_de_Peru-_Jos%C3%A9_de_la_Riva_Ag%C3%BCero.jpg,False
+doc_004,datos/raw/documentos/originales/doc_004.jpg,impreso,Wikimedia Commons (Dominio público) · Vlanco24,"HIMNO DE CHANCHAMAYO
+CORO
+Chanchamayo, el “PERÚ” te Proclama
+Corazón de la ""Selva Central""
+Este canto es el alma del Pueblo
+Que hoy te Jura Trabajo y Lealtad
+ESTROFAS
+En tus bosques, tus ríos y campos,
+En las ciencias, deportes y artes,
+las riquezas están por doquier
+Chanchamayo con fe triunfarás;
+y el café que en tus tierras germina,
+aportando talentos que brillen,
+es sin duda en el mundo el mejor,
+en un mundo unido en paz.
+es la Virgen de las Mercedes
+Es crucial ensalzar a conciencia,
+la patrona que exalta la fe;
+los valores de la identidad;
+y el Cerro de la Sal recuerda,
+pues la esencia es el sello sagrado,
+a una raza de temple inmortal.
+que enseña a pensar con honor
+二
+IV
+A los héroes que hicieron tu historia
+Tu paisaje de excelsa belleza,
+y lograron un pueblo ejemplar;
+es poesía, turismo y color;
+nuestras palmas honores y glorias,
+y la muestra de que el Paraíso,
+prometiendo tus huellas seguir.
+el Divino en tu suelo creó
+Hoy avanzas gallardo en el tiempo,
+Fascinados por tantas grandezas,
+promoviendo la acción cultural;
+que presagian un gran porvenir;
+convencido con el conocimiento,
+Gritaremos a todos los vientos!
+es el dogma de la libertad.
+Chanchamayo!, Mi amor eres tú!
+LA MERCED
+IONRLOR
+TRABAJO [PERSONA_35].com",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,Afiche con la letra del Himno de Chanchamayo,1235,47,0.999,https://upload.wikimedia.org/wikipedia/commons/b/ba/Himno_Chyo.jpg,False
+doc_005,datos/raw/documentos/originales/doc_005.jpg,impreso,"Wikimedia Commons (Dominio público) · El Cascabel (revista, Lima)","ALMANAQUE
+1DE
+""EL CASCABEL""
+PARA EL AÑO 1873,
+Can an sluvion de casas divertidas, humoristicas. estupendas, iustrnctivas,
+uesia,iraasa,  epe prbad r lau,ls rm la ts
+hotauaa
+TJNUCA
+2 000201 30 N013103
+PKC31<C10
+549
+C6NTAV05.
+LIMA..
+JMPRENTA DE LA PATRIA."" ZARATE NUM I75.
+1878.",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Portada del Almanaque de El Cascabel, Lima, 1873",276,15,0.838,https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Almanaque_de_El_Cascabel_para_el_a%C3%B1o_1873_%281000062591-0003%29.pdf/page1-1280px-Almanaque_de_El_Cascabel_para_el_a%C3%B1o_1873_%281000062591-0003%29.pdf.jpg,True
+doc_006,datos/raw/documentos/originales/doc_006.jpg,impreso,Wikimedia Commons (CC BY 1.0) · Juan de Arona; Biblioteca Nacional del Perú,"JUAN DE ARONA.
+LA LINEA DE CHORRILLOS
+LOS TRES PRINCIPALES
+BALNEARIOS
+QUE RODEAN A LIMA
+CHORRILLOS,
+BARRANCO
+MIRAFLORES",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Portada de La línea de Chorrillos, Lima, 1894",119,8,0.996,https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/La_l%C3%ADnea_de_Chorrillos_-_descripci%C3%B3n_de_los_tres_principales_balnearios_mar%C3%ADtimos_que_rodean_a_Lima_%281000072640%29.pdf/page1-1280px-La_l%C3%ADnea_de_Chorrillos_-_descripci%C3%B3n_de_los_tres_principales_balnearios_mar%C3%ADtimos_que_rodean_a_Lima_%281000072640%29.pdf.jpg,True
+doc_007,datos/raw/documentos/originales/doc_007.jpg,impreso,Wikimedia Commons (CC0) · Anderson Reyes Trillo,"[PERSONA_34] de la Presidencia
+de la Republica
+Lima, 19 de diciembre de 1956
+Señor
+Segundo Gallardo Gallo,
+Sullana
+N° 4418
+De mi consideración:
+Me es grato acusar recibo de su atenta
+comunicación de 12 de octubre último,dirigida al señor Presi-
+dente de la Republica, quien me encarga hacerle llegar su es
+pecial agradecimiento por el envfo del retrato que ha tenido
+la fineza de obsequiarle.
+Aprovno la oportunidad para presentar a
+usted el testimonio de mi
+nal estimación.
+Atentamente
+Nahaur/
+Nanaris Chávex Aliaga
+[PERSONA_34] de la Presidencia de la República",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta mecanografiada de la Secretaría de la Presidencia, 1956",563,20,0.996,https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Carta_de_agradecimiento_del_secretario_de_la_Presidencia_de_la_Rep%C3%BAblica_Nazario_Ch%C3%A1vez_Aliaga_al_pintor_Segundo_Ciro_Gallardo_Gallo_en_nombre_del_presidente_Manuel_Prado_Ugarteche.jpg/1280px-Carta_de_agradecimiento_del_secretario_de_la_Presidencia_de_la_Rep%C3%BAblica_Nazario_Ch%C3%A1vez_Aliaga_al_pintor_Segundo_Ciro_Gallardo_Gallo_en_nombre_del_presidente_Manuel_Prado_Ugarteche.jpg,False
+doc_009,datos/raw/documentos/originales/doc_009.jpg,impreso,Wikimedia Commons (Dominio público) · Congreso del Perú,"10.
+CONSTITUCION POLITICA
+DELPERU,
+10
+REFORMADA
+POR
+EL CONGRESO
+OHILE
+CONSTI
+DE
+4660
+EDICION OFICIAL.
+LIMA.
+IMPRENTA DE JOSE MARIA MASIAS
+Noviembre de 1860.",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,Portada de la Constitución de 1860,156,15,0.999,https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Constituci%C3%B3n_pol%C3%ADtica_del_Per%C3%BA_reformada_por_el_Congreso_de_1860.pdf/page1-1280px-Constituci%C3%B3n_pol%C3%ADtica_del_Per%C3%BA_reformada_por_el_Congreso_de_1860.pdf.jpg,True
+doc_010,datos/raw/documentos/originales/doc_010.jpg,impreso,Wikimedia Commons (CC BY 1.0) · Revista Social; Biblioteca Nacional del Perú,"Social
+E.2
+Lu Revista Chegante
+Jo
+ANO IIN53
+LIMA.PERU
+80 CENTAVOS
+D.Goggnets",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Portada de la revista Social n.º 53, Lima, 1933",76,8,0.942,https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Social_N%C2%B0_53.pdf/page1-1280px-Social_N%C2%B0_53.pdf.jpg,True
+doc_011,datos/raw/documentos/originales/doc_011.jpg,impreso,Wikimedia Commons (CC BY-SA 4.0) · Elypress,"Representación Permanente del Periv ante
+RECEIVED
+la Organización de los Estados Americanos
+0926
+2001 APR 26 P4:14
+Nota 7-5-M/134
+Washington D.C., 25 de abril de 2001
+Señor [PERSONA_34]:
+Tengo a honra dirigirme a Su Excelencia, de conformidad con
+lo dispuesto en el Artículo 37 del Reglamento de la Asamblea General,
+a fin de hacerle llegar adjunto al presente, el texto del proyecto de
+resolución ""Carta Democrática Interamericana"", así como del
+memorándum explicativo, que será materia de consultas entre los
+Ministros de Relaciones Exteriores y jefes de delegación en la XXXI
+Asamblea General de la OEA, a realizarse en San José, Costa Rica.
+Hago propicia la oportunidad para renovar a Su Excelencia
+las seguridades de mi más alta y distinguida consideración.
+[PERSONA_32] del Perú ante la
+Organización de los Estados Americanos
+A1
+Excelentisimo señor
+César Gaviria
+[PERSONA_34] de la
+Organización de los Estados Americanos
+Washington D.C.-
+Escaneado con CamScanner",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Nota de la Representación del Perú ante la OEA, 2001",968,31,0.994,https://upload.wikimedia.org/wikipedia/commons/e/ef/Carta_Democr%C3%A1tica_Interamericana.jpg,False
+doc_012,datos/raw/documentos/originales/doc_012.jpg,foto,Wikimedia Commons (CC BY-SA 4.0) · Pitxiquin,"CARTA ESCRTTA POREL CENERAL
+FELIPE SANTIAGOSALAVERRY
+HORASANTESDE SUMUERTE
+AREOUIPA,FEBRERO 17-1886
+MI QUERIDAESPOSA.
+DENTRO DE POCOS MOMENTOS VOY A SER
+PAGADO POR LAS ARMAS.Y TE DEBO EL ULTIMO
+ADIOS: ES ESTE.
+TU CONOCIAS BIEN MI CORAZON,Y NO PUEDES
+DUDAR DE QUE MIS INTENCIONES, EN TODA MI VIDA
+PUBLICA,HAN SIDO MUY PURAS: ELLAS SE HAN
+DIRIGIDO ALA FELICIDAD YA LA GLORIA DE MIPAIS
+NO OBSTANTE,EL DESTINO ME PREPARABA UN
+TERMINO HORRIBLE:CONFORMEMONOSA EL.
+SOLO SIENTO,AL MORIR.NO HABER LABRADO
+LA FORTUNA DE LA MEJOR MUJERQUEHANACIDO
+PERO TU JUICIO,Y TU TALENTO VALEN MAS QUE
+TODO,Y ESTAS DOS BRILLANTES DOTES TE
+QUEDAN FORTIFICADAS Y MEJORADAS POR LAS
+DESGRACIAS.NO TE DEJES ENVOLVER EN ELLA
+TRANQUILIZATE CONSUELATE Y VIVE PARA MIS
+INFORTUNADOS HIJOS QUE NO TENDRAN OTRO
+APOYO.TU LOS EDUCARAS PARA LA VIRTUD Y LES
+HARAS CONOCER MIS INMERECIDAS DESGRACIAS
+HE PEDIDO PERMISO PARA HACER UN CORTO
+TESTAMENTO,QUE TE ENTREGARA MIHERMANO
+JUAN.CONSERVATE ETERNAMENTE EN ARMONIA
+CON ESTE BUEN MUCHACHO,QUE TE AYUDARA
+A SOBRELLEVARTUS PENAS
+ADIOS QUERIDA JUANA:RECIBE EL CORAZON
+DETUDESVENTURADOESPOSO
+FELIPESANTIAGO SALAVERRY",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Placa con la última carta de Salaverry, Arequipa",1120,32,0.974,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Carta_de_Felipe_Santiago_Salaverry_a_la_seva_esposa_abans_de_la_seva_mort_a_Arequipa.jpg/1280px-Carta_de_Felipe_Santiago_Salaverry_a_la_seva_esposa_abans_de_la_seva_mort_a_Arequipa.jpg,True
+doc_013,datos/raw/documentos/originales/doc_013.jpg,foto,Wikimedia Commons (CC BY-SA 4.0) · Ciberprofe,"MONITURHUASCAR.
+PISAGUA, JUNIO 2 DE 1879.
+SENORA
+CARMELA CARVAJAL DE PRAT
+DIGNISIMA SEÑORA:
+""UN SAGRADO DEBER ME AUTORIZA A DIRIGIRME A UD.
+Y SIENTO PROFUNDAMENTE QUE ESTA CARTA, POR LAS LUCHAS
+QUE VA A REMEMORAR,CONTRIBUYA A AUMENTAR EL DOLOR QUE
+HOY JUSTAMENTE DEBE DOMINARLA. EN EL COMBATE NAVAL DEL
+21 PROXIMO PASADO. QUE TUVO LUGAR EN LAS AGUAS DE 1QUI-
+QUE,ENTRE LAS NAVES PERUANAS Y CHILENAS,SU DIGNO Y VA-
+LEROSO ESPOSO, EL CAPITAN DE FRAGATA DON ARTURO PRAT,
+COMANDANTE DE LA ""ESMERALDA, FUE COMO UD. NO LO IGNORA-
+RA YA, VICTIMA DE SU TEMERARIO ARROJO EN DEFENSA Y GLO-
+RIA DE LA BANDERA DE SU PATRIA. DEPLORANDO SINCERAMENTE
+TAN INFAUSTO ACONTECIMIENTO Y ACOMPAÑANDOLAEN SU DUE-
+LO CUMPLO CON EL PENOSO DEBER DE ENVIARLE LAS PARA UD
+INESTIMABLES PRENDAS QUE SE ENCONTRARON EN SU PODER
+Y QUE SON LAS QUE FIGURAN EN LA LISTA ADJUNTA. ELLAS LE
+SERVIRAN INDUDABLEMENTE DE ALGUN PEQUEÑO CONSUELO EI
+MEDIO DE SU DESGRACIA Y POR ESO ME HE ANTICIPADO A RE
+MITIRSELAS.""
+""REITERANDOLE MIS SENTIMIENTOS DE CONDOLENCI
+LOGRO,SENORA,LA OPORTUNIDAD PARA OFRECERLE MIS SERV
+CIOS, CONSIDERACIONES Y RESPETO CON QUE ME SUSCRIBO 
+UD.SEÑORA, MUY AFECTISIMO Y SEGURO SERVIDOR
+MIGUELGRAU
+LA-CREACION-Y-COMPOSICION",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,Carta de Grau grabada en un monumento,1202,28,0.99,https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Carta_de_Grau_a_viuda_de_Prat_en_monumento_chileno.JPG/1280px-Carta_de_Grau_a_viuda_de_Prat_en_monumento_chileno.JPG,True
+doc_014,datos/raw/documentos/originales/doc_014.jpg,foto,Wikimedia Commons (Dominio público) · Juan Velasco Alvarado; foto de Mayimbú,"PRESIDENCIADELAREPUBLICA
+Lima, 5 de diciembre de 1972.
+Señor Don
+ARMANDO ROBLES GODOY
+[DIRECCION]
+Magdalena del Mar.
+De mi especial consideración :
+Me es particularmente grato referirme
+a su atenta de 20 de noviembre último, a través de la cual se sirve usted
+hacerme conocer las noticias del éxito alcanzado por su película ""Espe-
+jismo"", en el Festival Cinematográfico Internacional de Chicago.
+Felicito a usted muy sinceramente
+por este nuevo triunfo, que constituye motivo de satisfacción para los pe
+ruanos y un merecido premio a su reconocido esfuerzo y patriótico empe-
+ño por sacar adelante la industria cinematográfica nacional.
+Tan pronto disponga de un tiempo li-
+bre, dentro de nuestra recargada agenda de trabajo, me será grato ver la
+película cuyo éxito nos place comentar.
+Cordialmente,
+802
+GRAL.DIV.JUANVELASCO ALVARADO
+Presidente de la República",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Foto de una carta enmarcada en una exposición, 1972",862,22,0.994,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Exposici%C3%B3n_100_a%C3%B1os_Armando_Robles_Godoy_-_Carta_de_Juan_Velasco_Alvarado.jpg/1280px-Exposici%C3%B3n_100_a%C3%B1os_Armando_Robles_Godoy_-_Carta_de_Juan_Velasco_Alvarado.jpg,False
+doc_015,datos/raw/documentos/originales/doc_015.jpg,foto,Wikimedia Commons (CC BY-SA 4.0) · Txolo,"ANCO
+EL
+HEDRADOR",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,Azulejo con el antiguo nombre de una calle de Lima,16,3,0.971,https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Letrero_con_el_antiguo_nombre_de_la_calle_15.jpg/1280px-Letrero_con_el_antiguo_nombre_de_la_calle_15.jpg,True
+doc_016,datos/raw/documentos/originales/doc_016.jpg,foto,Wikimedia Commons (CC BY-SA 4.0) · Txolo,"CALE
+BEYTIA",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,Azulejo con el antiguo nombre de una calle de Lima,11,2,0.94,https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Letrero_con_el_antiguo_nombre_de_la_calle_20.jpg/1280px-Letrero_con_el_antiguo_nombre_de_la_calle_20.jpg,True
+doc_017,datos/raw/documentos/originales/doc_017.jpg,foto,Wikimedia Commons (CC BY-SA 3.0) · TheLimean,"AL GRAN ALMIRANTE DEL PERU
+MIGUEL GRAU SEMINARIO
+EL PERUANO DEL MILENIO
+PIURA 27 DE JULIO DE 1834 - ANGAMOS 08 DE OCTUBRE DE 1879",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Placa del monumento a Grau, Miraflores",129,4,0.998,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Monumento_a_Miguel_Grau_-_Miraflores_-_Placa.jpg/1280px-Monumento_a_Miguel_Grau_-_Miraflores_-_Placa.jpg,True
+doc_018,datos/raw/documentos/originales/doc_018.jpg,foto,Wikimedia Commons (CC BY-SA 3.0) · 12C HSMN,"2DOMINO
+PRO
+さ八十十+メ
+CITUUM
+MONASTERIO DE NAZARENAS
+CARMELITAS
+DESCALZAS",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Placa del Monasterio de las Nazarenas, Lima",70,7,1.0,https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Placa_Monasterio_Nazarenas_Lima.JPG/1280px-Placa_Monasterio_Nazarenas_Lima.JPG,True
+doc_019,datos/raw/documentos/originales/doc_019.jpg,foto,Wikimedia Commons (CC BY-SA 3.0) · autor indicado en la página de Commons,"TODO SER HUMANO TIENE EN EL CAMINO SU PEDESTAL DE HEROE
+EL MERITO CONSISTE EN QUE LLEGADO EL MOMENTO
+TENGA EL CORAJE SUFICIENTE PARA SUBIR A EL
+S.OUled-
+QUINONES",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Inscripción del monumento a Quiñones, Lima",161,5,0.996,https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Lima_MonumentoQuinones_Inscription.jpg/1280px-Lima_MonumentoQuinones_Inscription.jpg,True
+doc_020,datos/raw/documentos/originales/doc_020.jpg,foto,Wikimedia Commons (CC BY-SA 4.0) · AlejandroFC,"EDIFICIOFENIX
+EL EDIFICIO FENIX FVE CONSTRVIDO EN 1934 POR LA FIRMA FRED T. LEY
+CIA. LTD. POR ENCARCO DE LA COMPAÑIA DE SEGVROS LA FENIX PERVANA
+PARA ALBERGAR SV SEDE SOCIAL.
+EL ENCARGO CONSISTIÓ EN ANADIR DOS PISOS Y VNA AZOTEA DE
+DEPARTAMENTOS A VNA FINCA EXISTENTE DE VN SOLO PISO DONDE
+FVNCIONABAN ALMACENES Y COMERCIOS EN RENTA. EN LA SEGVNDA PLANTA
+FUNCIONARON LAS OFICINAS DE LA COMPANÍA DE SEGVROS Y EN LA
+TERCERA PLANTA EL CLVB SOCIAL DE LA COMPANÍA (PHOENIX CLVB).
+EL EDIFICIO ES INTERVENIDO NVEVAMENTE EN 1947 PARA AMPLIAR LAS
+ISTALACIONES DEL PHOENIX CLVB AL EDIFICIO GOLINDANTE (FENIX ENCAR
+NACION
+EN ELANO WS ES ADVIRIDO (POR ARTE EXPRESS Y COMPANIA SAC Y SOMETIDO
+A VNA REHABILITACION INTEGRAL COMO EDIFICIO DE OFICINAS EN AL9VILER
+POR INICATIVA DE SV GERENTE GENERAL FERNANDO PALAZVELO
+PROVECTO DE LA ARC.-LVCIANA SOLDI.
+VNCAROVNDART-COM",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Placa de bronce del Edificio Fénix, Lima",853,17,0.974,https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Placa_del_Edificio_F%C3%A9nix.jpg/1280px-Placa_del_Edificio_F%C3%A9nix.jpg,True
+doc_021,datos/raw/documentos/originales/doc_021.jpg,foto,Wikimedia Commons (CC BY-SA 4.0) · Ibrehaut,"AQUI VIVIO EL GRAN POETA
+JOSE MARIA EGUREN
+LA MUNICIPALIDAD
+RECUERDO DÈL COLEGIO NACIONAL
+DE
+QUE LLEVA SU NOMBRE
+BARRANCO
+BARRANCO 18-S-1959
+AL POETA
+JOSE MARIA EGUREN
+ENELCENTENARIO
+DE SU NACIMIENTO
+1874
+73320
+1974
+ALAMEMORIA DEL GRAN POETA DEL SIMBOLISNO
+ENLAS BODAS DEPLATA DE LAGUE.
+""JOSE MARIA EGUREN""
+LA ASOCIACION DE EXALUMMOS EGURINOS
+BARRANCO, SETIEMBRE 1970",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Placas en la casa de José María Eguren, Barranco",367,20,0.986,https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Detalle_de_la_Casa_de_Jos%C3%A9_Mar%C3%ADa_Eguren%2C_Barranco.jpg/1280px-Detalle_de_la_Casa_de_Jos%C3%A9_Mar%C3%ADa_Eguren%2C_Barranco.jpg,True
+doc_022,datos/raw/documentos/originales/doc_022.jpg,manuscrito,Wikimedia Commons (Dominio público) · César Vallejo,"Fugill, 29 de pili 917
+ot. oni lai Egut
+SAannnco.
+homvcmente coumovid bé se alut cart
+eugos tinins e ageadyeo"" de visas. Elh me ke
+Aeanimad nencho,n sets dias n gue ee san
+tim tan anal, fues agi kay guimes ome alacon
+core trt rudega.! bil grsios, seen Ege
+som;  gtil a y bot. one hm kech am
+l bin; milgrais.
+En ateo bias, atnt a hrisi canivn do Ue,
+invini a l renisth tnccini t a Evagauil
+algermos oe suis versos; y dhis pisa gue gait.
+slle peruiti teegal al pecllisiat l cnnte
+sid a n eit cte, al el solintue
+me lieion de el,-  prne, -Noy  avvi
+four sste niom mpor in minon I L Aoor
+nn"" in gun pui udlicae.
+Hay nt gonint for du oalt, one
+ncit, L U an afuti
+a
+Carta de César Vallejo a José María Eguren.",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta de César Vallejo a José María Eguren, 1917",703,22,0.639,https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Carta_de_C%C3%A9sar_Vallejo_a_Jos%C3%A9_Mar%C3%ADa_Eguren.pdf/page1-1280px-Carta_de_C%C3%A9sar_Vallejo_a_Jos%C3%A9_Mar%C3%ADa_Eguren.pdf.jpg,True
+doc_023,datos/raw/documentos/originales/doc_023.jpg,manuscrito,Wikimedia Commons (CC0) · Carlos J. Bachmann; Biblioteca Nacional del Perú,"17
+wwww
+whuth
+Sener dom Ricardo Palma
+htm
+Livng
+Mi respetado g querido maestro:
+Desde estao apartades co-
+Da a
+marcas deses manifestar a al. el profimdo dolor que he
+pentido al infornmarme que eapiritus estrechis, vengativos,
+han arrascado a' ll, por la fuerza, de la caea que U reedi-
+ficara,-pam honra die Periis- a coeta de tants esfuerzos
+Dean Ja 
+Jamas hubiena ereido gue mandataris
+algimo se atrevrera a turbar el posiego que aual ningimo
+Tiene U. merecido, deskuis de tants aos de labor patrio-
+ 
+tica, fecunda g benefiin; Jamas hubiera peneado que
+hombre algimo osara faltar las canas de tan insigue lite-
+rato, canas resketadas siempre peer profirs g extraños, por
+jovenes g crejio, por ruicos g pobres.
+ndne
+Desde 1888, que se firndo la Sociedad Geografia
+g. oaupo im departament en la tarty alta de la Bibliateen
+National, es decir quatro anis destoues que al, la hiciera
+renacer con sus esfuerzos, reputacion  influencias, he si-
+a
+do puedo decir testigo de sm innmenen labor de su asidui
+Todo su tiempo era absorbido for",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta de Carlos J. Bachmann a Ricardo Palma, 1912",1033,30,0.869,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/4000004161-0003_-_Carta_de_Carlos_J._Bachmann._1912_junio_10%2C_Riberalta%3B_para_Ricardo_Palma%2C_Lima.pdf/page1-1280px-4000004161-0003_-_Carta_de_Carlos_J._Bachmann._1912_junio_10%2C_Riberalta%3B_para_Ricardo_Palma%2C_Lima.pdf.jpg,True
+doc_024,datos/raw/documentos/originales/doc_024.jpg,manuscrito,Wikimedia Commons (CC0) · Carlos J. Bachmann; Biblioteca Nacional del Perú,"Maldonado, 4 de julio de 1914.
+Señor Don Rioardo Palme.
+111
+Muy distinguido señor y respetado emigo:
+Siento inmenso placer al dirigirle le presente, mensejera
+de mis más efusivas y cordieles felicitaciones por el acto de jus-
+te reperación que acabe de darle el Gobierno Provisorio con su de-
+creto de 26 de mayo dltimo. Su nombramiento de director honorerio
+de le BibliotecaNacional que U. reorganizara con tento tezón, celo
+é inteligencia, es más que un acto de desagravio y de justicia, com-
+pensación débilá lo mucho que ol Perá y sus intelectuales le doben.
+Apenabe mi alma considerar que á mi regreso á Lima, después
+de més de tres años de ausencia, no iba á hallar el noble y patrio-
+te anoiano, padre de las letres peruanas, en su sala de trabajo de
+la Bibliotaca, donde tuve el honor de conocerle ahora 24 eños; y
+mucho me contristabe tembién, si acaso vuelvoé le Socieded Geogré-
+fica, no ver oon le frecuencia á que estabe acostumbredo al ilustre
+tradicionista, cuyos consejos y lecciones escuché siempre con inte-
+rgsy aamiracion.
+Ya esta U., respetedo don Ricardo, nuevamente entre sus es-
+tantos y libros pere U. tan queridos; ya esté U. nuevamente entre
+sus emigos predilectos que piensen sin cerebro y hablen sin boce;
+ye esté U. nuevamente en su oasa, porque case suye es, indiscuti-
+blemente, ese viejo palecio de las ciencies y las letras. Alli os-
+pero derle pronto cariñoso ebrazo, y miemtras tal sucede, hego fer-",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta de Carlos J. Bachmann a Ricardo Palma, 1914",1435,25,0.968,https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/4000004161-0016_-_Carta_de_Carlos_J._Bachmann._1914_julio_4%2C_Maldonado%3B_para_Ricardo_Palma%2C_Lima.pdf/page1-1280px-4000004161-0016_-_Carta_de_Carlos_J._Bachmann._1914_julio_4%2C_Maldonado%3B_para_Ricardo_Palma%2C_Lima.pdf.jpg,True
+doc_025,datos/raw/documentos/originales/doc_025.jpg,manuscrito,Wikimedia Commons (Dominio público) · Miguel Grau,"thonit [PERSONA_22] y [PERSONA_7] pode, y gue bon las
+the figukan in la listit
+adente. Ils bes
+cepslo sl Sapitan de
+tbu induoba blunnt dh
+Dijues des
+Gragata o SetuuoBst
+abyur penir lonsul
+CoundF dh ta rnmsal.
+e peede debe
+she rrbidio dhe sn gean
+da"" fne lano od nolo
+ dta i ddisigi
+lisgesns, y porsme
+judrasa ya bictime 
+s a dIy Sintpro.
+hl antnar a sumit
+sn teneksrio auapo, in
+fundanlut pu ssts
+dlfenrs y glasks dhe
+solu.
+A citisamatale sois sen
+Iute po Lee truhes
+ba banbelka of Su
+tumimtes de lonco
+Joe Jea ae li
+Patrie
+via, lupro dis la oore
+ttihige i umn tot se
+Pplarando Sincisa
+tsnxla paes opiburl
+shalie f hy pesthenente
+menlt San infaueto
+  o
+oide ghaela.
+acouteminto,y
+alosñondalain
+yrut
+he it lombet ne
+su Otuelo, lurnplr
+wal shit  olet praame
+eomlpaeOy ttis.
+peesde. pe te byyar
+te ole ohe whaissl
+in bas aguss d gui
+I as pase Vol. innsste.
+Lia sa Naemt arat
+ue, en e las rid
+mles n,
+Tyhesaed
+Se merutiarn in",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta de Miguel Grau a Carmela Carvajal, 1879",921,51,0.561,https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Miguel_Grau_-_Brev.jpg/1280px-Miguel_Grau_-_Brev.jpg,False
+doc_026,datos/raw/documentos/originales/doc_026.jpg,manuscrito,Wikimedia Commons (CC BY-SA 3.0) · Dtarazona,"del Tngenes
+A mi regreso de Arica, recogeré los encargos que me mandes. No olvides
+isi,11
+mandar sengani, algunos remedios y la paila.
+sthe
+reeteds
+(Firmado) [PERSONA_18]
+a. e
+120
+ineigue
+simas'y d
+3 recotn
+Seimen,
+Saine mays 30 de 1880
+sde
+Rerido hermane!
+Uhn froega sereno ty
+anhz
+Weriho ete pate deirte is ly
+nia
+Sano  salio fere marchare a
+Ex asy-
+Arice ion une mpaje ue de 
+formeds, agn in li poche, mmestio
+siev la
+kermane jue mueets segn dun
+i chango det Viedpizg defirg venges
+wiine
+10
+tropa. No u somo tems taloate
+ari
+Mandame i fronehia) poasos 10o
+seni:
+62.
+in il arriero Mchie,shpail
+inte
+alojirniento decde aniche
+Los pa peles que wen
+sda,
+20 lis
+pntes entregales w algime de lo
+Sefes altr gue fuedan llegar 
+ses.
+He encarga Gre thuesbert
+cualscis
+dese wore ue viache puts al tamto
+n ineai Fall
+Jaine que sins 4 herman de le 2a
+chedo
+wninsian
+Copaiin del Eocads han sids mnertis
+di Rutelided
+in il as de alansu ma
+i qua pudece
+vende ntuco ds tellimu En Tre
+hanhele stetante
+we smase mes-
+jeue mmerts
+n pte de aiar e
+Ligandeo Cortg Do m me se pres
+mag media qu
+Ulianso Fra
+tnnig llars é
+el ultrase, y Ir gremins gue rtin
+es
+hcis  lw cindi.
+inmns
+haiondo ahora en enta lindes
+Halle disan
+o enher sda
+no tirnen limite, todo es mied
+ato al i fodran
+noby sagueo epchulle covo
+donde as costents
+bule agniuti arefaci
+etrrso del Eneit
+n las piry, se tatran
+i a pus armas.
+uraented.
+soraclas a
+debems riignann por la musnte
+del Follo!
+unts leo
+oin en sul
+J Metivry
+podria annet
+ania
+paile
+poranotabar
+Je
+weguna?
+eats po um tercere
+Jeisiva, un camko
+g podamot pon centiga
+Hacienda Para, Tacna, 28 de mayo de 1880.
+onnectics Sropds.
+Al Señor
+G. Fernando Hellman",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta de un soldado a su hermano, Tacna, 1880",1663,98,0.671,https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/AAMSM_carta_a_hermano_31072010.jpg/1280px-AAMSM_carta_a_hermano_31072010.jpg,False
+doc_027,datos/raw/documentos/originales/doc_027.jpg,manuscrito,Wikimedia Commons (CC BY-SA 4.0) · Gabriela Lavarello de Velaochaga,"132
+D
+Cla cuda delor teyee ind Tebexo de eerients Nover
+tary dos. Lo of Lin D Sebastran Sexreno, exlineneia Lanogues
+2X
+Excorrire puse obeo, y Chsvma, a Ailbexie Zrelis, de edad e
+Seas meres quince dias a quen en caso da nesesidad le Echo el
+tyna el t, a Curebis hamires heligioso werond de la smerced.
+Tifo depitnme ade Tose Olalla ymelchoza Baladxa, feve ve
+Padnino S Tuan Sionicio Foledo, Festiges Cixraco Obredo Y
+PeoeHehun,
+Sibustran Tunrcro",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,Partida de bautismo de José Olaya (s. XVIII),446,12,0.784,https://upload.wikimedia.org/wikipedia/commons/c/ce/Joseolaya_partida_nacimiento_chica.jpg,True
+doc_028,datos/raw/documentos/originales/doc_028.jpg,manuscrito,Wikimedia Commons (Dominio público) · Emiliano Burzagli,"POLICIA DE LIMA
+TARJETA DE CIRCULACION
+Los Agentes de Policía y de la fuerza
+1921
+pública permitirán circular libremente la per-
+sona y el carruaje del
+eir Capitan di havis [PERSONA_17]
+zagli bonandante dil braee ""libia
+Wiembre de la Emba fra Italiana
+y cortar filas si no hay impedimento de fuerza mayor.
+El Prefecto de Lima
+0soDve
+Esta tarjeta es intranalerible",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Tarjeta de circulación de la Policía de Lima llenada a mano, 1921",363,13,0.981,https://upload.wikimedia.org/wikipedia/commons/b/b8/Targheta.jpg,False
+doc_029,datos/raw/documentos/originales/doc_029.jpg,manuscrito,Wikimedia Commons (Dominio público) · Agustín Gamarra,"D D Pamingo Fristan
+VeralquaOnar2o 2de1822
+ooriginalaherlo han traide de la a
+ra de Carabele y el oficio del Comani. Somrales
+ge enlenao ed coniverr las ventalas qvamon
+à pever si paxalicamor murtaa movimientor.
+Judo un momento g virtor tantor inidentu con
+Ven xa martro Erotecton con nurtu delibexa
+ciomes con la rinaunitancia g ri spendemor un mago
+io tan coecelente g! yoca vee s prerenta tal.
+ves lo peaderomor  riempre.
+Adios mi annigo. Digame v. tive ha
+aliaa Fiana ymae a o
+NO
+Mrchar cosas ami Vicaris y Echenigne",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta de Agustín Gamarra a Domingo Tristán, 1822",520,15,0.737,https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/AR-ANH-EF-Secc.II-53-2.jpg/1280px-AR-ANH-EF-Secc.II-53-2.jpg,True
+doc_030,datos/raw/documentos/originales/doc_030.jpg,manuscrito,Wikimedia Commons (Dominio público) · Miguel de San Román,"EBme InG. Agustin [PERSONA_33] 12 de Agost du1840
+Mi repetabl hal y Padrino.
+him embargo de hallaame bien enferme ton
+la direntexia a. he lontraido in mi confi.
+macion de tbaneay, me he Lituado in este
+Parblo in conplint de la orden tupe
+ma Li ui mab, lomo y probable, u agza-
+ba, me sena permitid Ejar, a Oubambay
+afir de upaxaer mi Dalnd- Eppno mi Jral,
+gf: no to bendra D. le mal
+No me eansare in zecomemdan a t, In
+honrsades ul [PERSONA_10]-Ate Jege
+g, Lea dado a G. tantas pruebey we Lealtad,
+Pin duda, esf es mas aparente p? mandar
+eh katallon lmeo- t asin al, enta
+inlieacion, neo cumptin con la pusticin,
+periana he to
+Sesea a to. may buenai Jalnd in
+decidids alrigads e inbariable deavioon
+1.0
+Aigh Mooma",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta de Miguel de San Román a Agustín Gamarra, 1840",713,22,0.741,https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/AR-ANH-EF-Secc.II-64.jpg/1280px-AR-ANH-EF-Secc.II-64.jpg,False
+doc_031,datos/raw/documentos/originales/doc_031.jpg,manuscrito,Wikimedia Commons (Dominio público) · Nicolás de Piérola,"$30
+Lima, Agento 1o de say
+r [PERSONA_23] del Dept.3
+Lambayeque
+Moi querido Ir IPrefecto:
+El Ir [PERSONA_31],
+despues de conversar conmigo, regresa a Mbotu-
+pe lugar de su pesidencia para ocuparse de sus a-
+suntos particubares.
+Recomiendolo mni especialmente a su
+distingnida considevacion i a la de sns auto-
+pidades suballernas.
+Pectuosamente bryo
+lerola",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Carta de Nicolás de Piérola al prefecto de Lambayeque, 1897",356,15,0.905,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/AR-ANH-EF-Secc.II-69.jpg/1280px-AR-ANH-EF-Secc.II-69.jpg,False
+doc_032,datos/raw/documentos/originales/doc_032.jpeg,foto,captura propia (CC BY 4.0 (foto propia)) · autora de esta tarea,"invitan à
+en el ámbito uni
+A través del reta
+como una forma
+de memoria. E
+Jiménez, desde
+[PERSONA_38] y
+Sarhua, abriend
+enfoque intercult
+Dentro de los eje
+la memoría y las d
+relato cerrado, es
+y en construcción
+PUCP abre un
+presencias mucha
+construir una univ
+personas.
+AMORELREPTAD
+ENTORH
+ELAMORESVIDA
+EL ORGULLO
+HOS CONVOCA
+gpie Calleio Doatte
+Retablo:Diversidades
+Obra colectiva realizada por la comunidad PUCP (2023)
+Tallerista: Edilberto Jiménez
+Espacio facilitado por la Dirección de Asuntos Culturales en
+colaboración con la Dirección Académica de
+Responsabilidad Social de la PUCP
+¿Puede el arte tradicional ayudarnos a reflexionar y
+visibilizarla diversidad?
+Esta obra es resultado de un taller colectivo realizado con la
+comunidad PUCP, en el que participaron estudiantes,
+docentes y personal administrativo. El proceso inició con un
+espacio de sensibilización sobre género y diversidad, y
+continuó con la construcción de un retabio junto al artista
+Edilberto Jiménez.
+Inspirada en una marcha por los derechos de las personas
+LGBTQI+, la pieza reúne personajes elaborados
+colectivamente. Desde las artes tradicionales y la creación
+compartida, el retablo fue un primer espacio para reflexionar
+sobre diversidad, memoria y comunidad universitaria.",PaddleOCR 3.7.0 · PP-OCRv6_medium (det + rec) · motor PyTorch en CPU · sin orientación ni enderezado · imagen ≤1280 px,,"Ficha del retablo «Diversidades» en una exposición de la PUCP, foto de celular",1257,42,0.992,,False

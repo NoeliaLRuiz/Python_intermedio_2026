@@ -23,7 +23,7 @@ PUBLICOS = [
     "Manuel Prado", "Nazario Chávez Aliaga", "Segundo Ciro Gallardo", "Segundo Gallardo Gallo", "Carlos J. Bachmann", "Luis Antonio Eguiguren",
     "José Quiñones", "Quiñones", "Ernesto Burzagli", "José de la Riva Agüero", "Riva Agüero", "Ramón Freire",
     "Agustín Gamarra", "Domingo Tristán", "Miguel de San Román", "Nicolás de Piérola", "Juan de Arona",
-    "Manuel Rodríguez Cuadros", "César Gaviria", "José Bernardo de Tagle", "Lapadula", "Gianluca Lapadula", "Dios", "Jesús", "Cristo",
+    "Manuel Rodríguez Cuadros", "César Gaviria", "José Bernardo de Tagle", "Edilberto Jiménez", "Lapadula", "Gianluca Lapadula", "Dios", "Jesús", "Cristo",
     "Virgen", "Santísima Trinidad", "Tayta Palli", "Taitapalli", "Stallone", "Superman", "Pisco", "Capón", "Fénix", "Nazarenas", "Carmelitas",
 ]
 
@@ -88,9 +88,9 @@ def es_publico(nombre: str) -> bool:
 
 def cargar_reemplazos() -> dict[str, str]:
     "Diccionario nombre real -> seudónimo (archivo privado) más los agregados a mano."
-    reemplazos = json.loads(ARCHIVO_REEMPLAZOS.read_text(encoding="utf-8")) if ARCHIVO_REEMPLAZOS.exists() else {}
+    reemplazos = json.loads(ARCHIVO_REEMPLAZOS.read_text(encoding="utf-8-sig")) if ARCHIVO_REEMPLAZOS.exists() else {}
     if ARCHIVO_EXTRA.exists():
-        for nombre in json.loads(ARCHIVO_EXTRA.read_text(encoding="utf-8")):
+        for nombre in json.loads(ARCHIVO_EXTRA.read_text(encoding="utf-8-sig")):
             if nombre not in reemplazos:
                 reemplazos[nombre] = f"[PERSONA_{len(set(reemplazos.values())) + 1}]"
     return reemplazos
