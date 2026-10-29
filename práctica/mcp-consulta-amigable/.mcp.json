@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "mef": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "server.py"],
+      "env": {}
+    },
+    "fetch": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-server-fetch"],
+      "env": {}
+    }
+  }
+}

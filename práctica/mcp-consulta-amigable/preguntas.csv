@@ -1,0 +1,11 @@
+id,pregunta,verdad,tolerancia,anio,fuente
+pim_minedu_25,"¿Cuál fue el PIM 2025 del pliego Ministerio de Educación, en millones de soles?",10137.99,1,2025,https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx?_uhc=yes&0=&2=10&3=010&1=&y=2025&ap=ActProy
+avance_minedu_25,"¿Qué avance de ejecución (devengado entre PIM) tuvo el pliego Ministerio de Educación en 2025, en %?",96.6,0.1,2025,https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx?_uhc=yes&0=&2=10&3=010&1=&y=2025&ap=ActProy
+dev_monterrico_25,"¿Cuánto devengó en 2025 la unidad ejecutora Instituto Pedagógico Nacional de Monterrico, en soles?",14510157,1000,2025,https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx?_uhc=yes&0=&4=77&1=&y=2025&ap=ActProy
+pia_ves_25,"¿Cuál fue el PIA 2025 de la Municipalidad Distrital de Villa El Salvador, en soles?",145058631,1000,2025,https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx?_uhc=yes&0=&7=301291&1=&y=2025&ap=ActProy
+avance_regionales_25,"¿Qué avance de ejecución (devengado entre PIM) tuvieron en conjunto los gobiernos regionales en 2025, en %?",96.8,0.1,2025,https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx?_uhc=yes&0=&1=&y=2025&ap=ActProy
+dev_total_25,"¿Cuánto devengó en total el Estado peruano (los tres niveles de gobierno) en 2025, en millones de soles?",253674.60,10,2025,https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx?_uhc=yes&0=&1=&y=2025&ap=ActProy
+dev_bys_gn_25,"¿Cuánto devengó el Gobierno Nacional en la genérica Bienes y Servicios en 2025, en millones de soles?",23978.69,1,2025,https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx?_uhc=yes&0=&1=E&24=&y=2025&ap=ActProy
+dev_minedu_dic25,"¿Cuánto devengó el pliego Ministerio de Educación en diciembre de 2025, en millones de soles?",1021.98,0.5,2025,https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx?_uhc=yes&0=&2=10&3=010&23=&y=2025&ap=ActProy
+avance_pronabec_2025,"¿Qué avance de ejecución (devengado entre PIM) tuvo la unidad ejecutora Programa Nacional de Becas y Credito Educativo en 2025,en %",96.5,0.1,2025,"2025 > Gobierno Nacional > Educacion > Pliego MINEDU > Ejecutora PRONABEC"
+avance_callao_25,"¿Qué avance de ejecución (devengado entre PIM) tuvo el Gobierno Regional del Callao en 2025, en %?",91.5,0.1,2025,"2025 > Gobiernos Regionales > Pliego Callao"
