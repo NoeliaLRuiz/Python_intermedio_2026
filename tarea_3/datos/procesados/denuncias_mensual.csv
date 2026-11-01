@@ -1,0 +1,736 @@
+anio,mes,modalidad,denuncias
+2018,1,Estafa,721
+2018,1,Extorsión,177
+2018,1,Hurto,12436
+2018,1,Otros,20335
+2018,1,Robo,7154
+2018,1,Secuestro,71
+2018,1,Violencia contra la mujer y el grupo familiar,19194
+2018,2,Estafa,639
+2018,2,Extorsión,190
+2018,2,Hurto,12392
+2018,2,Otros,19682
+2018,2,Robo,7123
+2018,2,Secuestro,80
+2018,2,Violencia contra la mujer y el grupo familiar,18959
+2018,3,Estafa,779
+2018,3,Extorsión,262
+2018,3,Hurto,13898
+2018,3,Otros,22267
+2018,3,Robo,8070
+2018,3,Secuestro,85
+2018,3,Violencia contra la mujer y el grupo familiar,21018
+2018,4,Estafa,699
+2018,4,Extorsión,263
+2018,4,Hurto,12732
+2018,4,Otros,21633
+2018,4,Robo,7638
+2018,4,Secuestro,78
+2018,4,Violencia contra la mujer y el grupo familiar,20776
+2018,5,Estafa,815
+2018,5,Extorsión,235
+2018,5,Hurto,13275
+2018,5,Otros,20842
+2018,5,Robo,7826
+2018,5,Secuestro,89
+2018,5,Violencia contra la mujer y el grupo familiar,20451
+2018,6,Estafa,744
+2018,6,Extorsión,260
+2018,6,Hurto,12933
+2018,6,Otros,19988
+2018,6,Robo,7655
+2018,6,Secuestro,77
+2018,6,Violencia contra la mujer y el grupo familiar,19899
+2018,7,Estafa,863
+2018,7,Extorsión,244
+2018,7,Hurto,13371
+2018,7,Otros,20417
+2018,7,Robo,7888
+2018,7,Secuestro,89
+2018,7,Violencia contra la mujer y el grupo familiar,19915
+2018,8,Estafa,904
+2018,8,Extorsión,261
+2018,8,Hurto,13505
+2018,8,Otros,20793
+2018,8,Robo,8251
+2018,8,Secuestro,97
+2018,8,Violencia contra la mujer y el grupo familiar,20183
+2018,9,Estafa,806
+2018,9,Extorsión,274
+2018,9,Hurto,13697
+2018,9,Otros,21208
+2018,9,Robo,8413
+2018,9,Secuestro,88
+2018,9,Violencia contra la mujer y el grupo familiar,21237
+2018,10,Estafa,850
+2018,10,Extorsión,275
+2018,10,Hurto,14458
+2018,10,Otros,21536
+2018,10,Robo,9103
+2018,10,Secuestro,98
+2018,10,Violencia contra la mujer y el grupo familiar,21221
+2018,11,Estafa,891
+2018,11,Extorsión,311
+2018,11,Hurto,13985
+2018,11,Otros,21726
+2018,11,Robo,8266
+2018,11,Secuestro,113
+2018,11,Violencia contra la mujer y el grupo familiar,22665
+2018,12,Estafa,864
+2018,12,Extorsión,320
+2018,12,Hurto,14822
+2018,12,Otros,22548
+2018,12,Robo,8704
+2018,12,Secuestro,106
+2018,12,Violencia contra la mujer y el grupo familiar,25028
+2019,1,Estafa,993
+2019,1,Extorsión,260
+2019,1,Hurto,13784
+2019,1,Otros,23088
+2019,1,Robo,8014
+2019,1,Secuestro,75
+2019,1,Violencia contra la mujer y el grupo familiar,27154
+2019,2,Estafa,920
+2019,2,Extorsión,237
+2019,2,Hurto,12657
+2019,2,Otros,21951
+2019,2,Robo,7622
+2019,2,Secuestro,78
+2019,2,Violencia contra la mujer y el grupo familiar,24716
+2019,3,Estafa,964
+2019,3,Extorsión,317
+2019,3,Hurto,14217
+2019,3,Otros,24304
+2019,3,Robo,8234
+2019,3,Secuestro,113
+2019,3,Violencia contra la mujer y el grupo familiar,27364
+2019,4,Estafa,860
+2019,4,Extorsión,319
+2019,4,Hurto,13238
+2019,4,Otros,23093
+2019,4,Robo,7501
+2019,4,Secuestro,98
+2019,4,Violencia contra la mujer y el grupo familiar,24536
+2019,5,Estafa,1032
+2019,5,Extorsión,277
+2019,5,Hurto,14096
+2019,5,Otros,23209
+2019,5,Robo,8040
+2019,5,Secuestro,89
+2019,5,Violencia contra la mujer y el grupo familiar,24534
+2019,6,Estafa,928
+2019,6,Extorsión,303
+2019,6,Hurto,13641
+2019,6,Otros,22644
+2019,6,Robo,7634
+2019,6,Secuestro,91
+2019,6,Violencia contra la mujer y el grupo familiar,24404
+2019,7,Estafa,1052
+2019,7,Extorsión,263
+2019,7,Hurto,13595
+2019,7,Otros,22557
+2019,7,Robo,7698
+2019,7,Secuestro,106
+2019,7,Violencia contra la mujer y el grupo familiar,23073
+2019,8,Estafa,1038
+2019,8,Extorsión,321
+2019,8,Hurto,13486
+2019,8,Otros,22391
+2019,8,Robo,7736
+2019,8,Secuestro,103
+2019,8,Violencia contra la mujer y el grupo familiar,22638
+2019,9,Estafa,1049
+2019,9,Extorsión,365
+2019,9,Hurto,13435
+2019,9,Otros,23107
+2019,9,Robo,7771
+2019,9,Secuestro,99
+2019,9,Violencia contra la mujer y el grupo familiar,23651
+2019,10,Estafa,1080
+2019,10,Extorsión,372
+2019,10,Hurto,14733
+2019,10,Otros,24397
+2019,10,Robo,8202
+2019,10,Secuestro,119
+2019,10,Violencia contra la mujer y el grupo familiar,23770
+2019,11,Estafa,1157
+2019,11,Extorsión,376
+2019,11,Hurto,14343
+2019,11,Otros,24681
+2019,11,Robo,8294
+2019,11,Secuestro,115
+2019,11,Violencia contra la mujer y el grupo familiar,24925
+2019,12,Estafa,1125
+2019,12,Extorsión,295
+2019,12,Hurto,14438
+2019,12,Otros,24955
+2019,12,Robo,8047
+2019,12,Secuestro,128
+2019,12,Violencia contra la mujer y el grupo familiar,26225
+2020,1,Estafa,1190
+2020,1,Extorsión,350
+2020,1,Hurto,14843
+2020,1,Otros,27843
+2020,1,Robo,8030
+2020,1,Secuestro,117
+2020,1,Violencia contra la mujer y el grupo familiar,30913
+2020,2,Estafa,1186
+2020,2,Extorsión,364
+2020,2,Hurto,13911
+2020,2,Otros,27783
+2020,2,Robo,7755
+2020,2,Secuestro,121
+2020,2,Violencia contra la mujer y el grupo familiar,29221
+2020,3,Estafa,713
+2020,3,Extorsión,226
+2020,3,Hurto,8897
+2020,3,Otros,21501
+2020,3,Robo,4279
+2020,3,Secuestro,99
+2020,3,Violencia contra la mujer y el grupo familiar,21115
+2020,4,Estafa,416
+2020,4,Extorsión,78
+2020,4,Hurto,2845
+2020,4,Otros,8621
+2020,4,Robo,981
+2020,4,Secuestro,24
+2020,4,Violencia contra la mujer y el grupo familiar,8608
+2020,5,Estafa,821
+2020,5,Extorsión,89
+2020,5,Hurto,4527
+2020,5,Otros,11468
+2020,5,Robo,1783
+2020,5,Secuestro,26
+2020,5,Violencia contra la mujer y el grupo familiar,12423
+2020,6,Estafa,1098
+2020,6,Extorsión,127
+2020,6,Hurto,6079
+2020,6,Otros,13905
+2020,6,Robo,2482
+2020,6,Secuestro,41
+2020,6,Violencia contra la mujer y el grupo familiar,15546
+2020,7,Estafa,1301
+2020,7,Extorsión,188
+2020,7,Hurto,7505
+2020,7,Otros,16965
+2020,7,Robo,3150
+2020,7,Secuestro,62
+2020,7,Violencia contra la mujer y el grupo familiar,18273
+2020,8,Estafa,1479
+2020,8,Extorsión,229
+2020,8,Hurto,7994
+2020,8,Otros,18418
+2020,8,Robo,3533
+2020,8,Secuestro,75
+2020,8,Violencia contra la mujer y el grupo familiar,19539
+2020,9,Estafa,1414
+2020,9,Extorsión,266
+2020,9,Hurto,8433
+2020,9,Otros,19513
+2020,9,Robo,3566
+2020,9,Secuestro,87
+2020,9,Violencia contra la mujer y el grupo familiar,21407
+2020,10,Estafa,1459
+2020,10,Extorsión,253
+2020,10,Hurto,9279
+2020,10,Otros,22008
+2020,10,Robo,3793
+2020,10,Secuestro,63
+2020,10,Violencia contra la mujer y el grupo familiar,24329
+2020,11,Estafa,1536
+2020,11,Extorsión,254
+2020,11,Hurto,9123
+2020,11,Otros,21361
+2020,11,Robo,3643
+2020,11,Secuestro,94
+2020,11,Violencia contra la mujer y el grupo familiar,24789
+2020,12,Estafa,1449
+2020,12,Extorsión,265
+2020,12,Hurto,9940
+2020,12,Otros,21317
+2020,12,Robo,4120
+2020,12,Secuestro,87
+2020,12,Violencia contra la mujer y el grupo familiar,24226
+2021,1,Estafa,1580
+2021,1,Extorsión,273
+2021,1,Hurto,9276
+2021,1,Otros,21711
+2021,1,Robo,3887
+2021,1,Secuestro,96
+2021,1,Violencia contra la mujer y el grupo familiar,24793
+2021,2,Estafa,1390
+2021,2,Extorsión,253
+2021,2,Hurto,8031
+2021,2,Otros,18524
+2021,2,Robo,3233
+2021,2,Secuestro,63
+2021,2,Violencia contra la mujer y el grupo familiar,20770
+2021,3,Estafa,1555
+2021,3,Extorsión,272
+2021,3,Hurto,10315
+2021,3,Otros,21488
+2021,3,Robo,4426
+2021,3,Secuestro,91
+2021,3,Violencia contra la mujer y el grupo familiar,23006
+2021,4,Estafa,1544
+2021,4,Extorsión,285
+2021,4,Hurto,9951
+2021,4,Otros,19975
+2021,4,Robo,4519
+2021,4,Secuestro,82
+2021,4,Violencia contra la mujer y el grupo familiar,20096
+2021,5,Estafa,1624
+2021,5,Extorsión,310
+2021,5,Hurto,10988
+2021,5,Otros,23616
+2021,5,Robo,4792
+2021,5,Secuestro,84
+2021,5,Violencia contra la mujer y el grupo familiar,20849
+2021,6,Estafa,1681
+2021,6,Extorsión,341
+2021,6,Hurto,11223
+2021,6,Otros,22146
+2021,6,Robo,4899
+2021,6,Secuestro,81
+2021,6,Violencia contra la mujer y el grupo familiar,20027
+2021,7,Estafa,1838
+2021,7,Extorsión,346
+2021,7,Hurto,11778
+2021,7,Otros,24698
+2021,7,Robo,5120
+2021,7,Secuestro,105
+2021,7,Violencia contra la mujer y el grupo familiar,21022
+2021,8,Estafa,1825
+2021,8,Extorsión,390
+2021,8,Hurto,11983
+2021,8,Otros,25149
+2021,8,Robo,5474
+2021,8,Secuestro,86
+2021,8,Violencia contra la mujer y el grupo familiar,21691
+2021,9,Estafa,1771
+2021,9,Extorsión,460
+2021,9,Hurto,11607
+2021,9,Otros,24474
+2021,9,Robo,5542
+2021,9,Secuestro,108
+2021,9,Violencia contra la mujer y el grupo familiar,20587
+2021,10,Estafa,1918
+2021,10,Extorsión,484
+2021,10,Hurto,12533
+2021,10,Otros,26383
+2021,10,Robo,5699
+2021,10,Secuestro,103
+2021,10,Violencia contra la mujer y el grupo familiar,21992
+2021,11,Estafa,2020
+2021,11,Extorsión,544
+2021,11,Hurto,12554
+2021,11,Otros,24371
+2021,11,Robo,5713
+2021,11,Secuestro,94
+2021,11,Violencia contra la mujer y el grupo familiar,21539
+2021,12,Estafa,2004
+2021,12,Extorsión,582
+2021,12,Hurto,13188
+2021,12,Otros,24522
+2021,12,Robo,6413
+2021,12,Secuestro,129
+2021,12,Violencia contra la mujer y el grupo familiar,21722
+2022,1,Estafa,2165
+2022,1,Extorsión,697
+2022,1,Hurto,12137
+2022,1,Otros,24715
+2022,1,Robo,6082
+2022,1,Secuestro,109
+2022,1,Violencia contra la mujer y el grupo familiar,22140
+2022,2,Estafa,2247
+2022,2,Extorsión,805
+2022,2,Hurto,12105
+2022,2,Otros,25877
+2022,2,Robo,6174
+2022,2,Secuestro,121
+2022,2,Violencia contra la mujer y el grupo familiar,20973
+2022,3,Estafa,2407
+2022,3,Extorsión,920
+2022,3,Hurto,14238
+2022,3,Otros,30190
+2022,3,Robo,6577
+2022,3,Secuestro,119
+2022,3,Violencia contra la mujer y el grupo familiar,23810
+2022,4,Estafa,2036
+2022,4,Extorsión,1016
+2022,4,Hurto,13706
+2022,4,Otros,27910
+2022,4,Robo,6271
+2022,4,Secuestro,102
+2022,4,Violencia contra la mujer y el grupo familiar,21552
+2022,5,Estafa,2224
+2022,5,Extorsión,1144
+2022,5,Hurto,14345
+2022,5,Otros,29257
+2022,5,Robo,6522
+2022,5,Secuestro,114
+2022,5,Violencia contra la mujer y el grupo familiar,21638
+2022,6,Estafa,2177
+2022,6,Extorsión,1279
+2022,6,Hurto,13325
+2022,6,Otros,27053
+2022,6,Robo,6158
+2022,6,Secuestro,97
+2022,6,Violencia contra la mujer y el grupo familiar,19545
+2022,7,Estafa,2114
+2022,7,Extorsión,1609
+2022,7,Hurto,14675
+2022,7,Otros,29854
+2022,7,Robo,6699
+2022,7,Secuestro,100
+2022,7,Violencia contra la mujer y el grupo familiar,20108
+2022,8,Estafa,2323
+2022,8,Extorsión,1675
+2022,8,Hurto,14576
+2022,8,Otros,27898
+2022,8,Robo,6661
+2022,8,Secuestro,107
+2022,8,Violencia contra la mujer y el grupo familiar,19677
+2022,9,Estafa,2290
+2022,9,Extorsión,1510
+2022,9,Hurto,14884
+2022,9,Otros,28881
+2022,9,Robo,7421
+2022,9,Secuestro,112
+2022,9,Violencia contra la mujer y el grupo familiar,19277
+2022,10,Estafa,2445
+2022,10,Extorsión,1505
+2022,10,Hurto,15423
+2022,10,Otros,28520
+2022,10,Robo,7321
+2022,10,Secuestro,107
+2022,10,Violencia contra la mujer y el grupo familiar,19954
+2022,11,Estafa,2243
+2022,11,Extorsión,2147
+2022,11,Hurto,14308
+2022,11,Otros,27332
+2022,11,Robo,6785
+2022,11,Secuestro,132
+2022,11,Violencia contra la mujer y el grupo familiar,19736
+2022,12,Estafa,2254
+2022,12,Extorsión,1763
+2022,12,Hurto,16867
+2022,12,Otros,25017
+2022,12,Robo,10291
+2022,12,Secuestro,101
+2022,12,Violencia contra la mujer y el grupo familiar,19061
+2023,1,Estafa,2324
+2023,1,Extorsión,1535
+2023,1,Hurto,16606
+2023,1,Otros,26968
+2023,1,Robo,10619
+2023,1,Secuestro,85
+2023,1,Violencia contra la mujer y el grupo familiar,20721
+2023,2,Estafa,2409
+2023,2,Extorsión,1357
+2023,2,Hurto,16687
+2023,2,Otros,27829
+2023,2,Robo,10546
+2023,2,Secuestro,107
+2023,2,Violencia contra la mujer y el grupo familiar,20720
+2023,3,Estafa,2715
+2023,3,Extorsión,1564
+2023,3,Hurto,18076
+2023,3,Otros,30861
+2023,3,Robo,11419
+2023,3,Secuestro,123
+2023,3,Violencia contra la mujer y el grupo familiar,22806
+2023,4,Estafa,2570
+2023,4,Extorsión,1764
+2023,4,Hurto,18211
+2023,4,Otros,31724
+2023,4,Robo,12626
+2023,4,Secuestro,108
+2023,4,Violencia contra la mujer y el grupo familiar,22951
+2023,5,Estafa,2864
+2023,5,Extorsión,2078
+2023,5,Hurto,19433
+2023,5,Otros,31547
+2023,5,Robo,12264
+2023,5,Secuestro,129
+2023,5,Violencia contra la mujer y el grupo familiar,22052
+2023,6,Estafa,2956
+2023,6,Extorsión,1711
+2023,6,Hurto,19263
+2023,6,Otros,30065
+2023,6,Robo,11848
+2023,6,Secuestro,125
+2023,6,Violencia contra la mujer y el grupo familiar,20352
+2023,7,Estafa,2899
+2023,7,Extorsión,1793
+2023,7,Hurto,20145
+2023,7,Otros,31729
+2023,7,Robo,11551
+2023,7,Secuestro,108
+2023,7,Violencia contra la mujer y el grupo familiar,21456
+2023,8,Estafa,2982
+2023,8,Extorsión,2103
+2023,8,Hurto,19683
+2023,8,Otros,30146
+2023,8,Robo,11080
+2023,8,Secuestro,95
+2023,8,Violencia contra la mujer y el grupo familiar,21004
+2023,9,Estafa,2822
+2023,9,Extorsión,2142
+2023,9,Hurto,20103
+2023,9,Otros,29741
+2023,9,Robo,12187
+2023,9,Secuestro,96
+2023,9,Violencia contra la mujer y el grupo familiar,20624
+2023,10,Estafa,3156
+2023,10,Extorsión,2225
+2023,10,Hurto,21380
+2023,10,Otros,30448
+2023,10,Robo,12694
+2023,10,Secuestro,99
+2023,10,Violencia contra la mujer y el grupo familiar,21811
+2023,11,Estafa,3301
+2023,11,Extorsión,2317
+2023,11,Hurto,20573
+2023,11,Otros,28749
+2023,11,Robo,12110
+2023,11,Secuestro,137
+2023,11,Violencia contra la mujer y el grupo familiar,20706
+2023,12,Estafa,3331
+2023,12,Extorsión,1734
+2023,12,Hurto,21313
+2023,12,Otros,27752
+2023,12,Robo,12767
+2023,12,Secuestro,113
+2023,12,Violencia contra la mujer y el grupo familiar,21091
+2024,1,Estafa,3726
+2024,1,Extorsión,1852
+2024,1,Hurto,19457
+2024,1,Otros,30497
+2024,1,Robo,11650
+2024,1,Secuestro,104
+2024,1,Violencia contra la mujer y el grupo familiar,22418
+2024,2,Estafa,3509
+2024,2,Extorsión,1747
+2024,2,Hurto,19917
+2024,2,Otros,30634
+2024,2,Robo,11933
+2024,2,Secuestro,97
+2024,2,Violencia contra la mujer y el grupo familiar,22247
+2024,3,Estafa,3407
+2024,3,Extorsión,1946
+2024,3,Hurto,21544
+2024,3,Otros,32614
+2024,3,Robo,11543
+2024,3,Secuestro,104
+2024,3,Violencia contra la mujer y el grupo familiar,22352
+2024,4,Estafa,3507
+2024,4,Extorsión,1969
+2024,4,Hurto,18557
+2024,4,Otros,33396
+2024,4,Robo,8447
+2024,4,Secuestro,93
+2024,4,Violencia contra la mujer y el grupo familiar,20788
+2024,5,Estafa,3244
+2024,5,Extorsión,1701
+2024,5,Hurto,18209
+2024,5,Otros,33082
+2024,5,Robo,7777
+2024,5,Secuestro,118
+2024,5,Violencia contra la mujer y el grupo familiar,19556
+2024,6,Estafa,2966
+2024,6,Extorsión,1482
+2024,6,Hurto,18415
+2024,6,Otros,32800
+2024,6,Robo,7999
+2024,6,Secuestro,102
+2024,6,Violencia contra la mujer y el grupo familiar,19253
+2024,7,Estafa,3508
+2024,7,Extorsión,1551
+2024,7,Hurto,19368
+2024,7,Otros,32146
+2024,7,Robo,9680
+2024,7,Secuestro,124
+2024,7,Violencia contra la mujer y el grupo familiar,18894
+2024,8,Estafa,3345
+2024,8,Extorsión,1707
+2024,8,Hurto,18900
+2024,8,Otros,32044
+2024,8,Robo,9221
+2024,8,Secuestro,105
+2024,8,Violencia contra la mujer y el grupo familiar,19154
+2024,9,Estafa,3257
+2024,9,Extorsión,1803
+2024,9,Hurto,18322
+2024,9,Otros,31785
+2024,9,Robo,8934
+2024,9,Secuestro,94
+2024,9,Violencia contra la mujer y el grupo familiar,19552
+2024,10,Estafa,3399
+2024,10,Extorsión,2092
+2024,10,Hurto,17326
+2024,10,Otros,31524
+2024,10,Robo,7326
+2024,10,Secuestro,95
+2024,10,Violencia contra la mujer y el grupo familiar,19267
+2024,11,Estafa,3178
+2024,11,Extorsión,2064
+2024,11,Hurto,15002
+2024,11,Otros,30035
+2024,11,Robo,5266
+2024,11,Secuestro,108
+2024,11,Violencia contra la mujer y el grupo familiar,19534
+2024,12,Estafa,3276
+2024,12,Extorsión,2004
+2024,12,Hurto,15867
+2024,12,Otros,30371
+2024,12,Robo,5476
+2024,12,Secuestro,124
+2024,12,Violencia contra la mujer y el grupo familiar,21051
+2025,1,Estafa,3524
+2025,1,Extorsión,2158
+2025,1,Hurto,15299
+2025,1,Otros,32171
+2025,1,Robo,5119
+2025,1,Secuestro,106
+2025,1,Violencia contra la mujer y el grupo familiar,20951
+2025,2,Estafa,3154
+2025,2,Extorsión,2088
+2025,2,Hurto,14605
+2025,2,Otros,31248
+2025,2,Robo,4715
+2025,2,Secuestro,99
+2025,2,Violencia contra la mujer y el grupo familiar,19292
+2025,3,Estafa,3246
+2025,3,Extorsión,2529
+2025,3,Hurto,16287
+2025,3,Otros,34536
+2025,3,Robo,5366
+2025,3,Secuestro,89
+2025,3,Violencia contra la mujer y el grupo familiar,21096
+2025,4,Estafa,3320
+2025,4,Extorsión,2587
+2025,4,Hurto,14824
+2025,4,Otros,32498
+2025,4,Robo,4598
+2025,4,Secuestro,90
+2025,4,Violencia contra la mujer y el grupo familiar,18771
+2025,5,Estafa,3221
+2025,5,Extorsión,2407
+2025,5,Hurto,15109
+2025,5,Otros,31549
+2025,5,Robo,4655
+2025,5,Secuestro,105
+2025,5,Violencia contra la mujer y el grupo familiar,17632
+2025,6,Estafa,3094
+2025,6,Extorsión,2198
+2025,6,Hurto,14912
+2025,6,Otros,30583
+2025,6,Robo,4654
+2025,6,Secuestro,97
+2025,6,Violencia contra la mujer y el grupo familiar,17334
+2025,7,Estafa,3351
+2025,7,Extorsión,2240
+2025,7,Hurto,15181
+2025,7,Otros,31515
+2025,7,Robo,4754
+2025,7,Secuestro,110
+2025,7,Violencia contra la mujer y el grupo familiar,16746
+2025,8,Estafa,3238
+2025,8,Extorsión,2315
+2025,8,Hurto,15214
+2025,8,Otros,30561
+2025,8,Robo,4889
+2025,8,Secuestro,91
+2025,8,Violencia contra la mujer y el grupo familiar,17318
+2025,9,Estafa,3156
+2025,9,Extorsión,2295
+2025,9,Hurto,14937
+2025,9,Otros,29887
+2025,9,Robo,4682
+2025,9,Secuestro,95
+2025,9,Violencia contra la mujer y el grupo familiar,17343
+2025,10,Estafa,4475
+2025,10,Extorsión,2401
+2025,10,Hurto,15554
+2025,10,Otros,29738
+2025,10,Robo,4816
+2025,10,Secuestro,102
+2025,10,Violencia contra la mujer y el grupo familiar,17445
+2025,11,Estafa,3124
+2025,11,Extorsión,1888
+2025,11,Hurto,14638
+2025,11,Otros,29703
+2025,11,Robo,4560
+2025,11,Secuestro,100
+2025,11,Violencia contra la mujer y el grupo familiar,18257
+2025,12,Estafa,3269
+2025,12,Extorsión,1635
+2025,12,Hurto,14111
+2025,12,Otros,26749
+2025,12,Robo,4396
+2025,12,Secuestro,92
+2025,12,Violencia contra la mujer y el grupo familiar,17349
+2026,1,Estafa,3450
+2026,1,Extorsión,1648
+2026,1,Hurto,14065
+2026,1,Otros,30082
+2026,1,Robo,4297
+2026,1,Secuestro,92
+2026,1,Violencia contra la mujer y el grupo familiar,19155
+2026,2,Estafa,3210
+2026,2,Extorsión,1594
+2026,2,Hurto,13176
+2026,2,Otros,29778
+2026,2,Robo,4052
+2026,2,Secuestro,70
+2026,2,Violencia contra la mujer y el grupo familiar,18095
+2026,3,Estafa,3447
+2026,3,Extorsión,1903
+2026,3,Hurto,15146
+2026,3,Otros,33135
+2026,3,Robo,4453
+2026,3,Secuestro,77
+2026,3,Violencia contra la mujer y el grupo familiar,20175
+2026,4,Estafa,3329
+2026,4,Extorsión,1967
+2026,4,Hurto,15189
+2026,4,Otros,30306
+2026,4,Robo,4170
+2026,4,Secuestro,82
+2026,4,Violencia contra la mujer y el grupo familiar,18172
+2026,5,Estafa,3079
+2026,5,Extorsión,1938
+2026,5,Hurto,15571
+2026,5,Otros,31792
+2026,5,Robo,4412
+2026,5,Secuestro,128
+2026,5,Violencia contra la mujer y el grupo familiar,18630
+2026,6,Estafa,2725
+2026,6,Extorsión,1761
+2026,6,Hurto,14619
+2026,6,Otros,27665
+2026,6,Robo,4033
+2026,6,Secuestro,85
+2026,6,Violencia contra la mujer y el grupo familiar,17256
+2026,7,Estafa,3001
+2026,7,Extorsión,1605
+2026,7,Hurto,14805
+2026,7,Otros,29770
+2026,7,Robo,4145
+2026,7,Secuestro,104
+2026,7,Violencia contra la mujer y el grupo familiar,17488
+2026,8,Estafa,2762
+2026,8,Extorsión,1656
+2026,8,Hurto,14987
+2026,8,Otros,29342
+2026,8,Robo,3975
+2026,8,Secuestro,93
+2026,8,Violencia contra la mujer y el grupo familiar,17464
+2026,9,Estafa,2421
+2026,9,Extorsión,1578
+2026,9,Hurto,13972
+2026,9,Otros,26108
+2026,9,Robo,3521
+2026,9,Secuestro,80
+2026,9,Violencia contra la mujer y el grupo familiar,15363

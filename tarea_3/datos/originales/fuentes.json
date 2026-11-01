@@ -1,0 +1,32 @@
+{
+  "mininter_denuncias_2018_2026.csv": {
+    "url": "https://www.datosabiertos.gob.pe/sites/default/files/DATASET_Denuncias%20Policiales%20-%20Enero%202018%20a%20Septiembre%202026.csv",
+    "descripcion": "MININTER. Denuncias policiales registradas en el SIDPOL por año, mes, distrito y modalidad, enero 2018 a setiembre 2026. https://www.datosabiertos.gob.pe/dataset/denuncias-policiales-registradas-nivel-nacional-mininter",
+    "fecha_descarga": "2026-11-01"
+  },
+  "mininter_denuncias_diccionario.xlsx": {
+    "url": "https://www.datosabiertos.gob.pe/sites/default/files/DICCIONARIO_DATOS_Denuncias_Policiales_Abr%202026.xlsx",
+    "descripcion": "MININTER. Diccionario de datos de las denuncias policiales",
+    "fecha_descarga": "2026-11-01"
+  },
+  "mininter_indicadores_diccionario.xlsx": {
+    "url": "https://www.datosabiertos.gob.pe/sites/default/files/DICCIONAR_DATOS_%20Ind_%20Plan_Acc_Seg_Ciud_Jun%202026.xlsx",
+    "descripcion": "MININTER. Diccionario de los indicadores de seguridad ciudadana (códigos de indicador y de ubigeo)",
+    "fecha_descarga": "2026-11-01"
+  },
+  "peru_provincial_simple.geojson": {
+    "url": "https://raw.githubusercontent.com/juaneladio/peru-geojson/master/peru_provincial_simple.geojson",
+    "descripcion": "Límites provinciales del Perú (github.com/juaneladio/peru-geojson, licencia MPL-2.0)",
+    "fecha_descarga": "2026-11-01"
+  },
+  "peru_distrital_simple.geojson": {
+    "url": "https://raw.githubusercontent.com/juaneladio/peru-geojson/master/peru_distrital_simple.geojson",
+    "descripcion": "Límites distritales del Perú (github.com/juaneladio/peru-geojson, licencia MPL-2.0)",
+    "fecha_descarga": "2026-11-01"
+  },
+  "mininter_indicadores_2009_ago2026.csv": {
+    "url": "https://www.datosabiertos.gob.pe/sites/default/files/DataSet%20Indicadores%20para%20Planes%20de%20Acci%C3%B3n%20de%20Seguridad%20Ciudadana%20-%20Agosto%202026.zip",
+    "fecha_descarga": "2026-11-01",
+    "descripcion": "MININTER. Indicadores de seguridad ciudadana por región, provincia y distrito, 2009 a agosto 2026 (victimización ENAPRES, homicidios CEIC, denuncias SIDPOL y otros). https://www.datosabiertos.gob.pe/dataset/indicadores-de-seguridad-ciudadana-y-tendencias-territoriales-mininter"
+  }
+}

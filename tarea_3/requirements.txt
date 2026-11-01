@@ -1,0 +1,5 @@
+# Python 3.12. Pasos 1 a 3 (datos y análisis)
+requests==2.34.2
+pandas==3.1.0
+geopandas==1.2.0
+

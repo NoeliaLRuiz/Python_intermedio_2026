@@ -1,0 +1,137 @@
+{
+  "ultimo_anio": {
+    "victimizacion": 2025,
+    "tasa_homicidios": 2024,
+    "tasa_extorsiones": 2025
+  },
+  "h1": {
+    "nacional_2010": 33.1,
+    "nacional_2011": 40.0,
+    "nacional_2025": 25.3,
+    "regiones_que_bajan_desde_2010": 24,
+    "regiones": 26,
+    "mas_victimizacion_2025": [
+      {
+        "region": "Arequipa",
+        "victimizacion": 33.5
+      },
+      {
+        "region": "Puno",
+        "victimizacion": 31.7
+      },
+      {
+        "region": "Cusco",
+        "victimizacion": 31.5
+      },
+      {
+        "region": "Junín",
+        "victimizacion": 29.4
+      },
+      {
+        "region": "Madre de Dios",
+        "victimizacion": 28.4
+      }
+    ]
+  },
+  "h2": {
+    "homicidios_2014": 2076,
+    "homicidios_2024": 3426,
+    "tasa_homicidios_2014": 6.7,
+    "tasa_homicidios_2024": 10.1,
+    "regiones_con_mas_homicidios_que_en_2014": 19,
+    "lima_metropolitana_veces": 2.5,
+    "arma_fuego_2012": 6.4,
+    "arma_fuego_2025": 11.3,
+    "extorsiones_2018": 3223,
+    "extorsiones_2025": 27292,
+    "extorsiones_veces": 8.5
+  },
+  "h3": {
+    "top_tasa_homicidios_2024": [
+      {
+        "region": "Callao",
+        "tasa_homicidios": 20.3
+      },
+      {
+        "region": "Tumbes",
+        "tasa_homicidios": 18.0
+      },
+      {
+        "region": "Madre de Dios",
+        "tasa_homicidios": 17.8
+      },
+      {
+        "region": "La Libertad",
+        "tasa_homicidios": 16.1
+      },
+      {
+        "region": "Región Lima",
+        "tasa_homicidios": 15.8
+      },
+      {
+        "region": "Ica",
+        "tasa_homicidios": 13.5
+      }
+    ],
+    "top_tasa_extorsiones_2025": [
+      {
+        "region": "Tumbes",
+        "tasa_extorsiones": 232.1
+      },
+      {
+        "region": "La Libertad",
+        "tasa_extorsiones": 202.8
+      },
+      {
+        "region": "Región Lima",
+        "tasa_extorsiones": 140.8
+      },
+      {
+        "region": "Piura",
+        "tasa_extorsiones": 130.0
+      },
+      {
+        "region": "Lima Metropolitana",
+        "tasa_extorsiones": 108.8
+      },
+      {
+        "region": "Callao",
+        "tasa_extorsiones": 75.9
+      }
+    ],
+    "en_ambos_top6": [
+      "Callao",
+      "La Libertad",
+      "Región Lima",
+      "Tumbes"
+    ],
+    "correlacion_victimizacion_homicidios_2024": 0.0
+  },
+  "extra_lima": [
+    {
+      "distrito": "LIMA",
+      "denuncias": 1627,
+      "tasa": 612.8
+    },
+    {
+      "distrito": "CHACLACAYO",
+      "denuncias": 72,
+      "tasa": 155.2
+    },
+    {
+      "distrito": "PUENTE PIEDRA",
+      "denuncias": 628,
+      "tasa": 144.1
+    },
+    {
+      "distrito": "PACHACAMAC",
+      "denuncias": 221,
+      "tasa": 132.2
+    },
+    {
+      "distrito": "VILLA EL SALVADOR",
+      "denuncias": 578,
+      "tasa": 130.7
+    }
+  ]
+}
