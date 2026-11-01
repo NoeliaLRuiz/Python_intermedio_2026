@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Gráficos del reel</title>
+<!-- Gráficos grandes para el reel, con los mismos datos del dashboard (../web/data). recursos.py abre esta página
+     con ?grafico=nombre y guarda una imagen de 1000 x 650 con fondo transparente. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.3.1/plotly.min.js"></script>
+<style>
+  @font-face { font-family: "Barlow"; src: url("recursos/fuentes/BarlowCondensed-SemiBold.ttf"); }
+  html, body { margin: 0; background: transparent; }
+  #grafico { width: 1000px; height: 650px; }
+</style>
+</head>
+<body>
+<div id="grafico"></div>
+<script>
+const AZUL = "#5ea1f0", NARANJA = "#ff7a45", TEXTO = "#e8eef7", APAGADO = "#2a3d5c";
+const BASE = {
+  paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)", separators: ", ", showlegend: false,
+  font: { family: "Barlow", size: 28, color: TEXTO }, margin: { l: 80, r: 50, t: 40, b: 60 },
+};
+const EJE = { gridcolor: "rgba(255,255,255,0.13)", zeroline: false, linecolor: "rgba(255,255,255,0.3)",
+              tickfont: { size: 26, color: "rgba(232,238,247,0.8)" } };
+const coma = (x, dec = 1) => x.toFixed(dec).replace(".", ",");
+const miles = (x) => (x >= 10000 ? String(x).replace(/\B(?=(\d{3})+(?!\d))/g, " ") : String(x));
+
+function sentidoHorario(geojson) {
+  // d3 (que usa Plotly para mapas) espera el borde exterior de cada polígono en sentido horario
+  const area = (r) => r.reduce((s, [x1, y1], i) => { const [x2, y2] = r[(i + 1) % r.length]; return s + (x2 - x1) * (y2 + y1); }, 0);
+  const orientar = (p) => p.map((r, i) => ((i === 0) === (area(r) > 0) ? r : [...r].reverse()));
+  for (const { geometry: g } of geojson.features) {
+    if (g.type === "Polygon") g.coordinates = orientar(g.coordinates);
+    if (g.type === "MultiPolygon") g.coordinates = g.coordinates.map(orientar);
+  }
+}
+
+function centro(feature) {
+  // Centro aproximado del polígono más grande de la región (para poner su nombre)
+  const g = feature.geometry;
+  const anillos = g.type === "Polygon" ? [g.coordinates[0]] : g.coordinates.map((p) => p[0]);
+  const mayor = anillos.sort((a, b) => b.length - a.length)[0];
+  return [mayor.reduce((s, c) => s + c[0], 0) / mayor.length, mayor.reduce((s, c) => s + c[1], 0) / mayor.length];
+}
+
+function linea(serie, color, etiquetas, sufijo, maximo) {
+  const x = serie.map((f) => f.anio), y = serie.map((f) => f.valor);
+  return [[{
+    type: "scatter", mode: "lines+markers", x, y, line: { color, width: 7, shape: "spline", smoothing: 0.4 },
+    marker: { size: 12, color }, fill: "tozeroy", fillcolor: color + "2e",
+  }], {
+    ...BASE, xaxis: { ...EJE, tickvals: x.filter((a) => (a - x[0]) % (x.length > 12 ? 3 : 2) === 0 || a === x[x.length - 1]),
+                      showgrid: false },
+    yaxis: { ...EJE, range: [0, maximo], ticksuffix: sufijo },
+    annotations: etiquetas.map((a) => {
+      const f = serie.find((s) => s.anio === a);
+      return { x: a, y: f.valor, text: `<b>${coma(f.valor)}${sufijo}</b>`, showarrow: false, yshift: 42,
+               font: { size: 44, color: "#ffffff" }, bgcolor: color, borderpad: 6 };
+    }),
+  }];
+}
+
+function mapa(geojson, resaltadas, color, nombres, dominio, sufijo = "") {
+  const codigos = geojson.features.map((f) => f.properties.codigo);
+  const trazos = [{
+    type: "choropleth", geojson, featureidkey: "properties.codigo", locations: codigos, geo: "geo" + sufijo,
+    z: codigos.map((c) => (resaltadas.includes(c) ? 1 : 0)), zmin: 0, zmax: 1, showscale: false, hoverinfo: "skip",
+    colorscale: [[0, APAGADO], [1, color]], marker: { line: { color: "#0b1424", width: 1.5 } },
+  }];
+  const etiquetas = geojson.features.filter((f) => nombres[f.properties.codigo]);
+  trazos.push({
+    type: "scattergeo", geo: "geo" + sufijo, mode: "text", hoverinfo: "skip",
+    lon: etiquetas.map((f) => centro(f)[0]), lat: etiquetas.map((f) => centro(f)[1]),
+    text: etiquetas.map((f) => nombres[f.properties.codigo][0]),
+    textposition: etiquetas.map((f) => nombres[f.properties.codigo][1]),
+    textfont: { size: 30, color: "#ffffff", family: "Barlow" },
+  });
+  const geo = { fitbounds: "locations", visible: false, bgcolor: "rgba(0,0,0,0)", projection: { type: "mercator" },
+                domain: dominio };
+  return [trazos, geo];
+}
+
+function puntos(n, eje) {
+  // 100 puntos en una cuadrícula de 10 x 10; los primeros n, en naranja
+  const x = [], y = [], c = [];
+  for (let k = 0; k < 100; k++) { x.push(k % 10); y.push(Math.floor(k / 10)); c.push(k < n ? NARANJA : "rgba(255,255,255,0.22)"); }
+  return { type: "scatter", mode: "markers", x, y, xaxis: "x" + eje, yaxis: "y" + eje, hoverinfo: "skip",
+           marker: { size: 30, color: c, line: { width: 0 } } };
+}
+
+async function dibujar() {
+  await document.fonts.load("28px Barlow");
+  const [datos, regiones] = await Promise.all(["../web/data/datos.json", "../web/data/regiones.geojson"]
+    .map((r) => fetch(r).then((x) => x.json())));
+  sentidoHorario(regiones);
+  const nac = datos.nacional;
+  const serie = (campo) => nac.filter((f) => f[campo] !== null).map((f) => ({ anio: f.anio, valor: f[campo] }));
+  const nombre = new URLSearchParams(location.search).get("grafico");
+  let trazos, layout;
+
+  if (nombre === "victimizacion") {
+    [trazos, layout] = linea(serie("victimizacion"), AZUL, [2011, 2025], " %", 48);
+  } else if (nombre === "homicidios") {
+    [trazos, layout] = linea(serie("tasa_homicidios"), NARANJA, [2014, 2024], "", 12.5);
+  } else if (nombre === "arma_fuego") {
+    const v = serie("victimas_arma_fuego"), n12 = Math.round(v.find((f) => f.anio === 2012).valor),
+          n25 = Math.round(v.find((f) => f.anio === 2025).valor);
+    const oculto = { visible: false, range: [-0.8, 9.8] };
+    trazos = [puntos(n12, ""), puntos(n25, "2")];
+    layout = { ...BASE, margin: { l: 20, r: 20, t: 130, b: 20 },
+      xaxis: { ...oculto, domain: [0, 0.46] }, yaxis: { ...oculto, scaleanchor: "x" },
+      xaxis2: { ...oculto, domain: [0.54, 1] }, yaxis2: { ...oculto, scaleanchor: "x2" },
+      annotations: [[0.23, 2012, n12], [0.77, 2025, n25]].map(([x, a, n]) => (
+        { x, y: 1.02, xref: "paper", yref: "paper", xanchor: "center", yanchor: "bottom", showarrow: false,
+          text: `<b>${a}</b><br><span style="font-size:32px">${n} de cada 100</span>`, font: { size: 44, color: "#ffffff" } })) };
+  } else if (nombre === "extorsion_anual") {
+    const v = nac.filter((f) => f.extorsiones !== null);
+    trazos = [{ type: "bar", x: v.map((f) => f.anio), y: v.map((f) => f.extorsiones), marker: { color: NARANJA, cornerradius: 6 },
+                text: v.map((f, i) => (i === 0 || i === v.length - 1 ? `<b>${miles(f.extorsiones)}</b>` : "")),
+                textposition: "outside", textfont: { size: 40, color: "#ffffff" }, cliponaxis: false }];
+    layout = { ...BASE, bargap: 0.25, xaxis: { ...EJE, dtick: 1, showgrid: false },
+               yaxis: { ...EJE, range: [0, 33000], showticklabels: false } };
+  } else if (nombre === "mapa_portada") {
+    // Portada: el Perú pintado según la tasa de homicidios de 2024 (más oscuro = menos; más naranja = más)
+    const anio = 2024, p = datos.panel.filter((f) => f.anio === anio);
+    trazos = [{ type: "choropleth", geojson: regiones, featureidkey: "properties.codigo", locations: p.map((f) => f.codigo),
+                z: p.map((f) => f.tasa_homicidios), showscale: false, hoverinfo: "skip",
+                colorscale: [[0, APAGADO], [0.5, "#a8513a"], [1, NARANJA]], marker: { line: { color: "#0b1424", width: 1.5 } } }];
+    layout = { ...BASE, margin: { l: 0, r: 0, t: 0, b: 0 },
+               geo: { fitbounds: "locations", visible: false, bgcolor: "rgba(0,0,0,0)", projection: { type: "mercator" } } };
+  } else if (nombre === "cuatro_regiones") {
+    const [t, geo] = mapa(regiones, [7, 13, 24, 1599], NARANJA,
+      { 24: ["Tumbes", "middle left"], 13: ["La Libertad", "middle left"], 1599: ["Región Lima", "middle right"],
+        7: ["Callao", "middle left"] }, { x: [0, 1], y: [0, 1] });
+    trazos = t;
+    layout = { ...BASE, margin: { l: 0, r: 0, t: 0, b: 0 }, geo };
+  } else if (nombre === "dos_mapas") {
+    const [t1, geo] = mapa(regiones, [4, 21, 8], AZUL,
+      { 4: ["Arequipa", "middle left"], 21: ["Puno", "middle right"], 8: ["Cusco", "middle right"] }, { x: [0, 0.48], y: [0, 0.88] });
+    const [t2, geo2] = mapa(regiones, [7, 13, 24, 1599], NARANJA,
+      { 24: ["Tumbes", "middle left"], 13: ["La Libertad", "middle left"], 1599: ["Región Lima", "middle right"] },
+      { x: [0.52, 1], y: [0, 0.88] }, "2");
+    trazos = [...t1, ...t2];
+    layout = { ...BASE, margin: { l: 0, r: 0, t: 10, b: 0 }, geo, geo2,
+      annotations: [[0.24, "Más víctimas", AZUL], [0.76, "Más homicidios y extorsiones", NARANJA]].map(([x, t, c]) => (
+        { x, y: 1, xref: "paper", yref: "paper", xanchor: "center", yanchor: "top", text: `<b>${t}</b>`, showarrow: false,
+          font: { size: 34, color: c } })) };
+  }
+  await Plotly.newPlot("grafico", trazos, layout, { staticPlot: true });
+  document.body.dataset.listo = "1";
+}
+dibujar();
+</script>
+</body>
+</html>

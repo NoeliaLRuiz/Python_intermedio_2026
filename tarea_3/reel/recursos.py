@@ -1,79 +1,95 @@
-"""Paso 1 del reel: prepara las imágenes y la música.
+"""Paso 1 del reel: prepara el fondo, los gráficos y la música.
 
-1. Abre el dashboard publicado con Microsoft Edge (Playwright), elige los filtros de cada escena, fotografía
-   el gráfico y lo centra sobre un fondo oscuro de 1080 x 1920. Guarda un PNG por escena en reel/recursos/fondos/.
-2. Descarga la música (Kevin MacLeod, licencia CC BY 4.0) y guarda sus primeros 90 segundos en reel/recursos/musica.mp3.
+1. Fondo (1080 x 1920): degradado azul oscuro con la silueta del Perú muy tenue → reel/recursos/fondo.png
+2. Gráficos: abre reel/graficos.html (los mismos datos del dashboard, en grande) con Microsoft Edge y guarda
+   cada gráfico de 1000 x 650 con fondo transparente → reel/recursos/graficos/<nombre>.png
+3. Portada: una captura real del dashboard (título e indicadores) → reel/recursos/graficos/portada.png
+4. Música: los primeros 90 segundos de «Lightless Dawn» (Kevin MacLeod, CC BY 4.0) → reel/recursos/musica.mp3
 
-Uso:  python reel/recursos.py            (o --url http://localhost:8000 para usar la versión local)
+Uso, desde la carpeta tarea_3:  python reel/recursos.py
 """
-import argparse
+import functools
+import http.server
+import json
 import subprocess
+import threading
 from pathlib import Path
 
 import imageio_ffmpeg
+import numpy as np
 import requests
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFilter
 from playwright.sync_api import sync_playwright
 
 AQUI = Path(__file__).resolve().parent
+TAREA = AQUI.parent
 RECURSOS = AQUI / "recursos"
-FONDOS = RECURSOS / "fondos"
-URL = "https://noelialruiz.github.io/Python_intermedio_2026/tarea_3/web/"
+GRAFICOS = RECURSOS / "graficos"
 MUSICA = "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Lightless%20Dawn.mp3"
 W, H = 1080, 1920
-FONDO = (13, 13, 13)                  # el mismo negro de la página en modo oscuro
-CAJA = (40, 700, 1040, 1350)          # zona libre entre la cifra (arriba) y los subtítulos (abajo)
-CAJA_PORTADA = (40, 700, 1040, 1090)  # en la última escena, debajo van los créditos
-
-# Escena → (filtros que se eligen en la página, qué se fotografía)
-CAPTURAS = {
-    "victimizacion": ({}, "#ev-victimizacion"),
-    "homicidios": ({"#filtro-indicador": "tasa_homicidios", "#filtro-anio": "2024"}, "#grafico-mapa"),
-    "arma_fuego": ({}, "#ev-victimas_arma_fuego"),
-    "extorsion_mes": ({"#filtro-modalidad": "Extorsión"}, "#grafico-mensual"),
-    "extorsion_mapa": ({"#filtro-indicador": "tasa_extorsiones", "#filtro-anio": "2025"}, "#grafico-mapa"),
-    "dos_mapas": ({"#filtro-anio": "2024"}, "#grafico-cruce"),
-    "portada": ({}, "portada"),
-}
+GRAFICOS_DEL_REEL = ["mapa_portada", "victimizacion", "homicidios", "arma_fuego", "extorsion_anual", "cuatro_regiones",
+                     "dos_mapas"]
 
 
-def componer(captura, destino, caja):
-    """Centra la captura dentro de la caja, sin deformarla, sobre el fondo oscuro."""
-    img = Image.open(captura).convert("RGB")
-    x0, y0, x1, y1 = caja
-    escala = min((x1 - x0) / img.width, (y1 - y0) / img.height)
-    img = img.resize((round(img.width * escala), round(img.height * escala)), Image.LANCZOS)
-    lienzo = Image.new("RGB", (W, H), FONDO)
-    lienzo.paste(img, (x0 + (x1 - x0 - img.width) // 2, y0 + (y1 - y0 - img.height) // 2))
-    lienzo.save(destino)
+def armar_fondo():
+    """Degradado del azul del dashboard (arriba) a casi negro (abajo), con el mapa del Perú en línea tenue."""
+    arriba, abajo = np.array([16, 52, 104]), np.array([6, 10, 22])
+    t = np.linspace(0, 1, H)[:, None, None]
+    lienzo = ((1 - t) * arriba + t * abajo).repeat(W, axis=1).astype("uint8")
+    fondo = Image.fromarray(lienzo, "RGB")
+    regiones = json.loads((TAREA / "web" / "data" / "regiones.geojson").read_text(encoding="utf-8"))
+    # Mapa grande y desplazado a la derecha: de longitud -81,5 a -68,5 y de latitud 0,5 a -18,5
+    a_pixel = lambda lon, lat: (180 + (lon + 81.5) / 13 * 1250, 260 + (0.5 - lat) / 19 * 1750)
+    capa = Image.new("L", (W, H), 0)
+    d = ImageDraw.Draw(capa)
+    for f in regiones["features"]:
+        g = f["geometry"]
+        poligonos = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
+        for p in poligonos:
+            d.line([a_pixel(*c) for c in p[0]], fill=255, width=3)
+    capa = capa.filter(ImageFilter.GaussianBlur(1))
+    blanco = Image.new("RGB", (W, H), (120, 170, 235))
+    fondo = Image.composite(blanco, fondo, capa.point(lambda v: v * 0.10))     # 10 % de opacidad
+    fondo.save(RECURSOS / "fondo.png")
+    print("  fondo listo: fondo.png")
 
 
-def capturar_fondos(url):
-    FONDOS.mkdir(parents=True, exist_ok=True)
+class Silencioso(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, *args):       # no muestra cada archivo que pide el navegador
+        pass
+
+
+def servidor_local():
+    """Sirve la carpeta tarea_3 en http://localhost:<puerto> (el navegador necesita un servidor para leer los datos)."""
+    manejador = functools.partial(Silencioso, directory=str(TAREA))
+    servidor = http.server.ThreadingHTTPServer(("localhost", 0), manejador)
+    threading.Thread(target=servidor.serve_forever, daemon=True).start()
+    return servidor, f"http://localhost:{servidor.server_address[1]}"
+
+
+def capturar(url):
+    GRAFICOS.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as pw:
         navegador = pw.chromium.launch(channel="msedge")      # usa el Edge instalado en Windows
-        # Ventana angosta (como un celular grande) y escala 2: cada gráfico ocupa ~1000 px de ancho.
-        # La portada se toma en una ventana ancha, para que el título y los 4 indicadores entren a lo ancho.
-        angosta = navegador.new_page(viewport={"width": 540, "height": 1200}, device_scale_factor=2,
-                                     color_scheme="dark")
+        pagina = navegador.new_page(viewport={"width": 1000, "height": 650})
+        for nombre in GRAFICOS_DEL_REEL:
+            pagina.goto(f"{url}/reel/graficos.html?grafico={nombre}", wait_until="networkidle")
+            pagina.wait_for_selector("body[data-listo='1']")
+            pagina.locator("#grafico").screenshot(path=GRAFICOS / f"{nombre}.png", omit_background=True)
+            print(f"  gráfico listo: {nombre}.png")
+        # Portada: el dashboard en modo oscuro, del título a los 4 indicadores
         ancha = navegador.new_page(viewport={"width": 1100, "height": 1000}, color_scheme="dark")
-        for nombre, (filtros, selector) in CAPTURAS.items():
-            pagina = ancha if selector == "portada" else angosta
-            pagina.goto(url, wait_until="networkidle")
-            pagina.wait_for_selector("#grafico-mapa .main-svg")
-            for filtro, valor in filtros.items():
-                pagina.select_option(filtro, valor)
-            pagina.wait_for_timeout(1000)                  # deja que Plotly termine de redibujar
-            captura = FONDOS / f"_{nombre}_captura.png"
-            if selector == "portada":                      # título, filtros e indicadores del dashboard
-                fin = pagina.locator("#kpis").bounding_box()
-                pagina.screenshot(path=captura, clip={"x": 0, "y": 0, "width": 1100, "height": fin["y"] + fin["height"] + 12})
-                componer(captura, FONDOS / f"{nombre}.png", CAJA_PORTADA)
-            else:                                          # la tarjeta completa: título y gráfico
-                pagina.locator(selector).locator("xpath=..").screenshot(path=captura)
-                componer(captura, FONDOS / f"{nombre}.png", CAJA)
-            captura.unlink()
-            print(f"  fondo listo: {nombre}.png")
+        ancha.goto(f"{url}/web/", wait_until="networkidle")
+        ancha.wait_for_selector("#grafico-mapa .main-svg")
+        ancha.wait_for_timeout(1500)                      # espera a que terminen las animaciones de entrada
+        fin = ancha.locator("#kpis").bounding_box()
+        captura = GRAFICOS / "_portada.png"
+        ancha.screenshot(path=captura, clip={"x": 0, "y": 0, "width": 1100, "height": fin["y"] + fin["height"] + 12})
+        img = Image.open(captura)
+        img.thumbnail((1000, 390), Image.LANCZOS)
+        img.save(GRAFICOS / "portada.png")
+        captura.unlink()
+        print("  captura lista: portada.png")
         navegador.close()
 
 
@@ -93,10 +109,13 @@ def preparar_musica():
 
 
 def main():
-    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--url", default=URL)
-    a = p.parse_args()
-    capturar_fondos(a.url)
+    RECURSOS.mkdir(parents=True, exist_ok=True)
+    armar_fondo()
+    servidor, url = servidor_local()
+    try:
+        capturar(url)
+    finally:
+        servidor.shutdown()
     preparar_musica()
 
 

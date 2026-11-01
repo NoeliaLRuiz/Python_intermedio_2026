@@ -30,13 +30,23 @@ warnings.filterwarnings("ignore")
 sys.stdout.reconfigure(encoding="utf-8")
 
 AQUI = Path(__file__).resolve().parent
-CACHE, FONDOS, FUENTES = AQUI / "cache", AQUI / "recursos" / "fondos", AQUI / "recursos" / "fuentes"
+CACHE, FUENTES = AQUI / "cache", AQUI / "recursos" / "fuentes"
+FONDO, GRAFICOS = AQUI / "recursos" / "fondo.png", AQUI / "recursos" / "graficos"
+BARRIDO = {"victimizacion", "homicidios", "arma_fuego", "extorsion_anual"}   # se dibujan de izquierda a derecha
+X_GRAFICO, Y_GRAFICO, ANCHO_GRAFICO = 40, 700, 1000                          # los mapas y la portada aparecen suavemente
+SEG_ANIMACION = 1.4
+SEG_PORTADA = 2.5                       # la portada dura 2,5 s, solo con música, antes de la primera escena
+Y_MAPA_PORTADA = 760
 W, H, FPS, SR = 1080, 1920, 30, 24000
 NARANJA, BLANCO = (235, 104, 52), (255, 255, 255)
 MAX_WER = 0.25          # si Whisper entiende mal más del 25 % de las palabras, se narra de nuevo
 INTENTOS = 3
 MIN_SEGUNDOS, MAX_SEGUNDOS = 45, 75     # la tarea pide de 45 a 75 segundos
 MUSICA_LUFS = -30.0     # la voz queda en -14 LUFS: la música, 16 dB más baja
+# Ecualizador suave contra el sonido nasal (versión B): +3 dB en 150 Hz, -2,5 dB en 450 Hz, -2 dB en 1 kHz
+# y +3 dB desde 3,5 kHz
+ECUALIZADOR = ("equalizer=f=150:t=q:w=1:g=3,equalizer=f=450:t=q:w=1.2:g=-2.5,"
+               "equalizer=f=1000:t=q:w=1.4:g=-2,highshelf=f=3500:g=3")
 # Zonas seguras de Reels: arriba la barra de la app, abajo el pie y a la derecha los botones
 ARRIBA, ABAJO, IZQ, DER = 230, 420, 70, 170
 Y_SUBTITULO = H - ABAJO - 110           # debajo del gráfico (que termina en y = 1350)
@@ -140,6 +150,14 @@ def narrar_escenas(guion, voz, modelo_tts, whisper, texto_voz=None):
     return escenas
 
 
+def ecualizar(audio):
+    """Corrige el sonido nasal de la voz clonada: más graves y agudos, un poco menos de medios (versión B)."""
+    crudo, ecualizado = CACHE / "voz_sin_ecualizar.wav", CACHE / "voz_ecualizada.wav"
+    sf.write(crudo, audio, SR)
+    subprocess.run([FFMPEG, "-y", "-loglevel", "error", "-i", str(crudo), "-af", ECUALIZADOR, str(ecualizado)], check=True)
+    return sf.read(ecualizado, dtype="float32")[0]
+
+
 def limitar(audio):
     """Redondea los picos con un limitador suave, sin saturar."""
     alto = np.abs(audio) > 0.8
@@ -150,7 +168,7 @@ def limitar(audio):
 def unir_audio(escenas):
     """Une las escenas con pausas, deja la voz en -14 LUFS y devuelve dónde empieza cada escena."""
     pausa = lambda s: np.zeros(int(SR * s), dtype="float32")
-    partes, tramos, desfases, t = [pausa(0.3)], [], [], 0.3
+    partes, tramos, desfases, t = [pausa(SEG_PORTADA)], [], [], SEG_PORTADA
     for e in escenas:
         audio, _ = sf.read(e["wav"], dtype="float32")
         a0 = 0.0
@@ -174,6 +192,7 @@ def unir_audio(escenas):
         audio, _ = sf.read(rapido, dtype="float32")
         tramos = [(a / factor, b / factor) for a, b in tramos]
         print(f"Audio acelerado {factor:.3f} veces para no pasar de {MAX_SEGUNDOS} s")
+    audio = ecualizar(audio)
     medidor = pyloudnorm.Meter(SR)
     for _ in range(3):
         audio = limitar(pyloudnorm.normalize.loudness(audio, medidor.integrated_loudness(audio), -14.0))
@@ -197,7 +216,8 @@ def mezclar_musica(voz, musica):
 
 def tiempos_de_palabras(frase, palabras, ini, fin):
     """Empareja las palabras del guion con las que Whisper fechó; las que no empatan se interpolan."""
-    visibles = frase.split()
+    # Palabras del subtítulo; «27 292» queda junto (no se corta un número entre dos pantallas)
+    visibles = re.split(r"(?<!\d)\s+|\s+(?!\d{3}\b)", frase.strip())
     fichas, de_quien = [], []
     for k, v in enumerate(visibles):
         for f in normalizar(v).split():
@@ -298,13 +318,7 @@ def capa_fija(e, titulo, final, creditos, fuente_txt):
     capa.alpha_composite(degradado(560, arriba=False, opacidad=200), (0, H - 560))
     d = ImageDraw.Draw(capa)
     d.text((IZQ, ARRIBA + 34), titulo.upper(), font=fuente("SemiBold", 34), fill=(255, 255, 255, 215))
-    aviso = "Voz generada con IA"
-    fa = fuente("SemiBold", 30)
-    ancho = fa.getlength(aviso) + 28
-    d.rounded_rectangle((IZQ, ARRIBA + 86, IZQ + ancho, ARRIBA + 130), radius=22, fill=(0, 0, 0, 150), outline=(255, 255, 255, 120))
-    d.text((IZQ + 14, ARRIBA + 91), aviso, font=fa, fill=BLANCO)
-    d.text((IZQ + ancho + 18, ARRIBA + 93), f"Datos: {fuente_txt.split(' (')[0]}", font=fuente("Medium", 28),
-           fill=(255, 255, 255, 200))
+    aviso_y_fuente(d, fuente_txt, ARRIBA + 86)
     tam = 170
     while ancho_cifra(e["cifra"], fuente("Bold", tam)) > W - IZQ - DER and tam > 80:
         tam -= 10
@@ -322,6 +336,47 @@ def capa_fija(e, titulo, final, creditos, fuente_txt):
         for linea in lineas:
             d.text((IZQ, y), linea, font=fc, fill=(255, 255, 255, 235))
             y += 36
+    return capa
+
+
+def aviso_y_fuente(d, fuente_txt, y):
+    aviso = "Voz generada con IA"
+    fa = fuente("SemiBold", 30)
+    ancho = fa.getlength(aviso) + 28
+    d.rounded_rectangle((IZQ, y, IZQ + ancho, y + 44), radius=22, fill=(0, 0, 0, 150), outline=(255, 255, 255, 120))
+    d.text((IZQ + 14, y + 5), aviso, font=fa, fill=BLANCO)
+    d.text((IZQ + ancho + 18, y + 7), f"Datos: {fuente_txt.split(' (')[0]}", font=fuente("Medium", 28),
+           fill=(255, 255, 255, 200))
+
+
+def capa_portada(guion, autor):
+    """Los textos de la portada: aviso de IA, antetítulo, título en dos líneas, pregunta y autora."""
+    capa = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    capa.alpha_composite(degradado(700, opacidad=150), (0, 0))
+    d = ImageDraw.Draw(capa)
+    aviso_y_fuente(d, guion["fuente"], ARRIBA)
+    portada = guion["portada"]
+    d.text((IZQ, ARRIBA + 76), portada["antetitulo"].upper(), font=fuente("SemiBold", 36), fill=(255, 255, 255, 215))
+    primera, _, segunda = guion["titulo"].partition(", ")
+    lineas = [(primera + ("," if segunda else ""), BLANCO), (segunda, NARANJA)]
+    tam = 132
+    while max(fuente("Bold", tam).getlength(t) for t, _ in lineas) > W - IZQ - DER and tam > 60:
+        tam -= 6
+    y = ARRIBA + 120
+    for texto, color in lineas:
+        d.text((IZQ - 4, y), texto, font=fuente("Bold", tam), fill=color)
+        y += int(tam * 1.0)
+    y += 34
+    fp = fuente("SemiBold", 48)
+    for linea in envolver(portada["pregunta"], fp, W - IZQ - DER):
+        d.text((IZQ, y), linea, font=fp, fill=BLANCO)
+        y += 56
+    # Qué significan los colores del mapa (abajo a la izquierda, donde el mapa deja espacio libre)
+    fl = fuente("Medium", 30)
+    for k, linea in enumerate(["Más naranja =", "más homicidios", "por habitante (2024)"]):
+        d.text((IZQ, Y_MAPA_PORTADA + 500 + 36 * k), linea, font=fl, fill=(255, 255, 255, 210))
+    if autor:
+        d.text((IZQ, Y_MAPA_PORTADA + 660), f"Por {autor}", font=fuente("Medium", 42), fill=(255, 255, 255, 230))
     return capa
 
 
@@ -349,11 +404,26 @@ def dibujar_subtitulo(d, bloque, t):
 
 
 def fondo_en(imagen, avance):
-    """Acercamiento lento (efecto Ken Burns): del 100 % al 104 % a lo largo de la escena."""
+    """Acercamiento lento (efecto Ken Burns): del 100 % al 104 % a lo largo de todo el video."""
     z = 1 + 0.04 * avance
     w, h = W / z, H / z
     x0, y0 = (W - w) / 2, (H - h) / 2
     return imagen.resize((W, H), Image.BILINEAR, box=(x0, y0, x0 + w, y0 + h))
+
+
+def poner_grafico(cuadro, grafico, nombre, segundos, y=Y_GRAFICO):
+    """Pega el gráfico de la escena con una animación de entrada de SEG_ANIMACION segundos."""
+    p = min(1.0, max(0.0, segundos) / SEG_ANIMACION)
+    p = 1 - (1 - p) ** 3                                     # empieza rápido y frena al final
+    x = X_GRAFICO + (ANCHO_GRAFICO - grafico.width) // 2
+    if nombre in BARRIDO:                                    # líneas, barras y puntos: se dibujan de izquierda a derecha
+        ancho = max(1, int(grafico.width * p))
+        cuadro.alpha_composite(grafico.crop((0, 0, ancho, grafico.height)), (x, y))
+    else:                                                    # mapas y portada: aparecen y crecen un poco
+        escala = 0.94 + 0.06 * p
+        g = grafico.resize((int(grafico.width * escala), int(grafico.height * escala)), Image.BILINEAR)
+        g.putalpha(Image.fromarray((np.asarray(g.getchannel("A")) * p).astype("uint8")))
+        cuadro.alpha_composite(g, (x + (grafico.width - g.width) // 2, y + (grafico.height - g.height) // 2))
 
 
 # ---------------------------------------------------------------- todo junto
@@ -391,7 +461,10 @@ def main():
     bloques = [bloques_de_subtitulo(pp) for pp in palabras]
     srt([b for bb in bloques for b in bb], AQUI / "subtitulos.srt")
 
-    fondos = {g["fondo"]: Image.open(FONDOS / f"{g['fondo']}.png").convert("RGB") for g in guion["escenas"]}
+    fondo = Image.open(FONDO).convert("RGB")
+    nombres = [guion["portada"]["grafico"]] + [g["grafico"] for g in guion["escenas"]]
+    graficos = {n: Image.open(GRAFICOS / f"{n}.png").convert("RGBA") for n in nombres}
+    portada = capa_portada(guion, a.autor)
     total = len(guion["escenas"])
     creditos = [f"Reel de {a.autor}" if a.autor else "", f"Dashboard: {a.url}", f"Datos: {guion['fuente']}",
                 f"Música: {a.credito_musica}", "Voz: generada con IA (Qwen3-TTS) a partir de mi propia voz"]
@@ -407,12 +480,23 @@ def main():
     n_cuadros = int(duracion * FPS)
     for c in range(n_cuadros):
         t = c / FPS
+        if t < SEG_PORTADA:                      # portada: fondo, mapa que aparece y textos, sin subtítulos
+            cuadro = fondo_en(fondo, t / duracion).convert("RGBA")
+            poner_grafico(cuadro, graficos[nombres[0]], nombres[0], t, y=Y_MAPA_PORTADA)
+            cuadro.alpha_composite(portada)
+            cuadro = cuadro.convert("RGB")
+            if c == int(1.6 * FPS):               # esta imagen sirve de miniatura del video
+                cuadro.save(AQUI / "portada.png")
+            escritor.send(cuadro.tobytes())
+            continue
         i = next((k for k, (ini, fin) in enumerate(tramos) if t < fin + 0.4), total - 1)
         ini, fin = tramos[i]
-        inicio_visual = tramos[i - 1][1] + 0.4 if i else 0.0
+        inicio_visual = tramos[i - 1][1] + 0.4 if i else SEG_PORTADA
         fin_visual = duracion if i == total - 1 else fin + 0.4
         avance = min(1.0, max(0.0, (t - inicio_visual) / max(fin_visual - inicio_visual, 0.1)))
-        cuadro = fondo_en(fondos[guion["escenas"][i]["fondo"]], avance).convert("RGBA")
+        cuadro = fondo_en(fondo, t / duracion).convert("RGBA")   # acercamiento lento y continuo
+        nombre = guion["escenas"][i]["grafico"]
+        poner_grafico(cuadro, graficos[nombre], nombre, t - inicio_visual)
         entrada = min(1.0, (t - inicio_visual) / 0.35)  # la cifra aparece en 0,35 s
         capa = capas[i] if entrada >= 1 else Image.fromarray(
             (np.asarray(capas[i]) * np.array([1, 1, 1, entrada])).astype("uint8"), "RGBA")
@@ -423,9 +507,7 @@ def main():
         bloque = next((b for b in bloques[i] if b[0][1] - 0.05 <= t <= b[-1][2] + 0.25), None)
         if bloque:
             dibujar_subtitulo(d, bloque, t)
-        if c == int(1.2 * FPS):
-            cuadro.convert("RGB").save(AQUI / "portada.png")
-        escritor.send(cuadro.convert("RGB").tobytes())
+        escritor.send(cuadro.tobytes())
         if c % (5 * FPS) == 0:
             print(f"  video: {t:4.0f} s de {duracion:.0f}", flush=True)
     escritor.close()
