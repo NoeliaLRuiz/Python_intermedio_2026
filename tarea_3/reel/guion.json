@@ -1,0 +1,55 @@
+{
+  "titulo": "Menos víctimas, más violencia",
+  "fuente": "Ministerio del Interior (datos abiertos): ENAPRES-INEI, CEIC y SIDPOL",
+  "escenas": [
+    {
+      "frase": "En 2011, cuatro de cada diez personas dijeron haber sido víctimas de un delito. En 2025, una de cada cuatro. ¿El Perú es más seguro?",
+      "cifra": "40 % → 25 %",
+      "etiqueta": "personas víctimas de algún delito, 2011 y 2025",
+      "fondo": "victimizacion",
+      "dato": "Victimización nacional 40,0 % (2011) y 25,3 % (2025). hallazgos.json h1"
+    },
+    {
+      "frase": "No tan rápido: entre 2014 y 2024, la tasa de homicidios subió de 6,7 a 10,1 por cada 100 mil habitantes.",
+      "cifra": "6,7 → 10,1",
+      "etiqueta": "homicidios por cada 100 mil habitantes, 2014 y 2024",
+      "fondo": "homicidios",
+      "dato": "Tasa nacional 6,7 (2014) y 10,1 (2024). hallazgos.json h2"
+    },
+    {
+      "frase": "Y los delitos son más violentos: de cada 100 víctimas, 6 sufrieron un ataque con arma de fuego en 2012; en 2025, 11.",
+      "cifra": "6 → 11",
+      "etiqueta": "de cada 100 víctimas, atacadas con arma de fuego",
+      "fondo": "arma_fuego",
+      "dato": "6,4 % (2012) y 11,3 % (2025). hallazgos.json h2"
+    },
+    {
+      "frase": "Las denuncias por extorsión se multiplicaron por más de ocho: de 3223 en 2018 a 27 292 en 2025.",
+      "cifra": "× 8,5",
+      "etiqueta": "denuncias de extorsión, 2018 y 2025",
+      "fondo": "extorsion_mes",
+      "dato": "3223 (2018) y 27 292 (2025), 8,5 veces. hallazgos.json h2"
+    },
+    {
+      "frase": "Callao, La Libertad, Tumbes y Región Lima están entre las seis regiones con más homicidios y con más extorsiones.",
+      "cifra": "4 regiones",
+      "etiqueta": "en el top 6 de homicidios (2024) y de extorsiones (2025)",
+      "fondo": "extorsion_mapa",
+      "dato": "en_ambos_top6. hallazgos.json h3"
+    },
+    {
+      "frase": "En cambio, donde más gente dice ser víctima es en Arequipa, Puno y Cusco: son dos mapas distintos del delito.",
+      "cifra": "2 mapas",
+      "etiqueta": "más víctimas no es igual a más homicidios",
+      "fondo": "dos_mapas",
+      "dato": "Más victimización 2025: Arequipa, Puno, Cusco; correlación 2024 = 0,0. hallazgos.json h1 y h3"
+    },
+    {
+      "frase": "¿Y tu región? Explora los datos en el dashboard: el enlace está en la publicación.",
+      "cifra": "¿Y tu región?",
+      "etiqueta": "Explora el dashboard",
+      "fondo": "portada",
+      "dato": "Cierre"
+    }
+  ]
+}

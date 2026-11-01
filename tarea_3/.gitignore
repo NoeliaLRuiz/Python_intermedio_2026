@@ -3,3 +3,5 @@
 __pycache__/
 # Mi grabación de voz para el reel: no se sube
 reel/mi_voz.*
+# Audios intermedios del reel
+reel/cache/
