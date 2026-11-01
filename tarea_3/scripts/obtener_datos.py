@@ -34,9 +34,9 @@ FUENTES = {
     "peru_provincial_simple.geojson": (
         MAPAS + "peru_provincial_simple.geojson",
         "Límites provinciales del Perú (github.com/juaneladio/peru-geojson, licencia MPL-2.0)"),
-    "peru_distrital_simple.geojson": (
-        MAPAS + "peru_distrital_simple.geojson",
-        "Límites distritales del Perú (github.com/juaneladio/peru-geojson, licencia MPL-2.0)"),
+    "lima_callao_distritos.geojson": (
+       "https://raw.githubusercontent.com/joseluisq/peru-geojson-datasets/master/lima_callao_distritos.geojson",
+        "Límites distritales de Lima y Callao, fuente IGN (github.com/joseluisq/peru-geojson-datasets, licencia MIT)"),
 }
 
 # Los indicadores vienen en un ZIP con un CSV por mes de actualización; se guarda solo el más reciente.
@@ -56,6 +56,7 @@ def main():
     ORIGINALES.mkdir(parents=True, exist_ok=True)
     registro_ruta = ORIGINALES / "fuentes.json"
     registro = json.loads(registro_ruta.read_text(encoding="utf-8")) if registro_ruta.exists() else {}
+    registro = {k: v for k, v in registro.items() if k in FUENTES or k == INDICADORES}   # solo las fuentes en uso
     hoy = date.today().isoformat()
 
     print("Descargando archivos (el de denuncias pesa unos 28 MB):")

@@ -11,6 +11,7 @@ y en web/data: datos.json, regiones.geojson y lima_distritos.geojson, listos par
 Uso:  python scripts/procesar_datos.py
 """
 import json
+import unicodedata
 from pathlib import Path
 
 import geopandas as gpd
@@ -107,8 +108,12 @@ def poblacion_distritos():
     return d[["UBIGEO_DASH", "ANIO", "POBLACION_PROYECTADA"]].rename(
         columns={"UBIGEO_DASH": "ubigeo", "ANIO": "anio", "POBLACION_PROYECTADA": "poblacion"})
 
+def sin_tildes(texto):
+    """'Breña ' → 'BRENA': mayúsculas, sin tildes ni espacios de más, para unir nombres de dos fuentes."""
+    return " ".join(unicodedata.normalize("NFKD", str(texto)).encode("ascii", "ignore").decode().upper().split())
 
-def armar_mapas():
+
+def armar_mapas(distritos_lima):
     """Mapa de las 26 regiones (se unen las provincias) y mapa de los 43 distritos de Lima Metropolitana."""
     prov = gpd.read_file(ORIGINALES / "peru_provincial_simple.geojson")
     prov["codigo"] = prov.FIRST_IDPR.astype(int).map(lambda p: codigo_region(p * 100 + 1))
@@ -117,12 +122,15 @@ def armar_mapas():
     regiones["geometry"] = regiones.geometry.simplify(0.005, preserve_topology=True)
     assert set(regiones.codigo) == set(REGIONES), "Al mapa le falta alguna región"
 
-    dist = gpd.read_file(ORIGINALES / "peru_distrital_simple.geojson")
-    lima = dist[dist.IDPROV == "1501"][["IDDIST", "NOMBDIST", "geometry"]].copy()
-    lima["ubigeo"] = lima.IDDIST.astype(int)
-    lima = lima.rename(columns={"NOMBDIST": "distrito"})[["ubigeo", "distrito", "geometry"]]
+    # El mapa de distritos del IGN no trae ubigeo: se une por el nombre con los distritos de las denuncias
+    dist = gpd.read_file(ORIGINALES / "lima_callao_distritos.geojson")
+    lima = dist[dist.provincia == "LIMA"].copy()
+    lima["clave"] = lima.distrito.map(sin_tildes).replace({"LURIGANCHO": "LURIGANCHO - CHOSICA"})
+    nombres = distritos_lima[["ubigeo", "distrito"]].drop_duplicates()
+    nombres["clave"] = nombres.distrito.map(sin_tildes)
+    lima = lima[["clave", "geometry"]].merge(nombres, on="clave", how="left")[["ubigeo", "distrito", "geometry"]]
+    assert len(lima) == 43 and lima.ubigeo.notna().all(), "Algún distrito de Lima no se pudo unir por su nombre"
     lima["geometry"] = lima.geometry.simplify(0.0005, preserve_topology=True)
-    assert len(lima) == 43, f"Se esperaban 43 distritos de Lima Metropolitana y hay {len(lima)}"
     return regiones, lima
 
 
@@ -150,7 +158,7 @@ def main():
     dif = (ext / nacional.set_index("anio").extorsiones - 1).dropna() * 100
     print(f"  extorsiones: diferencia entre las dos bases del Mininter, de {dif.min():.1f} % a {dif.max():.1f} %")
 
-    mapa_regiones, mapa_lima = armar_mapas()
+    mapa_regiones, mapa_lima = armar_mapas(lima)
 
     panel.to_csv(PROCESADOS / "panel_regiones.csv", index=False, encoding="utf-8")
     nacional.to_csv(PROCESADOS / "nacional.csv", index=False, encoding="utf-8")

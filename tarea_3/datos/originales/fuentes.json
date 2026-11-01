@@ -19,14 +19,14 @@
     "descripcion": "Límites provinciales del Perú (github.com/juaneladio/peru-geojson, licencia MPL-2.0)",
     "fecha_descarga": "2026-11-01"
   },
-  "peru_distrital_simple.geojson": {
-    "url": "https://raw.githubusercontent.com/juaneladio/peru-geojson/master/peru_distrital_simple.geojson",
-    "descripcion": "Límites distritales del Perú (github.com/juaneladio/peru-geojson, licencia MPL-2.0)",
-    "fecha_descarga": "2026-11-01"
-  },
   "mininter_indicadores_2009_ago2026.csv": {
     "url": "https://www.datosabiertos.gob.pe/sites/default/files/DataSet%20Indicadores%20para%20Planes%20de%20Acci%C3%B3n%20de%20Seguridad%20Ciudadana%20-%20Agosto%202026.zip",
     "fecha_descarga": "2026-11-01",
     "descripcion": "MININTER. Indicadores de seguridad ciudadana por región, provincia y distrito, 2009 a agosto 2026 (victimización ENAPRES, homicidios CEIC, denuncias SIDPOL y otros). https://www.datosabiertos.gob.pe/dataset/indicadores-de-seguridad-ciudadana-y-tendencias-territoriales-mininter"
+  },
+  "lima_callao_distritos.geojson": {
+    "url": "https://raw.githubusercontent.com/joseluisq/peru-geojson-datasets/master/lima_callao_distritos.geojson",
+    "descripcion": "Límites distritales de Lima y Callao, fuente IGN (github.com/joseluisq/peru-geojson-datasets, licencia MIT)",
+    "fecha_descarga": "2026-11-01"
   }
 }

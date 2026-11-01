@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menos víctimas, más violencia</title>
+  <meta name="description" content="Dashboard sobre la criminalidad en las regiones del Perú, 2010-2025: victimización, homicidios, extorsión y denuncias policiales.">
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.3.1/plotly.min.js"></script>
+</head>
+<body>
+<header class="portada">
+  <div class="contenedor">
+    <p class="antetitulo">Criminalidad en el Perú · 2010-2025</p>
+    <h1>Menos víctimas, más violencia</h1>
+    <p class="pregunta">¿Qué regiones del Perú concentran los delitos más graves y cómo cambiaron entre 2010 y 2025?</p>
+    <p class="bajada">Desde 2011 hay menos personas que dicen haber sido víctimas de un delito, pero los homicidios,
+      los ataques con arma de fuego y las extorsiones aumentaron. Este tablero muestra en qué regiones pasa cada cosa.</p>
+    <ul class="fichas">
+      <li><strong>Cobertura:</strong> 26 regiones (Lima Metropolitana, Región Lima y Callao por separado)</li>
+      <li><strong>Periodo:</strong> 2010-2025; denuncias hasta setiembre de 2026</li>
+      <li><strong>Fuente:</strong> Ministerio del Interior, Plataforma Nacional de Datos Abiertos</li>
+    </ul>
+    <nav class="indice" aria-label="Secciones">
+      <a href="#explorar">Explorar</a><a href="#evolucion">Evolución</a><a href="#cruce">Dos mapas</a>
+      <a href="#denuncias">Denuncias</a><a href="#hallazgos">Hallazgos</a><a href="#metodologia">Metodología</a>
+    </nav>
+  </div>
+</header>
+
+<main class="contenedor">
+  <!-- Filtros generales: valen para todo lo que está debajo, hasta la sección de denuncias -->
+  <section class="filtros" aria-label="Filtros">
+    <label>Región
+      <select id="filtro-region"></select>
+    </label>
+    <label>Indicador del mapa
+      <select id="filtro-indicador"></select>
+    </label>
+    <label>Año
+      <select id="filtro-anio"></select>
+    </label>
+    <p id="aviso-anio" class="aviso" role="status"></p>
+  </section>
+
+  <section id="kpis" class="kpis" aria-label="Indicadores principales"></section>
+
+  <section id="explorar" class="bloque">
+    <h2 id="titulo-explorar">Mapa y ranking</h2>
+    <p class="nota">Haz clic en una región del mapa para seleccionarla.</p>
+    <div class="dos-columnas">
+      <figure class="tarjeta">
+        <figcaption id="titulo-mapa"></figcaption>
+        <div id="grafico-mapa" class="grafico alto"></div>
+      </figure>
+      <figure class="tarjeta">
+        <figcaption id="titulo-ranking"></figcaption>
+        <div id="grafico-ranking" class="grafico alto"></div>
+        <div class="acciones">
+          <button id="boton-descargar" type="button">Descargar estos datos (CSV)</button>
+        </div>
+        <details>
+          <summary>Ver como tabla</summary>
+          <div id="tabla-ranking" class="tabla"></div>
+        </details>
+      </figure>
+    </div>
+  </section>
+
+  <section id="evolucion" class="bloque">
+    <h2>Evolución: <span id="titulo-evolucion"></span></h2>
+    <p class="nota"><span class="clave clave-region"></span>Región seleccionada
+      <span class="clave clave-peru"></span>Perú</p>
+    <div class="cuatro">
+      <figure class="tarjeta"><figcaption>% de personas víctimas de algún delito</figcaption><div id="ev-victimizacion" class="grafico bajo"></div></figure>
+      <figure class="tarjeta"><figcaption>Homicidios por 100 mil habitantes</figcaption><div id="ev-tasa_homicidios" class="grafico bajo"></div></figure>
+      <figure class="tarjeta"><figcaption>% de víctimas atacadas con arma de fuego</figcaption><div id="ev-victimas_arma_fuego" class="grafico bajo"></div></figure>
+      <figure class="tarjeta"><figcaption>Denuncias de extorsión por 100 mil habitantes</figcaption><div id="ev-tasa_extorsiones" class="grafico bajo"></div></figure>
+    </div>
+  </section>
+
+  <section id="cruce" class="bloque">
+    <h2>Dos mapas distintos</h2>
+    <p class="nota" id="nota-cruce"></p>
+    <figure class="tarjeta">
+      <figcaption id="titulo-cruce"></figcaption>
+      <div id="grafico-cruce" class="grafico alto"></div>
+    </figure>
+  </section>
+
+  <section id="denuncias" class="bloque">
+    <h2>Denuncias policiales</h2>
+    <div class="filtros secundarios" aria-label="Filtros de denuncias">
+      <label>Tipo de denuncia
+        <select id="filtro-modalidad"></select>
+      </label>
+      <label>Año (mapa de Lima)
+        <select id="filtro-anio-denuncias"></select>
+      </label>
+    </div>
+    <figure class="tarjeta">
+      <figcaption id="titulo-mensual"></figcaption>
+      <div id="grafico-mensual" class="grafico medio"></div>
+    </figure>
+    <div class="dos-columnas">
+      <figure class="tarjeta">
+        <figcaption id="titulo-lima"></figcaption>
+        <div id="grafico-lima" class="grafico alto"></div>
+        <p class="nota">El color más oscuro empieza en el percentil 95, para que el Cercado de Lima no tape las diferencias entre los demás distritos. Pasa el cursor para ver la cifra exacta.</p>
+      </figure>
+      <figure class="tarjeta">
+        <figcaption id="titulo-lima-top"></figcaption>
+        <ol id="lista-lima" class="lista"></ol>
+        <p class="nota">Sin los distritos de menos de 20 mil habitantes: con pocas denuncias su tasa sale muy alta.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section id="hallazgos" class="bloque">
+    <h2>Tres hallazgos</h2>
+    <div class="tres">
+      <article class="hallazgo">
+        <p class="numero">40,0 % → 25,3 %</p>
+        <h3>1. Hay menos víctimas</h3>
+        <p>En 2011, el 40,0 % de las personas de 15 años a más dijo haber sido víctima de algún delito; en 2025, el 25,3 %.
+          La victimización de 2025 es menor que la de 2010 en 24 de las 26 regiones.</p>
+      </article>
+      <article class="hallazgo">
+        <p class="numero">6,7 → 10,1</p>
+        <h3>2. Pero el delito es más violento</h3>
+        <p>Los homicidios pasaron de 2076 en 2014 a 3426 en 2024 (de 6,7 a 10,1 por 100 mil habitantes) y subieron en
+          19 de las 26 regiones; en Lima Metropolitana, la tasa se multiplicó por 2,5. De cada 100 víctimas, 6 fueron atacadas
+          con arma de fuego en 2012 y 11 en 2025. Las denuncias de extorsión pasaron de 3223 (2018) a 27 292 (2025): 8,5 veces más.</p>
+      </article>
+      <article class="hallazgo">
+        <p class="numero">4 regiones</p>
+        <h3>3. La violencia grave está en otras regiones</h3>
+        <p>Callao, La Libertad, Región Lima y Tumbes están a la vez entre las 6 regiones con más homicidios (2024) y con más
+          extorsiones (2025). En cambio, donde más personas dicen ser víctimas es en Arequipa, Puno y Cusco (2025). Entre regiones, la
+          victimización y la tasa de homicidios no tienen relación (correlación 0,0 en 2024).</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="metodologia" class="bloque texto">
+    <h2>Metodología</h2>
+    <ul>
+      <li><strong>Datos:</strong> dos bases del Ministerio del Interior en la Plataforma Nacional de Datos Abiertos.
+        Los <em>indicadores de seguridad ciudadana</em> traen, por región y año, la victimización (encuesta ENAPRES del INEI),
+        los homicidios (Comité Estadístico Interinstitucional de la Criminalidad, CEIC), las denuncias de extorsión y secuestro
+        (SIDPOL) y los feminicidios. Las <em>denuncias policiales</em> traen las denuncias del SIDPOL por mes, distrito y tipo.</li>
+      <li><strong>Limpieza:</strong> cada distrito se asignó a una de 26 regiones según su ubigeo (la provincia de Lima es Lima
+        Metropolitana y el resto del departamento, Región Lima). Se sumó una fila repetida, se unificaron los nombres de los tipos de
+        denuncia y se dejó 2026 solo en la serie mensual, porque el año está incompleto.</li>
+      <li><strong>Indicadores:</strong> las tasas son casos por cada 100 mil habitantes, con la población proyectada que publica el
+        Mininter para cada región y año. Las denuncias de extorsión de las dos bases difieren entre 1,6 % y 5,3 % por año.</li>
+      <li><strong>Herramientas:</strong> Python (pandas y geopandas) para descargar y procesar; Plotly.js para los gráficos;
+        GitHub Pages para publicar. El código está en el <a href="https://github.com/NoeliaLRuiz/Python_intermedio_2026/tree/main/tarea_3">repositorio</a>.</li>
+    </ul>
+    <h3>Fuentes</h3>
+    <ul id="lista-fuentes"></ul>
+    <h3>Limitaciones</h3>
+    <ul>
+      <li>Una denuncia no es un delito: muchas víctimas no denuncian, y eso varía entre regiones y en el tiempo.</li>
+      <li>Desde noviembre de 2024 faltan las denuncias virtuales de robo y hurto (el canal estuvo fuera de servicio), así que la caída
+        de esas denuncias en 2025 no significa necesariamente que haya menos robos.</li>
+      <li>La victimización viene de una encuesta urbana con margen de error; las diferencias pequeñas entre regiones o años pueden no ser reales.</li>
+      <li>Los homicidios por región llegan hasta 2024 y los feminicidios se muestran como número de casos, no como tasa.</li>
+      <li>Los límites de los mapas son referenciales (regiones: INEI, versión publicada en 2016; distritos de Lima: IGN). Que dos indicadores se muevan juntos no prueba que uno cause el otro.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <p>Tarea 3 del curso Python Intermedio · Noelia León Ruiz ·
+      <a href="https://github.com/NoeliaLRuiz/Python_intermedio_2026/tree/main/tarea_3">Código y datos</a></p>
+    <p>Uso de IA: el código se escribió con ayuda de Claude Code (Anthropic). Las cifras se revisaron contra las fuentes oficiales.</p>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
