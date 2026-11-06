@@ -109,7 +109,7 @@ tarea_3/
 
 ## Reel: créditos
 
-- **Voz:** generada con IA ([Qwen3-TTS 0.6B](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base)) a partir de mi propia voz, con una ecualización suave para que suene menos nasal.
+- **Voz:** generada con IA ([Qwen3-TTS 0.6B](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base)) a partir de mi propia voz.
 - **Subtítulos:** sincronizados con faster-whisper ([`reel/subtitulos.srt`](reel/subtitulos.srt)).
 - **Música:** «Lightless Dawn», Kevin MacLeod (incompetech.com), licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - **Tipografía:** Barlow Condensed (SIL Open Font License).
